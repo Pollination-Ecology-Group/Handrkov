@@ -1,0 +1,61 @@
+project:
+  output-dir: ./docs
+  type: website
+  render:
+    - "*.qmd"
+    - "!archive/"
+  
+website:
+  page-navigation: true
+  navbar:
+    logo-alt: "Opylovači Handrkov"
+    background: rgb(64,	105,	91)
+    left:
+      - href: index.qmd#about
+        text: "About" 
+      - href: news.qmd
+        text: "News" 
+      - href: Pollination_Ecology_Group.qmd#topics
+        text: "Topics"     
+      - href: Pollination_Ecology_Group.qmd#people
+        text: "People"
+      - href: Pollination_Ecology_Group.qmd#publications
+        text: "Publications" 
+      - href: Pollination_Ecology_Group.qmd#joinus
+        text: "Join us!"         
+      - href: Pollination_Ecology_Group.qmd#contact
+        text: "Contact"
+    right:
+      - icon: github
+        href: https://github.com/Pollination-Ecology-Group
+      - icon: discord 
+        href: https://discord.gg/Ser2GRXgns  
+  
+  page-footer: 
+    left: "Made by Jakub Štenc and Quarto" 
+    right: 
+      - icon: github
+        href: https://github.com/Pollination-Ecology-Group
+      - icon: discord 
+        href: https://discord.gg/Ser2GRXgns
+
+
+#  announcement:
+#    icon: info-circle
+#    dismissable: true
+#    content: ""
+#    type: light
+#    position: below-navbar
+#  back-to-top-navigation: true
+
+format:
+  html:
+    fontsize: 1.15rem
+    monofont: Fira Code
+    highlight-style: arrow
+    css: [custom_theme.scss]
+    toc: false
+    code-overflow: scroll
+    linkcolor: rgb(97,30,30)
+    background: #40695B
+    toc-depth: 5
