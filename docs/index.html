@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="custom_theme.scss">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -137,65 +137,141 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">Opylovači Handrkov 2026</a>
-  <ul>
-  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a>
-  <ul>
-  <li><a href="#long-term-study-of-plant-pollinator-system" id="toc-long-term-study-of-plant-pollinator-system" class="nav-link" data-scroll-target="#long-term-study-of-plant-pollinator-system">Long-term study of plant-pollinator system</a></li>
-  </ul></li>
-  <li><a href="#jak-se-zapojit" id="toc-jak-se-zapojit" class="nav-link" data-scroll-target="#jak-se-zapojit">Jak se zapojit</a></li>
-  <li><a href="#pokusy" id="toc-pokusy" class="nav-link" data-scroll-target="#pokusy">Pokusy</a></li>
-  <li><a href="#doprava" id="toc-doprava" class="nav-link" data-scroll-target="#doprava">Doprava</a></li>
-  <li><a href="#join-us" id="toc-join-us" class="nav-link" data-scroll-target="#join-us">Join us!</a></li>
-  <li><a href="#contacts" id="toc-contacts" class="nav-link" data-scroll-target="#contacts">Contacts</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-<section id="about" class="level1" style="text-align: center;">
-<h1 style="text-align: center;">Opylovači Handrkov 2026</h1>
-<section id="topics" class="level2">
-<h2 class="anchored" data-anchor-id="topics">Topics</h2>
-<section id="long-term-study-of-plant-pollinator-system" class="level4">
-<h4 class="anchored" data-anchor-id="long-term-study-of-plant-pollinator-system">Long-term study of plant-pollinator system</h4>
-<p>Our group is carring out a long-term study of plant-pollinator system in Central Bohemia region, near to village Vernýřov. We focused not only on relations between plants and pollinators, but also on spatial and temporal variability in plant-pollinator interactions of a grassy meadow. Moreover, deep knowledge of the system allows to us focus more on looking for answers on more delicate questions in pollination ecology.</p>
+<style>
+/* Odstranění marginů, aby video lícovalo s navigací */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-section {
+  position: relative;
+  /* Výška videa - uprav dle potřeby, 60vh je 60% výšky okna */
+  height: 60vh; 
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-color: #000000000; /* Černá pojistka, kdyby se video nenačetlo */
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: rgba(0, 0, 0, 0); /* 
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* Text musí být nejvýš */
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.btn-cta {
+  background-color: #27ae60; /* Zelená ladící k přírodě */
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 2px solid #27ae60;
+}
+
+.btn-cta:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+/* Kontejner pro zbytek stránky, aby text nebyl nalepený na krajích */
+.page-content {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+</style>
+<div class="hero-section">
+<p><video class="hero-video" autoplay="" loop="" muted="" playsinline=""> <source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4"> </video></p>
+<div class="hero-overlay">
+
+</div>
+<div class="hero-content">
+<pre><code>&lt;h1&gt;Handrkov: Laboratoř v divočině&lt;/h1&gt;
+&lt;p&gt;Pomoz nám odhalit tajemství opylovačů&lt;/p&gt;
+&lt;a href="#mise" class="btn-cta"&gt;Chci se zapojit&lt;/a&gt;</code></pre>
+</div>
+</div>
+<div class="page-content">
+<div id="mise">
+
+</div>
+<section id="o-co-nám-jde" class="level2">
+<h2 data-anchor-id="o-co-nám-jde">O co nám jde?</h2>
+<p>Tady už můžeš psát normální text. Všimni si, že je to obalené v <code>div class="page-content"</code>, aby to mělo hezké okraje a nebylo to roztažené od kraje ke kraji jako to video.</p>
+<div class="grid">
+<section id="náš-cíl" class="level3 g-col-12 g-col-md-6">
+<h3 data-anchor-id="náš-cíl">Náš cíl</h3>
+<p>Zkoumáme, jak se chovají opylovači v reálném světě. Žádná laboratoř, ale louka, slunce a vítr. Potřebujeme data z terénu a ty nám s tím můžeš pomoci.</p>
 </section>
+<section id="co-získáš-ty" class="level3 g-col-12 g-col-md-6">
+<h3 data-anchor-id="co-získáš-ty">Co získáš ty?</h3>
+<ul>
+<li>Zkušenosti s vědeckou prací</li>
+<li>Pobyt v krásné přírodě</li>
+<li>Večery u ohně s fajn partou</li>
+</ul>
 </section>
-<section id="jak-se-zapojit" class="level2">
-<h2 class="anchored" data-anchor-id="jak-se-zapojit">Jak se zapojit</h2>
+</div>
 </section>
-<section id="pokusy" class="level2">
-<h2 class="anchored" data-anchor-id="pokusy">Pokusy</h2>
-<p>Jiří Hadrava</p>
-</section>
-<section id="doprava" class="level2">
-<h2 class="anchored" data-anchor-id="doprava">Doprava</h2>
-</section>
-<section id="join-us" class="level2">
-<h2 class="anchored" data-anchor-id="join-us">Join us!</h2>
-</section>
-<section id="contacts" class="level2">
-<h2 class="anchored" data-anchor-id="contacts">Contacts</h2>
+</div>
 
 
-</section>
-</section>
 
-</main> <!-- /main -->
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
