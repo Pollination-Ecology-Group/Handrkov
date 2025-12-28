@@ -6,10 +6,10 @@ format:
     anchor-sections: true
 ---
 
-# Opylovači Handrkov 2026 {#about style="text-align: center;"}
+# Opylovací seminář {#about style="text-align: center;"}
 
 
-ff
+Toto setkání slouží jednak k prezentaci výsledků bádání na Handrkově 
 
 ## Dlouhodobový výzkum opylovačů
 

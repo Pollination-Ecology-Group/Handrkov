@@ -3,6 +3,7 @@ page-layout: custom
 toc: false
 ---
 
+```{=html}
 <style>
 /* Odstranění marginů, aby video lícovalo s navigací */
 body {
@@ -92,43 +93,54 @@ body {
   padding: 0 20px;
 }
 </style>
+```
 
-<div class="hero-section">
-  <video class="hero-video" autoplay loop muted playsinline>
-    <source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4">
-  </video>
-  
-  <div class="hero-overlay"></div>
-  
-  <div class="hero-content">
-    <h1>Handrkov: Laboratoř v divočině</h1>
-    <p>Pomoz nám odhalit tajemství opylovačů</p>
-    <a href="#mise" class="btn-cta">Chci se zapojit</a>
-  </div>
-</div>
+:::::::::: hero-section
+<video class="hero-video" autoplay loop muted playsinline>
 
-<div class="page-content">
+<source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4">
 
-<div id="mise"></div>
+</video>
+
+::: hero-overlay
+:::
+
+::: hero-content
+```         
+<h1>Handrkov: Laboratoř v divočině</h1>
+<p>Pomoz nám odhalit tajemství opylovačů</p>
+<a href="#mise" class="btn-cta">Chci se zapojit</a>
+```
+:::
+
+:::::
+
+::::::: page-content
+::: {#mise}
+:::
 
 ## O co nám jde?
 
 Tady už můžeš psát normální text. Všimni si, že je to obalené v `div class="page-content"`, aby to mělo hezké okraje a nebylo to roztažené od kraje ke kraji jako to video.
 
-::: {.grid}
-
+::::: grid
 ::: {.g-col-12 .g-col-md-6}
 ### Náš cíl
+
 Zkoumáme, jak se chovají opylovači v reálném světě. Žádná laboratoř, ale louka, slunce a vítr. Potřebujeme data z terénu a ty nám s tím můžeš pomoci.
 :::
 
 ::: {.g-col-12 .g-col-md-6}
 ### Co získáš ty?
-* Zkušenosti s vědeckou prací
-* Pobyt v krásné přírodě
-* Večery u ohně s fajn partou
-:::
 
+-   Zkušenosti s vědeckou prací
+-   Pobyt v krásné přírodě
+-   Večery u ohně s fajn partou
 :::
+:::::
+:::::::
 
-</div>
+::::::::::
+
+::::::::::
+::::::::::
