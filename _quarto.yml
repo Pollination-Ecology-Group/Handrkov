@@ -13,13 +13,13 @@ website:
     logo-alt: "Opylovači Handrkov"
     background: rgb(64,	105,	91)
     left:
-      - href: Handrkov.qmd#mise
+      - href: index.qmd#mise
         text: "Poslání" 
-      - href: Handrkov.qmd#prakticke_informace
+      - href: index.qmd#prakticke_informace
         text: "Praktické informace"     
-      - href: Handrkov.qmd#pridejse
+      - href: index.qmd#pridejse
         text: "Přidej se!"         
-      - href: Handrkov.qmd#kontakt
+      - href: index.qmd#kontakt
         text: "Kontakt"
     right:
       - icon: github

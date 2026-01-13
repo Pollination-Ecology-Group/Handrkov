@@ -133,7 +133,7 @@ body {
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! 
 ::: 
 
-## Poslání
+## 
 
 Posláním výzkumu opylovačů na Handrkově je zkoumat nastavení vztahů mezi rostlinami, jejich opylovači a parazity opylovačů. K tomu nám pomáhá série pokusů, z nichž některé běží už od roku 2011. Dlouhodobým cílem je pak zjistit, jak stabilní jsou tyto vztahy a co je může na takové obyčejné louce ovlivňovat.  
 
@@ -153,9 +153,8 @@ Dalším cílem celé akce je ale umožnit setkání lidí, kteří mají zájem
 - 📝 **připoj se**: [Pro snažší organizaci se prosím zapište do tabulky. Přidejte i potravní omezení pro plán nákupu potravy.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
 
 
-
-od 5*-10. do 25. sprna, s "horkou fází" od přibližně 15. do 25. srpna, účastnit se lze na libovolně dlouhou podmnožinu času, jen je pro nás lepší to vědět dopředu kdo kdy přibližně přijede. [Proto prosím doplňte své jméno do této tabulky (měla by jít upravovat, kdyby, tak napište).](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing) Tabulka není závazná a jde do ní určtiě vyplnit i "možná". Jde nám ale hlavně o získání přehledu ohledně možného nasazení lidských zdrojů na různé pokusy a jednak o nákup potravy a zajištění vody. A také prosím připojte poznámku o potravních omezeních prosím.
-Budeme na louce k Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studovat interakce mezi hmyzem a rostlinami a to sérii pokusů, přičemž část jich poběží již třináctým rokem. Zajišťujeme stravu a dopravu z nejbližšího městečka (Uhlířské Janovice nebo Zbraslavice, záleží na směru příjezdu). Bydlíme přímo na louce pod velkou plachtou, vaříme společně na ohni a novinkou posledních let je malá solární sprcha se zástěnou. Byť jsou podmínky lehce spartánské, je to o to lepší zážitek (a můžeme díky tomu provádět pokusy hned od rána do večera, bez potřeby se přesouvat).
+Výzkum opylovačů na louce k Handrkovu bude probíhat od 10. do 25. sprna, s "horkou fází" přibližně od 15. do 25. srpna, účastnit se lze na libovolně dlouhou podmnožinu času, jen je pro nás lepší vědět o účasti dopředu. [Proto prosím doplňte své jméno do této tabulky (měla by jít upravovat, kdyby, tak napište).](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing) Tabulka není závazná a jde do ní určtiě vyplnit i "možná". Jde nám ale hlavně o získání přehledu ohledně možného nasazení lidských zdrojů na různé pokusy a jednak o nákup potravy a zajištění vody. A také prosím připojte poznámku o potravních omezeních prosím.
+Budeme na louce K Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studovat interakce mezi hmyzem a rostlinami a to sérii pokusů, přičemž část jich poběží již třináctým rokem. Zajišťujeme stravu a dopravu z nejbližšího městečka (Uhlířské Janovice nebo Zbraslavice, záleží na směru příjezdu). Bydlíme přímo na louce pod velkou plachtou, vaříme společně na ohni a novinkou posledních let je malá solární sprcha se zástěnou. Byť jsou podmínky lehce spartánské, je to o to lepší zážitek (a můžeme díky tomu provádět pokusy hned od rána do večera, bez potřeby se přesouvat).
 Oceníme jakoukoliv pomoc a vše potřebné zaučíme! Sebou je pak potřeba jen oblečení, něco na hlavu (úpal je nejčastější problém), vlastní lahev na pití (vodu zajišťujeme centrálně, ale aby měl člověk jednu lahev pro vlastní spotřebu) a věci na spaní venku (od rybníka je občas lehce chladněji, tak je lepší být připraven). Obecně bereme i nějaké vidličky a misky na jídlo, ale pro zvýšenou schopnost kompetice doporučuji mít sebou vidličku/lžičku, nůž a misku - občas je nás víc než vidliček a hůř se pak kompetuje (ale hlad nebývá).
 
 ## Informace k pokusům:
