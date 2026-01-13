@@ -108,22 +108,19 @@ body {
 
 </video>
 
-::: {.hero-overlay}
-:::
+<div class="hero-overlay"></div>
 
-::: {.hero-content}
+<div class="hero-content">
 
-```         
 <h1>Handrkov: Laboratoř v divočině</h1>
 <p>Pomoz nám odhalit tajemství opylovačů</p>
 <a href="#mise" class="btn-cta">Chci se zapojit</a>
-```
-
-:::
 
 </div>
 
-<div class="page-content">
+</div>
+
+:::: {.page-content}
 ::: {#mise}
 :::
 
@@ -133,7 +130,7 @@ body {
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! 
 ::: 
 
-## 
+## Poslání
 
 Posláním výzkumu opylovačů na Handrkově je zkoumat nastavení vztahů mezi rostlinami, jejich opylovači a parazity opylovačů. K tomu nám pomáhá série pokusů, z nichž některé běží už od roku 2011. Dlouhodobým cílem je pak zjistit, jak stabilní jsou tyto vztahy a co je může na takové obyčejné louce ovlivňovat.  
 
@@ -153,10 +150,20 @@ Dalším cílem celé akce je ale umožnit setkání lidí, kteří mají zájem
 - 📝 **připoj se**: [Pro snažší organizaci se prosím zapište do tabulky. Přidejte i potravní omezení pro plán nákupu potravy.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
 
 
-Výzkum opylovačů na louce k Handrkovu bude probíhat od 10. do 25. sprna, s "horkou fází" přibližně od 15. do 25. srpna, účastnit se lze na libovolně dlouhou podmnožinu času, jen je pro nás lepší vědět o účasti dopředu. [Proto prosím doplňte své jméno do této tabulky (měla by jít upravovat, kdyby, tak napište).](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing) Tabulka není závazná a jde do ní určtiě vyplnit i "možná". Jde nám ale hlavně o získání přehledu ohledně možného nasazení lidských zdrojů na různé pokusy a jednak o nákup potravy a zajištění vody. A také prosím připojte poznámku o potravních omezeních prosím.
-Budeme na louce K Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studovat interakce mezi hmyzem a rostlinami a to sérii pokusů, přičemž část jich poběží již třináctým rokem. Zajišťujeme stravu a dopravu z nejbližšího městečka (Uhlířské Janovice nebo Zbraslavice, záleží na směru příjezdu). Bydlíme přímo na louce pod velkou plachtou, vaříme společně na ohni a novinkou posledních let je malá solární sprcha se zástěnou. Byť jsou podmínky lehce spartánské, je to o to lepší zážitek (a můžeme díky tomu provádět pokusy hned od rána do večera, bez potřeby se přesouvat).
+
+Výzkum opylovačů na louce k Handrkovu bude probíhat od 10. do 25. srpna, s "horkou fází" přibližně od 15. do 25. srpna, účastnit se lze na libovolně dlouhou podmnožinu času, jen je pro nás lepší vědět o účasti dopředu. [Proto prosím doplňte své jméno do této tabulky (měla by jít upravovat, kdyby, tak napište).](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing) Tabulka není závazná a jde do ní určitě vyplnit i "možná". Jde nám ale hlavně o získání přehledu ohledně možného nasazení lidských zdrojů na různé pokusy a jednak o nákup potravy a zajištění vody. A také prosím připojte poznámku o potravních omezeních prosím.
+Budeme na louce k Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studovat interakce mezi hmyzem a rostlinami a to sérii pokusů, přičemž část jich poběží již třináctým rokem. Zajišťujeme stravu a dopravu z nejbližšího městečka (Uhlířské Janovice nebo Zbraslavice, záleží na směru příjezdu). Bydlíme přímo na louce pod velkou plachtou, vaříme společně na ohni a novinkou posledních let je malá solární sprcha se zástěnou. Byť jsou podmínky lehce spartánské, je to o to lepší zážitek (a můžeme díky tomu provádět pokusy hned od rána do večera, bez potřeby se přesouvat).
 Oceníme jakoukoliv pomoc a vše potřebné zaučíme! Sebou je pak potřeba jen oblečení, něco na hlavu (úpal je nejčastější problém), vlastní lahev na pití (vodu zajišťujeme centrálně, ale aby měl člověk jednu lahev pro vlastní spotřebu) a věci na spaní venku (od rybníka je občas lehce chladněji, tak je lepší být připraven). Obecně bereme i nějaké vidličky a misky na jídlo, ale pro zvýšenou schopnost kompetice doporučuji mít sebou vidličku/lžičku, nůž a misku - občas je nás víc než vidliček a hůř se pak kompetuje (ale hlad nebývá).
 
 ## Informace k pokusům:
 
-Letos plánujeme sérii pokusů, přičemž hlavní se jemnuje "jiné čtverce" a spočívá v pozorování kdo s kým interaguje v soustavě cca 96 pernamentních ploch o rozměrech 4*4 metru. Dále pak budeme sbírat blizny z rostlin, na kterých pak v laboratoř budeme určovat deponovaná pyová zrna, protože nás zajímá, mezi kterými druhy dochází k nechtěnému přenosu pylu. Pak budeme zkoumat, kolik pylu odnáší a přináší opylovači na bliznu za jednu návštvu, kolik nesou pylu na těle. V dalším pokusu budeme pokračovat ve sběru dat ohledně rozhodování opylovačů při výběru, na který květ raději létají (pokusu říkáme vidle, jde o párový rozhodovací test). Nově pak budeme zkoušet hledat tripnozómy ve střevech pestřenek (pod vedením Šimona Zemana) a trochu staro/nově budeme dělat pokusy s umělými květy v pokusných klecích (to je ale ještě pořád lehce nejisté). Dále pak chceme letos zkusit metodiku na pozorování nočních opylovačů a to jak svícením na plátno, tak obcházením louky s červenou čelovkou: pokud máte čelovku s červeným světlem a chcete si to vyzkoušet, tak si jí prosím vemte sebou. Úplná novinka je pak opakováné stírání pylu z označených čmeláků, kdy nás bude zajímat, jestli ten samý čmelák nosí vždy jiný pyl nebo se zaměřuje na ty samé rostliny po delší dobu.
+Letos plánujeme sérii pokusů, přičemž hlavní se jemnuje "jiné čtverce" a spočívá v pozorování kdo s kým interaguje v soustavě cca 96 permanentních ploch o rozměrech 4*4 metru. Dále pak budeme sbírat blizny z rostlin, na kterých pak v laboratoř budeme určovat deponovaná pylová zrna, protože nás zajímá, mezi kterými druhy dochází k nechtěnému přenosu pylu. Pak budeme zkoumat, kolik pylu odnáší a přináší opylovači na bliznu za jednu návštěvu, kolik nesou pylu na těle. V dalším pokusu budeme pokračovat ve sběru dat ohledně rozhodování opylovačů při výběru, na který květ raději létají (pokusu říkáme vidle, jde o párový rozhodovací test). Nově pak budeme zkoušet hledat trypanozómy ve střevech pestřenek (pod vedením Šimona Zemana) a trochu staro/nově budeme dělat pokusy s umělými květy v pokusných klecích (to je ale ještě pořád lehce nejisté). Dále pak chceme letos zkusit metodiku na pozorování nočních opylovačů a to jak svícením na plátno, tak obcházením louky s červenou čelovkou: pokud máte čelovku s červeným světlem a chcete si to vyzkoušet, tak si jí prosím vemte sebou. Úplná novinka je pak opakováné stírání pylu z označených čmeláků, kdy nás bude zajímat, jestli ten samý čmelák nosí vždy jiný pyl nebo se zaměřuje na ty samé rostliny po delší dobu.
+
+### Jiné čtverce
+
+
+
+### Stěry
+
+
+::::
