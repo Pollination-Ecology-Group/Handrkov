@@ -18,7 +18,7 @@ page-layout: custom
 
 <div class="hero-content">
 
-<a href="#mise" class="btn-cta"></a>
+<a href="#mise" class="btn-cta"></a> 
 
 </div>
 
