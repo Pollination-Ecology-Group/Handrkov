@@ -58,3 +58,4 @@ format:
     linkcolor: rgb(97,30,30)
     background: #40695B
     toc-depth: 5
+    anchor-sections: true
