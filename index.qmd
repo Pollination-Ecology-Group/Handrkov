@@ -123,8 +123,7 @@ body {
 </div>
 
 :::: {.page-content}
-::: {#mise}
-:::
+
 
 ::: {.center-text}
 # Opylovači Handrkov
@@ -132,7 +131,7 @@ body {
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! 
 ::: 
 
-## Smyls a cíle
+## Smysl a cíle {#mise}
 
 Cílem výzkumu opylovačů na Handrkově je zkoumat nastavení vztahů mezi rostlinami, jejich opylovači a parazity opylovačů. K tomu nám pomáhá série pokusů, z nichž některé běží už od roku 2011. Dlouhodobým cílem je pak zjistit, jak stabilní jsou tyto vztahy a co je může na takové obyčejné louce ovlivňovat.  
 
@@ -158,6 +157,20 @@ Budeme na louce k Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studova
 Oceníme jakoukoliv pomoc a vše potřebné zaučíme! Sebou je pak potřeba jen oblečení, něco na hlavu (úpal je nejčastější problém), vlastní lahev na pití (vodu zajišťujeme centrálně, ale aby měl člověk jednu lahev pro vlastní spotřebu) a věci na spaní venku (od rybníka je občas lehce chladněji, tak je lepší být připraven). Obecně bereme i nějaké vidličky a misky na jídlo, ale pro zvýšenou schopnost kompetice doporučuji mít sebou vidličku/lžičku, nůž a misku - občas je nás víc než vidliček a hůř se pak kompetuje (ale hlad nebývá).
 
 ![](images/Fin.jpg){fig-align="center" width="650"}
+
+
+## Přidej se! {#pridejse}
+
+Přidat se může opravdu každý člověk dobré vůle! 
+Není potřeba mít předchozí znalosti rostlin nebo živočichů, vše potřebné naučíme. 
+Je akorát potřeba počítat se spaním venku/ve stanu a dlouhodobým pobytem na sluníčku. 
+
+[Pro snažší organizaci se prosím zapište do tabulky. Přidejte i potravní omezení pro plán nákupu potravy.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
+
+## Kontakt {#kontakt}
+
+Mail: [Jakub Štenc](mailto:jakubstenc@gmail.com)
+Telefon: [Jakub Štenc](tel:+420774553734)
 
 
 ## Informace k pokusům:

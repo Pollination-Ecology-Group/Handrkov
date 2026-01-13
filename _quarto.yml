@@ -14,7 +14,7 @@ website:
     background: rgb(64,	105,	91)
     left:
       - href: index.qmd#mise
-        text: "Poslání" 
+        text: "Smysl a cíle" 
       - href: index.qmd#prakticke-informace
         text: "Praktické informace"     
       - href: index.qmd#pridejse
@@ -24,16 +24,17 @@ website:
     right:
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
-      - icon: discord 
-        href: https://discord.gg/Ser2GRXgns  
+      - icon: whatsapp
+        href: https://wa.me/qr/B4IJQTB7R5LAP1   
   
   page-footer: 
     left: "Made by Jakub Štenc and Quarto" 
     right: 
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
-      - icon: discord 
-        href: https://discord.gg/Ser2GRXgns
+      - icon: whatsapp
+        href: https://wa.me/qr/B4IJQTB7R5LAP1   
+  
 
 
 #  announcement:
