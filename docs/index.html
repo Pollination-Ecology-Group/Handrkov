@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="custom_theme.scss">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -133,127 +133,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-/* Odstranění marginů, aby video lícovalo s navigací */
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.hero-section {
-  position: relative;
-  /* Výška videa - uprav dle potřeby, 60vh je 60% výšky okna */
-  height: 60vh; 
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  background-color: #000000000; /* Černá pojistka, kdyby se video nenačetlo */
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80%;
-  background: rgba(0, 0, 0, 0); /* 
-  z-index: 2;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3; /* Text musí být nejvýš */
-  max-width: 800px;
-  padding: 20px;
-}
-
-.hero-content h1 {
-  font-size: 3.5em;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  color: white;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-  line-height: 1.2;
-}
-
-.hero-content p {
-  font-size: 1.5em;
-  margin-bottom: 2em;
-  color: #f0f0f0;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-}
-
-.btn-cta {
-  background-color: #27ae60; /* Zelená ladící k přírodě */
-  color: white;
-  padding: 15px 40px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-  border: 2px solid #27ae60;
-}
-
-.btn-cta:hover {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-/* Kontejner pro zbytek stránky, aby text nebyl nalepený na krajích */
-.page-content {
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 0 20px;
-  text-align: justify;
-}
-
-.center-text {
-  text-align: center;
-}
-
-.page-content h2, .page-content h3 {
-  text-align: center;
-}
-
-/* Center all images in content */
-.page-content img {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  height: auto;
-}
-
-.page-content figure {
-  text-align: center;
-  margin: 20px auto;
-  display: block; /* Ensure figure is block to allow centering */
-}
-
-.page-content figcaption, .page-content .figure-caption {
-  text-align: center;
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  color: #666; /* Optional: style caption slightly */
-  font-style: italic;
-}
-</style>
 <div class="hero-section">
 <video class="hero-video" autoplay="" loop="" muted="" playsinline="">
 <source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4">
@@ -304,7 +183,7 @@ body {
 </section>
 <section id="kontakt" class="level2">
 <h2 data-anchor-id="kontakt">Kontakt</h2>
-<p>Mail: <a href="mailto:jakubstenc@gmail.com">Jakub Štenc</a> Telefon: <a href="tel:+420774553734">Jakub Štenc</a></p>
+<p>Mail: <a href="mailto:jakubstenc@gmail.com">Jakub Štenc</a> Telefon: <a href="tel:+420774553734">Jakub Štenc</a> WhatsApp: <a href="https://wa.me/420774553734">Jakub Štenc</a></p>
 </section>
 <section id="informace-k-pokusům" class="level2">
 <h2 data-anchor-id="informace-k-pokusům">Informace k pokusům:</h2>
@@ -314,7 +193,7 @@ body {
 <p>Jiné čtverce je pokus, který běží od roku 2011 a umožňuje nám nahlížet změny mezi vztahy opylovačů a rostlin mezi roky. K tomu nám slouží 96 trvalých ploch o rozměrech 4*4 metru, které jsou umístěny na louce v pravidelné síti. <img src="images/han_map_1.png" class="img-fluid quarto-figure quarto-figure-center" width="650" alt="Jiné čtverce"></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/DJI_0092.jpg" class="img-fluid figure-img" width="650"></p>
+<p><img src="images/DJI_0092.JPG" class="img-fluid figure-img" width="650"></p>
 <figcaption>Jiné čtverce</figcaption>
 </figure>
 </div>
@@ -325,11 +204,12 @@ body {
 <figcaption>Interakce s opylovači</figcaption>
 </figure>
 </div>
+<p>Ve výsledku pak vidíme síť vztahů mezi rostlinami a opylvoači a vidíme její proměny mezi jednotlivými roky.</p>
 </section>
 <section id="blizny" class="level3">
 <h3 data-anchor-id="blizny">Blizny</h3>
 <p>V rámci sítě vztahů nás nezajíma jenom jak opylovači navštějí rostliny, ale také jak to vede k přenosu pylu mezi rostlinami. Protože většina rostlin sdílí své opylovače s odstatními druhy rostlin, je zajímavé sledovat, jakým způsobem se přenos pylu mezi rostlinami projeví: je úplně ekvivalentní tomu, jak opylvoači navštěvují rostliny nebo jsou některé rostliny které svůj pyl přenášejí na jiné rostliny častěji než bychom mohli očekávat na základě sítě návštěv? Které rostliny to jsou?</p>
-<p>V rámci tohoto experimentu budeme sbárat blizny na nichž později v laboratoři určíme přenesený pyl.</p>
+<p>V rámci tohoto experimentu budeme sbírat blizny na nichž později v laboratoři určíme přenesený pyl.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/Blizna_Suc_pra_2_round.png" class="img-fluid figure-img" width="650"></p>
@@ -349,9 +229,11 @@ body {
 </section>
 <section id="trypanozómy" class="level3">
 <h3 data-anchor-id="trypanozómy">Trypanozómy</h3>
+<p>Na naší louce K Handrkovu studujeme trypanozómy a další parazity v střevech pestřenek. Zajímá nás předně, které druhy trypanozóm se vyskytují ve střevech opylovačů a jak si je opylvoači mezi sebou předávájí. Tuto část výzkumu vede Šimon Zeman z katedry Parazitologie.</p>
 </section>
 <section id="umělé-květy" class="level3">
 <h3 data-anchor-id="umělé-květy">Umělé květy</h3>
+<p>V rámci preferencí a chování opylovačů nás zajímá, které vlastnosti květů dokáží změnit rozhodnutí opylovačů a příapdně které vlastnosti jsou důležitější než jiné. Je to snad barva? Velikost? Nebo tvar? Může to být ale i postavení květu v rámci květenství nebo i výška květu. Abychom lépe porozuměli opylovačům a jejich náladám, používáme umělé květy, u kterých můžeme přesně manipulovat jejich podobou a tím sledovat, které vlastnosti mají na opylovače vliv. Letos budeme s těmito pokusy pokračovat a uvidíme, co za výsledky přinesou.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/IMG_3465c.JPG" class="img-fluid figure-img" width="350"></p>
