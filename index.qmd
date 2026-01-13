@@ -102,6 +102,10 @@ body {
   text-align: center;
 }
 
+.page-content h2, .page-content h3 {
+  text-align: center;
+}
+
 /* Center all images in content */
 .page-content img {
   display: block;
