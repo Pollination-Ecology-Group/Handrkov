@@ -1,8 +1,14 @@
 {
   "index.qmd": {
-    "index.html": "75d59c48"
+    "index.html": "02b83dc4"
+  },
+  "Handrkov/index.qmd": {
+    "index.html": "9a6ce038"
+  },
+  "Handrkov.qmd": {
+    "Handrkov.html": "70d0cbf9"
   },
   "Opylovaci_seminar.qmd": {
-    "Opylovaci_seminar.html": "c3306e32"
+    "Opylovaci_seminar.html": "5b01a8fb"
   }
 }

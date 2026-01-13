@@ -1,3 +1,5 @@
+lang: cs
+
 project:
   output-dir: ./docs
   type: website
@@ -11,20 +13,14 @@ website:
     logo-alt: "Opylovači Handrkov"
     background: rgb(64,	105,	91)
     left:
-      - href: index.qmd#about
-        text: "About" 
-      - href: news.qmd
-        text: "News" 
-      - href: Pollination_Ecology_Group.qmd#topics
-        text: "Topics"     
-      - href: Pollination_Ecology_Group.qmd#people
-        text: "People"
-      - href: Pollination_Ecology_Group.qmd#publications
-        text: "Publications" 
-      - href: Pollination_Ecology_Group.qmd#joinus
-        text: "Join us!"         
-      - href: Pollination_Ecology_Group.qmd#contact
-        text: "Contact"
+      - href: Handrkov.qmd#mise
+        text: "Poslání" 
+      - href: Handrkov.qmd#prakticke_informace
+        text: "Praktické informace"     
+      - href: Handrkov.qmd#pridejse
+        text: "Přidej se!"         
+      - href: Handrkov.qmd#kontakt
+        text: "Kontakt"
     right:
       - icon: github
         href: https://github.com/Pollination-Ecology-Group

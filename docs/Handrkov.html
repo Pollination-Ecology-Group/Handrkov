@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>opylovaci_seminar</title>
+<title>handrkov</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="custom_theme.scss">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -125,80 +125,174 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Na této stránce</h2>
-   
-  <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">Opylovací seminář</a>
-  <ul>
-  <li><a href="#dlouhodobový-výzkum-opylovačů" id="toc-dlouhodobový-výzkum-opylovačů" class="nav-link" data-scroll-target="#dlouhodobový-výzkum-opylovačů">Dlouhodobový výzkum opylovačů</a></li>
-  <li><a href="#jak-se-zapojit" id="toc-jak-se-zapojit" class="nav-link" data-scroll-target="#jak-se-zapojit">Jak se zapojit</a></li>
-  <li><a href="#pokusy" id="toc-pokusy" class="nav-link" data-scroll-target="#pokusy">Pokusy</a></li>
-  <li><a href="#praktické-informace" id="toc-praktické-informace" class="nav-link" data-scroll-target="#praktické-informace">Praktické informace</a>
-  <ul>
-  <li><a href="#jídlo" id="toc-jídlo" class="nav-link" data-scroll-target="#jídlo">Jídlo</a></li>
-  <li><a href="#ubytování" id="toc-ubytování" class="nav-link" data-scroll-target="#ubytování">Ubytování</a></li>
-  <li><a href="#doprava" id="toc-doprava" class="nav-link" data-scroll-target="#doprava">Doprava</a></li>
-  <li><a href="#co-je-potřeba-umět" id="toc-co-je-potřeba-umět" class="nav-link" data-scroll-target="#co-je-potřeba-umět">Co je potřeba umět</a></li>
-  </ul></li>
-  <li><a href="#join-us" id="toc-join-us" class="nav-link" data-scroll-target="#join-us">Join us!</a></li>
-  <li><a href="#contacts" id="toc-contacts" class="nav-link" data-scroll-target="#contacts">Contacts</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-<section id="about" class="level1" style="text-align: center;">
-<h1 style="text-align: center;">Opylovací seminář</h1>
-<p>Toto setkání slouží jednak k prezentaci výsledků bádání na Handrkově</p>
-<section id="dlouhodobový-výzkum-opylovačů" class="level2">
-<h2 class="anchored" data-anchor-id="dlouhodobový-výzkum-opylovačů">Dlouhodobový výzkum opylovačů</h2>
-<p>Our group is carring out a long-term study of plant-pollinator system in Central Bohemia region, near to village Vernýřov. We focused not only on relations between plants and pollinators, but also on spatial and temporal variability in plant-pollinator interactions of a grassy meadow. Moreover, deep knowledge of the system allows to us focus more on looking for answers on more delicate questions in pollination ecology.</p>
+<style>
+/* Odstranění marginů, aby video lícovalo s navigací */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-section {
+  position: relative;
+  /* Výška videa - uprav dle potřeby, 60vh je 60% výšky okna */
+  height: 60vh; 
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-color: #000000000; /* Černá pojistka, kdyby se video nenačetlo */
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: rgba(0, 0, 0, 0); /* 
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* Text musí být nejvýš */
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.btn-cta {
+  background-color: #27ae60; /* Zelená ladící k přírodě */
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 2px solid #27ae60;
+}
+
+.btn-cta:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+/* Kontejner pro zbytek stránky, aby text nebyl nalepený na krajích */
+.page-content {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+  text-align: justify;
+}
+
+.center-text {
+  text-align: center;
+}
+</style>
+<div class="hero-section">
+<video class="hero-video" autoplay="" loop="" muted="" playsinline="">
+<source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay">
+
+</div>
+<div class="hero-content">
+<pre><code>&lt;h1&gt;Handrkov: Laboratoř v divočině&lt;/h1&gt;
+&lt;p&gt;Pomoz nám odhalit tajemství opylovačů&lt;/p&gt;
+&lt;a href="#mise" class="btn-cta"&gt;Chci se zapojit&lt;/a&gt;</code></pre>
+</div>
+</div>
+<div class="page-content">
+<div id="mise">
+
+</div>
+<section id="opylovači-handrkov" class="level1 center-text">
+<h1>Opylovači Handrkov</h1>
+<p>Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu!</p>
 </section>
-<section id="jak-se-zapojit" class="level2">
-<h2 class="anchored" data-anchor-id="jak-se-zapojit">Jak se zapojit</h2>
-<p>Napiš nám</p>
-</section>
-<section id="pokusy" class="level2">
-<h2 class="anchored" data-anchor-id="pokusy">Pokusy</h2>
-<p>Jiří Hadrava</p>
+<section id="poslání" class="level2">
+<h2 data-anchor-id="poslání">Poslání</h2>
+<p>Posláním výzkumu opylovačů na Handrkově je zkoumat nastavení vztahů mezi rostlinami, jejich opylovači a parazity opylovačů. K tomu nám pomáhá série pokusů, z nichž některé běží už od roku 2011. Dlouhodobým cílem je pak zjistit, jak stabilní jsou tyto vztahy a co je může na takové obyčejné louce ovlivňovat.</p>
+<p>Dalším cílem celé akce je ale umožnit setkání lidí, kteří mají zájem o terénní výzkum, chtějí se dozvědět jak výzkum může fungovat a můžou se setkat s širší skupinou lidí, kteří tyto zájmy sdílejí. Klademe si za cíl vytvářet prostředí, které inspiruje a dodává nadšení. Doufáme, že se to daří.</p>
 </section>
 <section id="praktické-informace" class="level2">
-<h2 class="anchored" data-anchor-id="praktické-informace">Praktické informace</h2>
-<section id="jídlo" class="level3">
-<h3 class="anchored" data-anchor-id="jídlo">Jídlo</h3>
+<h2 data-anchor-id="praktické-informace">Praktické informace</h2>
+<section id="shrnutí" class="level3">
+<h3 data-anchor-id="shrnutí">Shrnutí</h3>
+<ul>
+<li>📍 <strong>kde</strong>: <a href="https://mapy.com/s/bajutotaca">Handrkov (49.8463442N, 15.1504281E) u obce Vernýřov</a></li>
+<li>📅 <strong>kdy</strong>: Od 10. do 25. srpna 2026, s horkou fází od 15. do 25. srpna</li>
+<li>👥 <strong>kdo</strong>: Vítán je kdokoliv se zájmem o zapojení se do výzkumu opylovačů! Vše naučíme!</li>
+<li>🍎 <strong>jídlo</strong>: Vaříme společně, jídlo zajístíme i pro vegetariány a vegany. Vlastní lahev na pití a ešus je výhodou.</li>
+<li>🚗 <strong>doprava</strong>: Na úseku Uhlířské Janovice nebo Zbraslavice dopravu zajistíme. Pište na <a href="tel:+420774553734">+420 774 553 734</a></li>
+<li>⛺ <strong>bydlení</strong>: Pod plachtou, případně ve vlastních stanech.</li>
+<li>✉️ <strong>kontakt</strong>: <a href="mailto:jakubstenc@gmail.com">Jakub Štenc</a></li>
+<li>📝 <strong>připoj se</strong>: <a href="https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing">Pro snažší organizaci se prosím zapište do tabulky. Přidejte i potravní omezení pro plán nákupu potravy.</a></li>
+</ul>
+<p>od 5*-10. do 25. sprna, s “horkou fází” od přibližně 15. do 25. srpna, účastnit se lze na libovolně dlouhou podmnožinu času, jen je pro nás lepší to vědět dopředu kdo kdy přibližně přijede. <a href="https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing">Proto prosím doplňte své jméno do této tabulky (měla by jít upravovat, kdyby, tak napište).</a> Tabulka není závazná a jde do ní určtiě vyplnit i “možná”. Jde nám ale hlavně o získání přehledu ohledně možného nasazení lidských zdrojů na různé pokusy a jednak o nákup potravy a zajištění vody. A také prosím připojte poznámku o potravních omezeních prosím. Budeme na louce k Handrkovu (49.8463442N, 15.1504281E) u obce Vernýřov studovat interakce mezi hmyzem a rostlinami a to sérii pokusů, přičemž část jich poběží již třináctým rokem. Zajišťujeme stravu a dopravu z nejbližšího městečka (Uhlířské Janovice nebo Zbraslavice, záleží na směru příjezdu). Bydlíme přímo na louce pod velkou plachtou, vaříme společně na ohni a novinkou posledních let je malá solární sprcha se zástěnou. Byť jsou podmínky lehce spartánské, je to o to lepší zážitek (a můžeme díky tomu provádět pokusy hned od rána do večera, bez potřeby se přesouvat). Oceníme jakoukoliv pomoc a vše potřebné zaučíme! Sebou je pak potřeba jen oblečení, něco na hlavu (úpal je nejčastější problém), vlastní lahev na pití (vodu zajišťujeme centrálně, ale aby měl člověk jednu lahev pro vlastní spotřebu) a věci na spaní venku (od rybníka je občas lehce chladněji, tak je lepší být připraven). Obecně bereme i nějaké vidličky a misky na jídlo, ale pro zvýšenou schopnost kompetice doporučuji mít sebou vidličku/lžičku, nůž a misku - občas je nás víc než vidliček a hůř se pak kompetuje (ale hlad nebývá).</p>
 </section>
-<section id="ubytování" class="level3">
-<h3 class="anchored" data-anchor-id="ubytování">Ubytování</h3>
 </section>
-<section id="doprava" class="level3">
-<h3 class="anchored" data-anchor-id="doprava">Doprava</h3>
+<section id="informace-k-pokusům" class="level2">
+<h2 data-anchor-id="informace-k-pokusům">Informace k pokusům:</h2>
+<p>Letos plánujeme sérii pokusů, přičemž hlavní se jemnuje “jiné čtverce” a spočívá v pozorování kdo s kým interaguje v soustavě cca 96 pernamentních ploch o rozměrech 4*4 metru. Dále pak budeme sbírat blizny z rostlin, na kterých pak v laboratoř budeme určovat deponovaná pyová zrna, protože nás zajímá, mezi kterými druhy dochází k nechtěnému přenosu pylu. Pak budeme zkoumat, kolik pylu odnáší a přináší opylovači na bliznu za jednu návštvu, kolik nesou pylu na těle. V dalším pokusu budeme pokračovat ve sběru dat ohledně rozhodování opylovačů při výběru, na který květ raději létají (pokusu říkáme vidle, jde o párový rozhodovací test). Nově pak budeme zkoušet hledat tripnozómy ve střevech pestřenek (pod vedením Šimona Zemana) a trochu staro/nově budeme dělat pokusy s umělými květy v pokusných klecích (to je ale ještě pořád lehce nejisté). Dále pak chceme letos zkusit metodiku na pozorování nočních opylovačů a to jak svícením na plátno, tak obcházením louky s červenou čelovkou: pokud máte čelovku s červeným světlem a chcete si to vyzkoušet, tak si jí prosím vemte sebou. Úplná novinka je pak opakováné stírání pylu z označených čmeláků, kdy nás bude zajímat, jestli ten samý čmelák nosí vždy jiný pyl nebo se zaměřuje na ty samé rostliny po delší dobu.</p>
+<div class="grid">
+<section id="plán-pokusů" class="level3 g-col-12 g-col-md-6">
+<h3 data-anchor-id="plán-pokusů">Plán pokusů</h3>
 </section>
-<section id="co-je-potřeba-umět" class="level3">
-<h3 class="anchored" data-anchor-id="co-je-potřeba-umět">Co je potřeba umět</h3>
-<p>Doslova jen číst a psát. Vše naučíme, případně zapojení do experimentů nastavíme tak, aby Výhodou je znalost tohoto seznamu druhů rostlin, případně základní přehled o diverzitě hmyzu.</p>
+<section id="co-získáš-ty" class="level3 g-col-12 g-col-md-6">
+<h3 data-anchor-id="co-získáš-ty">Co získáš ty?</h3>
+<ul>
+<li>Zkušenosti s vědeckou prací</li>
+<li>Pobyt v krásné přírodě</li>
+<li>Večery u ohně s fajn partou</li>
+</ul>
 </section>
+</div>
 </section>
-<section id="join-us" class="level2">
-<h2 class="anchored" data-anchor-id="join-us">Join us!</h2>
-</section>
-<section id="contacts" class="level2">
-<h2 class="anchored" data-anchor-id="contacts">Contacts</h2>
+</div>
 
 
-</section>
-</section>
+</div>
 
-</main> <!-- /main -->
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -599,7 +693,7 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
