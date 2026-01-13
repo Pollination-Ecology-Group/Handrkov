@@ -3,6 +3,8 @@ lang: cs
 project:
   output-dir: ./docs
   type: website
+  resources:
+    - ".nojekyll"
   render:
     - "*.qmd"
     - "!archive/"
@@ -25,7 +27,7 @@ website:
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
       - icon: whatsapp
-        href: https://wa.me/qr/B4IJQTB7R5LAP1   
+        href: https://wa.me/420774553734  
   
   page-footer: 
     left: "Made by Jakub Štenc and Quarto" 
@@ -33,7 +35,7 @@ website:
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
       - icon: whatsapp
-        href: https://wa.me/qr/B4IJQTB7R5LAP1   
+        href: https://wa.me/420774553734
   
 
 
