@@ -1,7 +1,10 @@
 ---
-title: "Opylovači Handrkov"
+pagetitle: "Opylovači Handrkov"
 page-layout: custom
-toc: false
+format: 
+  html: 
+    sidebar: true
+    toc: true
 ---
 
 ```{=html}
