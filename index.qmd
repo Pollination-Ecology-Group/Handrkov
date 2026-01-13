@@ -31,7 +31,7 @@ page-layout: custom
 # Opylovači Handrkov
 
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! 
-</div> 
+</div>  
 
 ## Smysl a cíle {#mise}
 
