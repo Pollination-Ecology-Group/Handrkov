@@ -113,9 +113,7 @@ body {
 
 <div class="hero-content">
 
-<h1>Handrkov: Laboratoř v divočině</h1>
-<p>Pomoz nám odhalit tajemství opylovačů</p>
-<a href="#mise" class="btn-cta">Chci se zapojit</a>
+<a href="#mise" class="btn-cta"></a>
 
 </div>
 
