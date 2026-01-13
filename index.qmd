@@ -101,6 +101,19 @@ body {
 .center-text {
   text-align: center;
 }
+
+/* Center all images in content */
+.page-content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.page-content figure {
+  text-align: center;
+  margin: 20px auto;
+}
 </style>
 ```
 
@@ -209,7 +222,7 @@ V rámci vztahů mezi opylovači a rostlinami je zajímavé sledovat, jakým zp�
 
 ### Umělé květy
 
-![Umělé květy](images/umělé_květy.png){fig-align="center" width="350"}
+![Umělé květy](images/IMG_3465c.JPG){fig-align="center" width="350"}
 
 ### Noční opylovači
 
