@@ -161,24 +161,3 @@ Oceníme jakoukoliv pomoc a vše potřebné zaučíme! Sebou je pak potřeba jen
 ## Informace k pokusům:
 
 Letos plánujeme sérii pokusů, přičemž hlavní se jemnuje "jiné čtverce" a spočívá v pozorování kdo s kým interaguje v soustavě cca 96 pernamentních ploch o rozměrech 4*4 metru. Dále pak budeme sbírat blizny z rostlin, na kterých pak v laboratoř budeme určovat deponovaná pyová zrna, protože nás zajímá, mezi kterými druhy dochází k nechtěnému přenosu pylu. Pak budeme zkoumat, kolik pylu odnáší a přináší opylovači na bliznu za jednu návštvu, kolik nesou pylu na těle. V dalším pokusu budeme pokračovat ve sběru dat ohledně rozhodování opylovačů při výběru, na který květ raději létají (pokusu říkáme vidle, jde o párový rozhodovací test). Nově pak budeme zkoušet hledat tripnozómy ve střevech pestřenek (pod vedením Šimona Zemana) a trochu staro/nově budeme dělat pokusy s umělými květy v pokusných klecích (to je ale ještě pořád lehce nejisté). Dále pak chceme letos zkusit metodiku na pozorování nočních opylovačů a to jak svícením na plátno, tak obcházením louky s červenou čelovkou: pokud máte čelovku s červeným světlem a chcete si to vyzkoušet, tak si jí prosím vemte sebou. Úplná novinka je pak opakováné stírání pylu z označených čmeláků, kdy nás bude zajímat, jestli ten samý čmelák nosí vždy jiný pyl nebo se zaměřuje na ty samé rostliny po delší dobu.
-
-:::: {.grid}
-
-::: {.g-col-12 .g-col-md-6}
-### Plán pokusů
-
-
-
-
-:::
-
-::: {.g-col-12 .g-col-md-6}
-### Co získáš ty?
-
--   Zkušenosti s vědeckou prací
--   Pobyt v krásné přírodě
--   Večery u ohně s fajn partou
-:::
-
-::::
-</div>
