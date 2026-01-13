@@ -168,13 +168,21 @@ Letos plánujeme sérii pokusů, přičemž hlavní se jemnuje "jiné čtverce" 
 
 ### Stěry
 
-![Stěry](images/ster_kulaty.png){fig-align="center" width="250"}
+![Stěry](images/ster_kulaty.png){fig-align="center" width="350"}
 
 
 ### Vidle 
 
+![Vidle](images/vidle.png){fig-align="center" width="350"}
+
 ### Trypanozómy
 
+### Umělé květy
+
+![Umělé květy](images/umělé_květy.png){fig-align="center" width="350"}
+
 ### Noční opylovači
+
+![Noční opylovači](images/noční_opylovači.png){fig-align="center" width="350"}
 
 ::::
