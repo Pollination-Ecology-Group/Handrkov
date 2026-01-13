@@ -15,7 +15,7 @@ website:
     left:
       - href: index.qmd#mise
         text: "Poslání" 
-      - href: index.qmd#prakticke_informace
+      - href: index.qmd#prakticke-informace
         text: "Praktické informace"     
       - href: index.qmd#pridejse
         text: "Přidej se!"         
