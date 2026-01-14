@@ -15,14 +15,12 @@ $largeMargin: 20px;
 
 
 
-*{
-  text-align: justify;
-}
+
 
 
 
 #quarto-document-content {
-	text-align: left;
+  text-align: left;
 }
 
 .text-background-white {
@@ -31,7 +29,7 @@ $largeMargin: 20px;
   padding: $smallMargin;
   border-radius: $smallMargin;
 }
- 
+
 .text-background-black {
   background-color: $black;
   color: $white;
@@ -161,8 +159,8 @@ $heading6Size: 14pt;
 
 
 .banner {
-    max-width: 100%;
-    max-height: auto;
+  max-width: 100%;
+  max-height: auto;
 }
 
 /* General text styling */
@@ -172,6 +170,10 @@ body {
   line-height: $body-line-height;
   color: $body-color;
   background-color: $backgroundColor;
+  margin: 0;
+  padding: 0;
+  padding-top: 0 !important;
+  /* Force removal of top padding if Quarto adds it */
 }
 
 a {
@@ -193,6 +195,7 @@ h1 {
   font-weight: $headingFontWeight;
   margin-top: $largeMargin;
   color: $blue;
+  text-align: center;
 }
 
 h2 {
@@ -204,17 +207,13 @@ h2 {
   margin-top: $largeMargin;
   color: $blue;
   text-align: center;
-  
+
 }
 
 h3 {
-  font-family: $headingFont;
-  font-size: $heading3Size;
-  line-height: $headingLineHeight;
-  letter-spacing: $headingLetterSpacing;
-  font-weight: $headingFontWeight;
   margin-top: $largeMargin;
   text-align: center;
+  color: $blue;
 }
 
 h4 {
@@ -302,10 +301,12 @@ ul ul {
   font-size: 20px !important;
   color: $white !important;
   padding: 10px 0 !important;
+
   a {
     color: $white !important;
     text-decoration: none !important;
     padding: 10px !important;
+
     &:hover {
       text-decoration: underline !important;
     }
@@ -315,9 +316,9 @@ ul ul {
 .navbar-logo {
   max-height: 70px;
 }
+
 /* Language dropdown menu styling */
-.navbar .dropdown-menu {
-}
+.navbar .dropdown-menu {}
 
 .navbar .dropdown-menu .dropdown-item {
   color: $white !important;
@@ -332,32 +333,34 @@ ul ul {
 
 .btn {
   background-color: $white;
-  color: rgb(0,0,0);
+  color: rgb(0, 0, 0);
   border-color: $red;
   font-variant-caps: all-petite-caps;
   border-radius: 10px;
+
   &:hover {
     background-color: $pink;
     color: $black;
     border-color: $black;
   }
+}
+
 .button a:link {
-    color: white;
-}  
-  
+  color: white;
 }
 
 .callout-red {
   margin: 1em 0;
   border: 2px solid $black;
-  border-left: 10px solid $red; 
+  border-left: 10px solid $red;
   border-radius: 10px;
   background-color: $white;
-  padding: 0; /* Ensure no unwanted padding */
+  padding: 0;
+  /* Ensure no unwanted padding */
 }
 
 /* Style the first child element (assumed to be the header) */
-.callout-red > *:first-child {
+.callout-red>*:first-child {
   margin: 0;
   padding-top: 10px;
   padding-right: 10px;
@@ -373,13 +376,14 @@ ul ul {
 
 
 /* Style the rest of the content */
-.callout-red > *:not(:first-child) {
+.callout-red>*:not(:first-child) {
   padding-top: 10px;
   padding-left: 15px;
   color: $black;
   background-color: $white;
   border-bottom-right-radius: 10px;
 }
+
 /* --- Handrkov Index Page Specifics --- */
 
 /* Remove margins for full-width video */
@@ -391,7 +395,7 @@ body {
 .hero-section {
   position: relative;
   /* Video height - adjust as needed, 60vh is 60% of viewport height */
-  height: 60vh; 
+  height: 60vh;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -399,7 +403,8 @@ body {
   justify-content: center;
   color: white;
   text-align: center;
-  background-color: #000000; /* Black fallback */
+  background-color: #000000;
+  /* Black fallback */
 }
 
 .hero-video {
@@ -418,13 +423,14 @@ body {
   left: 0;
   width: 100%;
   height: 80%;
-  background: rgba(0, 0, 0, 0); 
+  background: rgba(0, 0, 0, 0);
   z-index: 2;
 }
 
 .hero-content {
   position: relative;
-  z-index: 3; /* Text on top */
+  z-index: 3;
+  /* Text on top */
   max-width: 800px;
   padding: 20px;
 }
@@ -434,7 +440,7 @@ body {
   font-weight: 700;
   margin-bottom: 0.5em;
   color: white;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
   line-height: 1.2;
 }
 
@@ -442,11 +448,12 @@ body {
   font-size: 1.5em;
   margin-bottom: 2em;
   color: #f0f0f0;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .btn-cta {
-  background-color: #27ae60; /* Natural green */
+  background-color: #27ae60;
+  /* Natural green */
   color: white;
   padding: 15px 40px;
   text-decoration: none;
@@ -471,12 +478,19 @@ body {
   text-align: justify;
 }
 
+iframe {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+}
+
 .center-text {
   text-align: center;
 }
 
 /* Ensure h2/h3 inside page-content are centered (overriding any potential conflicts) */
-.page-content h2, .page-content h3 {
+.page-content h2,
+.page-content h3 {
   text-align: center;
 }
 
@@ -491,14 +505,15 @@ body {
 .page-content figure {
   text-align: center;
   margin: 20px auto;
-  display: block; 
+  display: block;
 }
 
-.page-content figcaption, .page-content .figure-caption {
+.page-content figcaption,
+.page-content .figure-caption {
   text-align: center;
   display: block;
   width: 100%;
   margin-top: 10px;
-  color: #666; 
+  color: #666;
   font-style: italic;
 }

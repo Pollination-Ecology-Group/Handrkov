@@ -15,6 +15,8 @@ website:
     logo-alt: "Opylovači Handrkov"
     background: rgb(64,	105,	91)
     left:
+      - href: index.qmd
+        text: "Opylovači Handrkov"
       - href: index.qmd#mise
         text: "Smysl a cíle" 
       - href: index.qmd#prakticke-informace
