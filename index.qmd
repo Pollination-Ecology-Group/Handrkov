@@ -1,43 +1,43 @@
 ---
 pagetitle: "Opylovači Handrkov"
-page-layout: custom
 ---
 
 <style>
 :root {
-  --hero-height: 40vh; /* Adjust this value to change video height */
+  --hero-height: 60vh; /* Adjust this value to change video height */
 }
 body {
     background-color: white;
     margin: 0;
 }
-.page-content h2, .page-content h3 {
+main h2, main h3 {
   text-align: center;
   color: #2c3e50;
 }
-.page-content iframe {
+main iframe {
   display: block;
   margin: 20px auto;
 }
-.page-content figcaption, .page-content .figure-caption {
+main figcaption, main .figure-caption {
   text-align: center;
   display: block;
   width: 100%;
 }
-.page-content {
+main {
   text-align: justify;
 }
 </style>
 
+::: {.column-screen}
 <div class="hero-section" style="height: var(--hero-height); overflow: hidden; position: relative; width: 100%;">
 <video class="hero-video" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
   <source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4" />
 </video>
 <div class="hero-overlay"></div>
 </div>
+:::
 
-<div class="page-content" style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;">
-
+<div style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;">
 
 <div class="center-text" style="text-align: center;">
 
@@ -84,6 +84,17 @@ Je akorát potřeba počítat se spaním venku/ve stanu a dlouhodobým pobytem n
 
 [Pro snazší organizaci se prosím zapište do tabulky. Přidejte i potravní omezení pro plán nákupu potravy.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
 
+### Plakát
+
+![Plakát 2026](images/Plakat/2026/Poster2026.jpg){width=80% fig-align="center" .border .rounded .shadow-sm}
+
+<div style="text-align: center; margin-top: 10px;">
+  <a href="images/Plakat/2026/Poster2026.pdf" class="btn btn-primary" role="button" download>
+    <i class="bi bi-file-earmark-pdf"></i> Stáhnout plakát (PDF)
+  </a>
+</div>
+
+
 ## Kontakt {#kontakt}
 
 - 📧 **E-mail**: [Jakub Štenc](mailto:jakubstenc@gmail.com)
@@ -106,7 +117,7 @@ Každý čtverec je trvale označen a musí se každý rok dohledat pomocí mino
 
 ![Počítání kvetoucích rostlin](images/Picture1.jpg){fig-align="center" width="650"}
 
-![Interakce s opylovači](images/Picture5.jpg){fig-align="center" width="650"}
+![Interactions s opylovači](images/Picture5.jpg){fig-align="center" width="650"}
 
 Ve výsledku pak vidíme síť vztahů mezi rostlinami a opylovači a vidíme její proměny mezi jednotlivými roky.
 

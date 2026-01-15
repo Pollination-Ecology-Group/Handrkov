@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="custom_theme.scss">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -137,39 +137,44 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Handrkov Pollinators</h1></header>
 
 
 
 
 <style>
 :root {
-  --hero-height: 40vh; /* Adjust this value to change video height */
+  --hero-height: 60vh; /* Adjust this value to change video height */
 }
 body {
     background-color: white;
     margin: 0;
 }
-.page-content h2, .page-content h3 {
+main h2, main h3 {
   text-align: center;
   color: #2c3e50;
 }
-.page-content iframe {
+main iframe {
   display: block;
   margin: 20px auto;
 }
-.page-content figcaption, .page-content .figure-caption {
+main figcaption, main .figure-caption {
   text-align: center;
   display: block;
   width: 100%;
 }
-.page-content {
+main {
   text-align: justify;
 }
 </style>
+<div class="column-screen">
 <div class="hero-section" style="height: var(--hero-height); overflow: hidden; position: relative; width: 100%;">
 <video class="hero-video" autoplay="" loop="" muted="" playsinline="" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
 <source src="videos/video_intro_reduced_shorter.mp4" type="video/mp4">
@@ -178,20 +183,21 @@ body {
 
 </div>
 </div>
-<div class="page-content" style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;">
+</div>
+<div style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;">
 <section id="handrkov-pollinators" class="level1 center-text" style="text-align: center;">
-<h1>Handrkov Pollinators</h1>
+
 <p>Welcome to the field research page for the Handrkov meadow! Here you will find all relevant information regarding our research, contacts, and practical information for organizing this year’s event.</p>
 </section>
 <section id="mission" class="level2">
-<h2 data-anchor-id="mission">Mission and Goals</h2>
+<h2 class="anchored" data-anchor-id="mission">Mission and Goals</h2>
 <p>The goal of the pollinator research at Handrkov is to investigate the relationships between plants, their pollinators, and pollinator parasites. A series of experiments helps us with this, some of which have been running since 2011. The long-term goal is to determine how stable these relationships are and what can influence them on such an ordinary meadow.</p>
 <p>Another goal of the whole event is to enable people interested in field research to meet, learn how research works, and connect with a wider group of people who share these interests. We aim to create an environment that inspires and generates enthusiasm. We hope we are succeeding.</p>
 </section>
 <section id="practical-info" class="level2">
-<h2 data-anchor-id="practical-info">Practical Information</h2>
+<h2 class="anchored" data-anchor-id="practical-info">Practical Information</h2>
 <section id="summary" class="level3">
-<h3 data-anchor-id="summary">Summary</h3>
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
 <ul>
 <li>📍 <strong>Where</strong>: <a href="https://mapy.com/s/bajutotaca">Handrkov (49.8463442N, 15.1504281E) near the village of Vernýřov</a></li>
 <li>📅 <strong>When</strong>: From August 10th to August 25th, 2026, with the “hot phase” from August 15th to August 25th.</li>
@@ -215,12 +221,24 @@ body {
 </section>
 </section>
 <section id="join-us" class="level2">
-<h2 data-anchor-id="join-us">Join Us!</h2>
+<h2 class="anchored" data-anchor-id="join-us">Join Us!</h2>
 <p>Really anyone of good will can join! No previous knowledge of plants or animals is required; we will teach you everything necessary. You just need to count on sleeping outside/in a tent and long-term exposure to the sun.</p>
 <p><a href="https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing">For easier organization, please sign up in the spreadsheet. Also add dietary restrictions for the food shopping plan.</a></p>
+<section id="poster" class="level3">
+<h3 class="anchored" data-anchor-id="poster">Poster</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Plakat/2026/Poster2026en.jpg" class="border rounded shadow-sm img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Poster 2026</figcaption>
+</figure>
+</div>
+<div style="text-align: center; margin-top: 10px;">
+<p><a href="images/Plakat/2026/Poster2026en.pdf" class="btn btn-primary" role="button" download=""> <i class="bi bi-file-earmark-pdf"></i> Download Poster (PDF) </a></p>
+</div>
+</section>
 </section>
 <section id="contact" class="level2">
-<h2 data-anchor-id="contact">Contact</h2>
+<h2 class="anchored" data-anchor-id="contact">Contact</h2>
 <ul>
 <li>📧 <strong>E-mail</strong>: <a href="mailto:jakubstenc@gmail.com">Jakub Štenc</a></li>
 <li>📞 <strong>Phone</strong>: <a href="tel:+420774553734">Jakub Štenc</a></li>
@@ -228,10 +246,10 @@ body {
 </ul>
 </section>
 <section id="information-on-experiments" class="level2">
-<h2 data-anchor-id="information-on-experiments">Information on Experiments:</h2>
+<h2 class="anchored" data-anchor-id="information-on-experiments">Information on Experiments:</h2>
 <p>This year we plan a series of experiments, with the main experiment “Other Squares” consisting of observing interactions in a system of approx. 96 permanent plots measuring 4*4 meters. Furthermore, we will collect stigmas from plants, on which we will then determine deposited pollen grains in the laboratory, because we are interested in which species unwanted pollen transfer occurs between. Then we will investigate how much pollen pollinators carry away and bring to the stigma in one visit, and how much pollen they carry on their bodies. In another experiment, we will continue collecting data regarding the decision-making of pollinators when choosing which flower they prefer to fly to (we call the experiment “Forks”, it is a paired decision test). Newly, we will try to look for trypanosomes in the guts of hoverflies (under the leadership of Šimon Zeman) and somewhat old/newly we will do experiments with artificial flowers in experimental cages (but this is still slightly uncertain). Furthermore, we want to try a methodology for observing nocturnal pollinators this year, both by shining light on a screen and by walking around the meadow with a red headlamp. We will see how it works out!</p>
 <section id="other-squares-jiné-čtverce" class="level3">
-<h3 data-anchor-id="other-squares-jiné-čtverce">Other Squares (Jiné čtverce)</h3>
+<h3 class="anchored" data-anchor-id="other-squares-jiné-čtverce">Other Squares (Jiné čtverce)</h3>
 <p>“Other Squares” is an experiment that has been running since 2011 and allows us to view changes in relationships between pollinators and plants between years. 96 permanent plots of 4*4 meters, placed on the meadow in a regular grid, serve this purpose.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -261,7 +279,7 @@ body {
 <p>In the result, we see the network of relationships between plants and pollinators and see its transformations between individual years.</p>
 </section>
 <section id="stigmas-blizny" class="level3">
-<h3 data-anchor-id="stigmas-blizny">Stigmas (Blizny)</h3>
+<h3 class="anchored" data-anchor-id="stigmas-blizny">Stigmas (Blizny)</h3>
 <p>Within the network of relationships, we are not only interested in how pollinators visit plants, but also how this leads to pollen transfer between plants. Since most plants share their pollinators with other plant species, it is interesting to observe how pollen transfer between plants manifests itself: is it completely equivalent to how pollinators visit plants, or are there some plants that transfer their pollen to other plants more often than we might expect based on the visitation network? Which plants are they?</p>
 <p>As part of this experiment, we will collect stigmas on which we will later identify the transferred pollen in the laboratory.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -272,7 +290,7 @@ body {
 </div>
 </section>
 <section id="forks-vidle" class="level3">
-<h3 data-anchor-id="forks-vidle">Forks (Vidle)</h3>
+<h3 class="anchored" data-anchor-id="forks-vidle">Forks (Vidle)</h3>
 <p>Within the relationships between pollinators and plants, it is interesting to observe how pollinators decide which flower they prefer to fly to. But to screen out the influence of plant distribution in space, we always offer pollinators two flowers on a long stick with two vials with water and flowers. We call this tool “forks”. Then it suffices to offer two flowers to a pollinator on a flower and record which flower it decided on.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -282,11 +300,11 @@ body {
 </div>
 </section>
 <section id="trypanosomes" class="level3">
-<h3 data-anchor-id="trypanosomes">Trypanosomes</h3>
+<h3 class="anchored" data-anchor-id="trypanosomes">Trypanosomes</h3>
 <p>On our Handrkov meadow, we study trypanosomes and other parasites in the guts of hoverflies. We are primarily interested in which species of trypanosomes occur in the guts of pollinators and how pollinators pass them to each other. This part of the research is led by Šimon Zeman from the Department of Parasitology.</p>
 </section>
 <section id="artificial-flowers" class="level3">
-<h3 data-anchor-id="artificial-flowers">Artificial Flowers</h3>
+<h3 class="anchored" data-anchor-id="artificial-flowers">Artificial Flowers</h3>
 <p>Within the preferences and behavior of pollinators, we are interested in which properties of flowers can change the decisions of pollinators and potentially which properties are more important than others. Is it color? Size? Or shape? But it can also be the position of the flower within the inflorescence or even the height of the flower. To better understand pollinators and their moods, we use artificial flowers, on which we can practically manipulate their appearance and thus observe which properties influence pollinators. This year we will continue with these experiments and see what results they bring.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -296,7 +314,7 @@ body {
 </div>
 </section>
 <section id="nocturnal-pollinators" class="level3">
-<h3 data-anchor-id="nocturnal-pollinators">Nocturnal Pollinators</h3>
+<h3 class="anchored" data-anchor-id="nocturnal-pollinators">Nocturnal Pollinators</h3>
 <p>This year we plan to try a new methodology for observing nocturnal pollinators, both by shining light on a screen and by walking around the meadow with a red headlamp and recording using night vision cameras. We will see how it works out!</p>
 </section>
 </section>
@@ -304,7 +322,7 @@ body {
 
 
 
-
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
