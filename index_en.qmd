@@ -1,6 +1,7 @@
 ---
 pagetitle: "Handrkov Pollinators"
 lang: en
+title-block-style: none
 ---
 
 <style>

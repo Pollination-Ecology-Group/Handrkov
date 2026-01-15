@@ -1,5 +1,6 @@
 ---
 pagetitle: "Opylovači Handrkov"
+title-block-style: none
 ---
 
 <style>
