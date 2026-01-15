@@ -60,7 +60,7 @@ main {
 
 <div class="center-text" style="text-align: center;">
 
-<div class="h1" style="text-align: center; color: #354e6b; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.2;">Handrkov Pollinator Field Research</div>
+<div class="h1" style="text-align: center; color: #354e6b; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.2;">Handrkov Pollination Field Research</div>
 
 Welcome to the field research page for the Handrkov meadow! Here you will find all relevant information regarding our research, contacts, and practical information for organizing this year's event. 
 
