@@ -48,7 +48,7 @@ main {
 
 <div class="center-text" style="text-align: center;">
 
-<h1 style="text-align: center; color: #354e6b;">Opylovači Handrkov</h1>
+<div class="h1" style="text-align: center; color: #354e6b; font-weight: bold; margin-bottom: 0.5rem; line-height: 1.2;">Opylovači Handrkov</div>
 
 
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! Zde najdete všechny relevantní informace ohledně našeho výzkumu, kontakty a praktické informace k organizaci letošního ročníku. 
