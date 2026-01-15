@@ -25,6 +25,12 @@ main figcaption, main .figure-caption {
 }
 main {
   text-align: justify;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#quarto-document-content {
+  padding-top: 0 !important;
 }
 </style>
 
@@ -41,7 +47,8 @@ main {
 
 <div class="center-text" style="text-align: center;">
 
-# Opylovači Handrkov
+<h1 style="text-align: center; color: #354e6b;">Opylovači Handrkov</h1>
+
 
 Vítejte na stránce k terénnímu výzkumu na louce k Handrkovu! Zde najdete všechny relevantní informace ohledně našeho výzkumu, kontakty a praktické informace k organizaci letošního ročníku. 
 
