@@ -8,9 +8,9 @@ project:
   render:
     - "*.qmd"
     - "!archive/"
-    post-render:
+  post-render:
     - cp googleb16326ba55692535.html docs/googleb16326ba55692535.html
-    
+
 website:
   page-navigation: true
   navbar:
@@ -28,6 +28,11 @@ website:
       - href: index.qmd#kontakt
         text: "Kontakt"
     right:
+      - text: "CZ"
+        href: index.qmd
+      - text: "EN"
+        href: index_en.qmd
+
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
       - icon: whatsapp
