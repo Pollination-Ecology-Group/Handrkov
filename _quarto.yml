@@ -8,7 +8,9 @@ project:
   render:
     - "*.qmd"
     - "!archive/"
-  
+    post-render:
+    - cp googleb16326ba55692535.html docs/googleb16326ba55692535.html
+    
 website:
   page-navigation: true
   navbar:
