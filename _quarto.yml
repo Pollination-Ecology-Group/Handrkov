@@ -36,7 +36,9 @@ website:
       - icon: github
         href: https://github.com/Pollination-Ecology-Group
       - icon: whatsapp
-        href: https://wa.me/420774553734  
+        href: https://wa.me/420774553734
+      - icon: instagram
+        href: https://www.instagram.com/opylovaci_handrkov_/
   
   page-footer: 
     left: "Made by Jakub Štenc and Quarto" 
@@ -45,6 +47,8 @@ website:
         href: https://github.com/Pollination-Ecology-Group
       - icon: whatsapp
         href: https://wa.me/420774553734
+      - icon: instagram
+        href: https://www.instagram.com/opylovaci_handrkov_/
   
 
 

@@ -2,6 +2,8 @@
 pagetitle: "Handrkov Pollinators"
 lang: en
 title-block-style: none
+toc: true
+toc-location: right
 ---
 
 <style>
@@ -55,7 +57,8 @@ main {
 </div>
 :::
 
-<div style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;">
+::: {style="display: block; margin: 0 auto; max-width: 1100px; padding: 20px; background-color: white; position: relative; z-index: 10;"}
+
 
 
 <div class="center-text" style="text-align: center;">
@@ -83,7 +86,7 @@ Another goal of the whole event is to enable people interested in field research
 - 🚗 **Transport**: We will provide transport from Uhlířské Janovice or Zbraslavice. Write to [+420 774 553 734](tel:+420774553734)
 - ⛺ **Accommodation**: Under a tarp, or in your own tents.
 - ✉️ **Contact**: [Jakub Štenc](mailto:jakubstenc@gmail.com)
-- 📝 **Join us**: [For easier organization, please sign up in the spreadsheet. Also add dietary restrictions for the food shopping plan.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
+-  **Join us**: [For easier organization, please sign up in the spreadsheet. Also add dietary restrictions for the food shopping plan.](https://docs.google.com/spreadsheets/d/1ePI0sPdLbW1OV9V6SF3Zo9zAx_xZIR8kcXzYUY-UEqU/edit?usp=sharing)
 
 <iframe style="border:none" src="https://mapy.com/s/mahuzecema" width="500" height="333" frameborder="0"></iframe>
 
@@ -120,6 +123,7 @@ You just need to count on sleeping outside/in a tent and long-term exposure to t
 - 📧 **E-mail**: [Jakub Štenc](mailto:jakubstenc@gmail.com)
 - 📞 **Phone**: [Jakub Štenc](tel:+420774553734)
 - 💬 **WhatsApp**: [Jakub Štenc](https://wa.me/420774553734)
+- 📸 **Instagram**: [opylovaci_handrkov_](https://www.instagram.com/opylovaci_handrkov_/)
 
 ## Information on Experiments:
 
@@ -175,4 +179,4 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 
 [Relationship between plants and pollinators in the meadow (Article in Živa magazine - CZ)](https://ziva.avcr.cz/files/ziva/pdf/vztahy-rostlin-a-opylovacu-na-louce-aneb-nejen-bot.pdf)
 
-</div>
+:::
