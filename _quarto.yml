@@ -39,6 +39,10 @@ website:
         href: https://wa.me/420774553734
       - icon: instagram
         href: https://www.instagram.com/opylovaci_handrkov_/
+      - icon: spotify
+        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
+      - icon: youtube
+        href: https://www.youtube.com/@opylovaci_podcast
   
   page-footer: 
     left: "Made by Jakub Štenc and Quarto" 
@@ -49,6 +53,10 @@ website:
         href: https://wa.me/420774553734
       - icon: instagram
         href: https://www.instagram.com/opylovaci_handrkov_/
+      - icon: spotify
+        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
+      - icon: youtube
+        href: https://www.youtube.com/@opylovaci_podcast
   
 
 
