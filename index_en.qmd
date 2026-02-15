@@ -1,6 +1,36 @@
 ---
-pagetitle: "Handrkov Pollinators"
+title: "Pollinators of Handrkov" 
 lang: en
+website:
+  navbar:
+    background: rgb(64, 105, 91)
+    logo-alt: "Pollinators of Handrkov"
+    left:
+      - href: index_en.qmd
+        text: "Pollinators of Handrkov"
+      - href: index_en.qmd#mission
+        text: "Mission & Goals" 
+      - href: index_en.qmd#practical-info
+        text: "Practical Info"     
+      - href: index_en.qmd#join-us
+        text: "Join Us!"         
+      - href: index_en.qmd#contact
+        text: "Contact"
+    right:
+      - text: "CZ"
+        href: index.qmd
+      - text: "EN"
+        href: index_en.qmd
+      - icon: github
+        href: https://github.com/Pollination-Ecology-Group
+      - icon: whatsapp
+        href: https://wa.me/420774553734
+      - icon: instagram
+        href: https://www.instagram.com/opylovaci_handrkov_/
+      - icon: spotify
+        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
+      - icon: youtube
+        href: https://www.youtube.com/@opylovaci_podcast
 title-block-style: none
 toc: true
 toc-location: right
@@ -184,55 +214,113 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 
 
 
+
 <script>
   function translateNavbar() {
+    // Select all nav links
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     
-    // Define translations based on the HREF, which is more stable
-    // Note: Use relative paths as they appear in the rendered HTML
-    const translations = {
-      "index.html": { text: "Handrkov Pollinators", href: "index_en.html" },
-      "index.html#mise": { text: "Mission and Goals", href: "#mission" },
-      "index.html#prakticke-informace": { text: "Practical Information", href: "#practical-info" },
-      "index.html#pridejse": { text: "Join Us!", href: "#join-us" },
-      "index.html#kontakt": { text: "Contact", href: "#contact" },
-      // Fallback for cases where index.html might be omitted or absolute
-      "/index.html": { text: "Handrkov Pollinators", href: "index_en.html" },
-      "/index.html#mise": { text: "Mission and Goals", href: "#mission" },
-      "/index.html#prakticke-informace": { text: "Practical Information", href: "#practical-info" },
-      "/index.html#pridejse": { text: "Join Us!", href: "#join-us" },
-      "/index.html#kontakt": { text: "Contact", href: "#contact" }
-    };
+    // We check both HREF and TEXT content for robustness
+    const translations = [
+      // Home
+      { 
+        matchText: "Opylovači Handrkov", 
+        matchHref: "index.qmd", // From _quarto.yml
+        newText: "Handrkov Pollinators", 
+        newHref: "index_en.html" 
+      },
+      // Mission
+      { 
+        matchText: "Smysl a cíle",
+        matchHref: "#mise",
+        newText: "Mission and Goals", 
+        newHref: "#mission" 
+      },
+      // Practical Info
+      { 
+        matchText: "Praktické informace",
+        matchHref: "#prakticke-informace",
+        newText: "Practical Information", 
+        newHref: "#practical-info" 
+      },
+      // Join Us
+      { 
+        matchText: "Přidej se!",
+        matchHref: "#pridejse",
+        newText: "Join Us!", 
+        newHref: "#join-us" 
+      },
+      // Contact
+      { 
+        matchText: "Kontakt",
+        matchHref: "#kontakt",
+        newText: "Contact", 
+        newHref: "#contact" 
+      }
+    ];
 
     navLinks.forEach(link => {
-      // Get the href attribute
-      const href = link.getAttribute('href');
-      // Check if we have a translation for this href
-      if (href && translations[href]) {
-        link.textContent = translations[href].text;
-        link.setAttribute('href', translations[href].href);
-      } else {
-        // Also try matching just the hash if it's an internal link on the original page
-        // (though in this context, they likely point to index.html#...)
+      const currentText = link.textContent.trim();
+      const currentHref = link.getAttribute('href');
+
+      for (const t of translations) {
+        // Match logic:
+        // 1. Exact text match (ignoring case usually good, but here specific)
+        // 2. HREF ends with the key (to handle relative/absolute issues)
+        const textMatch = currentText === t.matchText;
+        const hrefMatch = currentHref && (currentHref === t.matchHref || currentHref.endsWith(t.matchHref.replace('index.qmd', 'index.html')));
+
+        if (textMatch || hrefMatch) {
+            // Only update if not already updated
+            if (link.textContent.trim() !== t.newText) {
+                link.textContent = t.newText;
+                link.setAttribute('href', t.newHref);
+            }
+            break; // Stop checking this link once matched
+        }
       }
     });
 
-    // Handle the brand link separately
+    // Handle Brand
     const brand = document.querySelector('.navbar-brand');
     if (brand) {
-        brand.setAttribute('href', 'index_en.html');
-        const title = brand.querySelector('.navbar-title');
-        // Check if title exists and matches the Czech title to translate
-        if (title && (title.textContent.trim() === "Opylovači Handrkov" || title.textContent.trim() === "Handrkov Pollinators")) {
-             title.textContent = "Handrkov Pollinators";
-        }
+         // Update href
+         const currentBrandHref = brand.getAttribute('href');
+         if (currentBrandHref && (currentBrandHref.endsWith('index.html') || currentBrandHref.endsWith('index.qmd') || currentBrandHref === '/')) {
+             brand.setAttribute('href', 'index_en.html');
+         }
+
+         // Update Title
+         const title = brand.querySelector('.navbar-title');
+         if (title) {
+             const titleText = title.textContent.trim();
+             if (titleText === "Opylovači Handrkov") {
+                 title.textContent = "Handrkov Pollinators";
+             }
+         }
     }
   }
 
-  if (document.readyState === 'complete') {
-    translateNavbar();
-  } else {
-    window.addEventListener('load', translateNavbar);
+  // Running immediately, on load, and with interval/observer for robustness
+  translateNavbar();
+  
+  if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', translateNavbar);
+  } else {
+    translateNavbar();
   }
+  
+  window.addEventListener('load', translateNavbar);
+
+  // Poll for a few seconds to catch delayed rendering
+  const intervalId = setInterval(translateNavbar, 100);
+  setTimeout(() => clearInterval(intervalId), 5000);
+
+  // MutationObserver to watch for changes in the header
+  const header = document.querySelector('header') || document.body;
+  const observer = new MutationObserver((mutations) => {
+    translateNavbar();
+  });
+  observer.observe(header, { childList: true, subtree: true });
+
 </script>

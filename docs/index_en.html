@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Handrkov Pollinators</title>
+<title>Pollinators of Handrkov</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,9 +159,12 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Pollinators of Handrkov</h1></header>
+
+<header id="title-block-header">
 
 
+</header>
 
 
 <style>
@@ -358,6 +361,115 @@ Handrkov Pollination Field Research
 <p><a href="https://ziva.avcr.cz/files/ziva/pdf/vztahy-rostlin-a-opylovacu-na-louce-aneb-nejen-bot.pdf">Relationship between plants and pollinators in the meadow (Article in Živa magazine - CZ)</a></p>
 </section>
 </div>
+<script>
+  function translateNavbar() {
+    // Select all nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // We check both HREF and TEXT content for robustness
+    const translations = [
+      // Home
+      { 
+        matchText: "Opylovači Handrkov", 
+        matchHref: "index.qmd", // From _quarto.yml
+        newText: "Handrkov Pollinators", 
+        newHref: "index_en.html" 
+      },
+      // Mission
+      { 
+        matchText: "Smysl a cíle",
+        matchHref: "#mise",
+        newText: "Mission and Goals", 
+        newHref: "#mission" 
+      },
+      // Practical Info
+      { 
+        matchText: "Praktické informace",
+        matchHref: "#prakticke-informace",
+        newText: "Practical Information", 
+        newHref: "#practical-info" 
+      },
+      // Join Us
+      { 
+        matchText: "Přidej se!",
+        matchHref: "#pridejse",
+        newText: "Join Us!", 
+        newHref: "#join-us" 
+      },
+      // Contact
+      { 
+        matchText: "Kontakt",
+        matchHref: "#kontakt",
+        newText: "Contact", 
+        newHref: "#contact" 
+      }
+    ];
+
+    navLinks.forEach(link => {
+      const currentText = link.textContent.trim();
+      const currentHref = link.getAttribute('href');
+
+      for (const t of translations) {
+        // Match logic:
+        // 1. Exact text match (ignoring case usually good, but here specific)
+        // 2. HREF ends with the key (to handle relative/absolute issues)
+        const textMatch = currentText === t.matchText;
+        const hrefMatch = currentHref && (currentHref === t.matchHref || currentHref.endsWith(t.matchHref.replace('index.qmd', 'index.html')));
+
+        if (textMatch || hrefMatch) {
+            // Only update if not already updated
+            if (link.textContent.trim() !== t.newText) {
+                link.textContent = t.newText;
+                link.setAttribute('href', t.newHref);
+            }
+            break; // Stop checking this link once matched
+        }
+      }
+    });
+
+    // Handle Brand
+    const brand = document.querySelector('.navbar-brand');
+    if (brand) {
+         // Update href
+         const currentBrandHref = brand.getAttribute('href');
+         if (currentBrandHref && (currentBrandHref.endsWith('index.html') || currentBrandHref.endsWith('index.qmd') || currentBrandHref === '/')) {
+             brand.setAttribute('href', 'index_en.html');
+         }
+
+         // Update Title
+         const title = brand.querySelector('.navbar-title');
+         if (title) {
+             const titleText = title.textContent.trim();
+             if (titleText === "Opylovači Handrkov") {
+                 title.textContent = "Handrkov Pollinators";
+             }
+         }
+    }
+  }
+
+  // Running immediately, on load, and with interval/observer for robustness
+  translateNavbar();
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', translateNavbar);
+  } else {
+    translateNavbar();
+  }
+  
+  window.addEventListener('load', translateNavbar);
+
+  // Poll for a few seconds to catch delayed rendering
+  const intervalId = setInterval(translateNavbar, 100);
+  setTimeout(() => clearInterval(intervalId), 5000);
+
+  // MutationObserver to watch for changes in the header
+  const header = document.querySelector('header') || document.body;
+  const observer = new MutationObserver((mutations) => {
+    translateNavbar();
+  });
+  observer.observe(header, { childList: true, subtree: true });
+
+</script>
 
 
 
