@@ -181,3 +181,35 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 [Relationship between plants and pollinators in the meadow (Article in Živa magazine - CZ)](https://ziva.avcr.cz/files/ziva/pdf/vztahy-rostlin-a-opylovacu-na-louce-aneb-nejen-bot.pdf)
 
 :::
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const translations = {
+      "Opylovači Handrkov": { text: "Handrkov Pollinators", href: "index_en.html" },
+      "Smysl a cíle": { text: "Mission and Goals", href: "#mission" },
+      "Praktické informace": { text: "Practical Information", href: "#practical-info" },
+      "Přidej se!": { text: "Join Us!", href: "#join-us" },
+      "Kontakt": { text: "Contact", href: "#contact" }
+    };
+
+    navLinks.forEach(link => {
+      const linkText = link.textContent.trim();
+      if (translations[linkText]) {
+        link.textContent = translations[linkText].text;
+        link.setAttribute('href', translations[linkText].href);
+      }
+    });
+    
+    // Also update the brand link if it exists and points to index.qmd/html
+    const brand = document.querySelector('.navbar-brand');
+    if (brand) {
+        brand.setAttribute('href', 'index_en.html');
+        // If there is a title span
+        const title = brand.querySelector('.navbar-title');
+        if (title && title.textContent.trim() === "Opylovači Handrkov") {
+            title.textContent = "Handrkov Pollinators";
+        }
+    }
+  });
+</script>
