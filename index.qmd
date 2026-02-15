@@ -1,5 +1,36 @@
 ---
 pagetitle: "Opylovači Handrkov"
+lang: cs
+website:
+  navbar:
+    background: rgb(64, 105, 91)
+    logo-alt: "Opylovači Handrkov"
+    left:
+      - href: index.qmd
+        text: "Opylovači Handrkov"
+      - href: index.qmd#mise
+        text: "Smysl a cíle" 
+      - href: index.qmd#prakticke-informace
+        text: "Praktické informace"     
+      - href: index.qmd#pridejse
+        text: "Přidej se!"         
+      - href: index.qmd#kontakt
+        text: "Kontakt"
+    right:
+      - text: "CZ"
+        href: index.qmd
+      - text: "EN"
+        href: index_en.qmd
+      - icon: github
+        href: https://github.com/Pollination-Ecology-Group
+      - icon: whatsapp
+        href: https://wa.me/420774553734
+      - icon: instagram
+        href: https://www.instagram.com/opylovaci_handrkov_/
+      - icon: spotify
+        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
+      - icon: youtube
+        href: https://www.youtube.com/@opylovaci_podcast
 title-block-style: none
 toc: true
 toc-location: right
