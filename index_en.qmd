@@ -182,34 +182,57 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 
 :::
 
+
+
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  function translateNavbar() {
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // Define translations based on the HREF, which is more stable
+    // Note: Use relative paths as they appear in the rendered HTML
     const translations = {
-      "Opylovači Handrkov": { text: "Handrkov Pollinators", href: "index_en.html" },
-      "Smysl a cíle": { text: "Mission and Goals", href: "#mission" },
-      "Praktické informace": { text: "Practical Information", href: "#practical-info" },
-      "Přidej se!": { text: "Join Us!", href: "#join-us" },
-      "Kontakt": { text: "Contact", href: "#contact" }
+      "index.html": { text: "Handrkov Pollinators", href: "index_en.html" },
+      "index.html#mise": { text: "Mission and Goals", href: "#mission" },
+      "index.html#prakticke-informace": { text: "Practical Information", href: "#practical-info" },
+      "index.html#pridejse": { text: "Join Us!", href: "#join-us" },
+      "index.html#kontakt": { text: "Contact", href: "#contact" },
+      // Fallback for cases where index.html might be omitted or absolute
+      "/index.html": { text: "Handrkov Pollinators", href: "index_en.html" },
+      "/index.html#mise": { text: "Mission and Goals", href: "#mission" },
+      "/index.html#prakticke-informace": { text: "Practical Information", href: "#practical-info" },
+      "/index.html#pridejse": { text: "Join Us!", href: "#join-us" },
+      "/index.html#kontakt": { text: "Contact", href: "#contact" }
     };
 
     navLinks.forEach(link => {
-      const linkText = link.textContent.trim();
-      if (translations[linkText]) {
-        link.textContent = translations[linkText].text;
-        link.setAttribute('href', translations[linkText].href);
+      // Get the href attribute
+      const href = link.getAttribute('href');
+      // Check if we have a translation for this href
+      if (href && translations[href]) {
+        link.textContent = translations[href].text;
+        link.setAttribute('href', translations[href].href);
+      } else {
+        // Also try matching just the hash if it's an internal link on the original page
+        // (though in this context, they likely point to index.html#...)
       }
     });
-    
-    // Also update the brand link if it exists and points to index.qmd/html
+
+    // Handle the brand link separately
     const brand = document.querySelector('.navbar-brand');
     if (brand) {
         brand.setAttribute('href', 'index_en.html');
-        // If there is a title span
         const title = brand.querySelector('.navbar-title');
-        if (title && title.textContent.trim() === "Opylovači Handrkov") {
-            title.textContent = "Handrkov Pollinators";
+        // Check if title exists and matches the Czech title to translate
+        if (title && (title.textContent.trim() === "Opylovači Handrkov" || title.textContent.trim() === "Handrkov Pollinators")) {
+             title.textContent = "Handrkov Pollinators";
         }
     }
-  });
+  }
+
+  if (document.readyState === 'complete') {
+    translateNavbar();
+  } else {
+    window.addEventListener('load', translateNavbar);
+    document.addEventListener('DOMContentLoaded', translateNavbar);
+  }
 </script>
