@@ -83,7 +83,9 @@ format:
     fontsize: 1.15rem
     monofont: Fira Code
     highlight-style: arrow
-    css: [custom_theme.scss]
+    theme:
+      - cosmo
+      - custom_theme.scss
     toc: true
     code-overflow: scroll
     linkcolor: rgb(97,30,30)

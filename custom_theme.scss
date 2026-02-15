@@ -313,35 +313,26 @@ ul ul {
 */
 
 /* Default (Czech): Hide English links */
-html:not([lang="en"])
-  .navbar-nav:not(.ms-auto)
-  .nav-item
-  a[href*="index_en.html"],
-html[lang="cs"] .navbar-nav:not(.ms-auto) .nav-item a[href*="index_en.html"] {
+html:not([lang="en"]) a[href*="index_en.html"],
+html[lang="cs"] a[href*="index_en.html"] {
   display: none !important;
 }
 
 /* English: Hide Czech links */
-html[lang="en"]
-  .navbar-nav:not(.ms-auto)
-  .nav-item
-  a[href*="index.html"]:not([href*="index_en.html"]) {
+html[lang="en"] a[href*="index.html"]:not([href*="index_en.html"]) {
   display: none !important;
 }
 
-/* Hide current language in language switcher (Right side) 
-   Assuming the order is CZ first, EN second in _quarto.yml 
-*/
-
-/* On Czech pages, hide "CZ" (first item in right navbar) */
+/* Hide current language in language switcher (Right side) */
+/* On Czech pages, hide "CZ" */
 html:not([lang="en"]) .navbar-nav.ms-auto .nav-item:first-child,
 html[lang="cs"] .navbar-nav.ms-auto .nav-item:first-child {
-  display: none;
+  display: none !important;
 }
 
-/* On English pages, hide "EN" (second item in right navbar) */
+/* On English pages, hide "EN" */
 html[lang="en"] .navbar-nav.ms-auto .nav-item:nth-child(2) {
-  display: none;
+  display: none !important;
 }
 
 .navbar-logo {
@@ -511,7 +502,10 @@ body {
 iframe {
   display: block;
   margin: 20px auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 500 / 333;
+  height: auto;
 }
 
 .center-text {
