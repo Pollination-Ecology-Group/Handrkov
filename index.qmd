@@ -31,6 +31,21 @@ website:
         href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
       - icon: youtube
         href: https://www.youtube.com/@opylovaci_podcast
+  page-footer: 
+    left: "Made by Jakub Štenc and Quarto" 
+    right: 
+      - icon: github
+        href: https://github.com/Pollination-Ecology-Group
+      - icon: whatsapp
+        href: https://wa.me/420774553734
+      - icon: instagram
+        href: https://www.instagram.com/opylovaci_handrkov_/
+      - icon: spotify
+        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
+      - icon: youtube
+        href: https://www.youtube.com/@opylovaci_podcast
+  
+
 title-block-style: none
 toc: true
 toc-location: right
@@ -212,6 +227,6 @@ Letos plánujeme zkusit novou metodiku na pozorování nočních opylovačů a t
 :::
 
 
-# Opylovačské setkání 2026 - III. ročník
+## Opylovačské setkání 2026 - III. ročník
 
 

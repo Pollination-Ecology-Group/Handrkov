@@ -1,36 +1,6 @@
 ---
 title: "Pollinators of Handrkov" 
 lang: en
-website:
-  navbar:
-    background: rgb(64, 105, 91)
-    logo-alt: "Pollinators of Handrkov"
-    left:
-      - href: index_en.qmd
-        text: "Pollinators of Handrkov"
-      - href: index_en.qmd#mission
-        text: "Mission & Goals" 
-      - href: index_en.qmd#practical-info
-        text: "Practical Info"     
-      - href: index_en.qmd#join-us
-        text: "Join Us!"         
-      - href: index_en.qmd#contact
-        text: "Contact"
-    right:
-      - text: "CZ"
-        href: index.qmd
-      - text: "EN"
-        href: index_en.qmd
-      - icon: github
-        href: https://github.com/Pollination-Ecology-Group
-      - icon: whatsapp
-        href: https://wa.me/420774553734
-      - icon: instagram
-        href: https://www.instagram.com/opylovaci_handrkov_/
-      - icon: spotify
-        href: https://open.spotify.com/show/3ypxSzPMkd4TOepn3oTrVl
-      - icon: youtube
-        href: https://www.youtube.com/@opylovaci_podcast
 title-block-style: none
 toc: true
 toc-location: right
@@ -211,3 +181,34 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 [Relationship between plants and pollinators in the meadow (Article in Živa magazine - CZ)](https://ziva.avcr.cz/files/ziva/pdf/vztahy-rostlin-a-opylovacu-na-louce-aneb-nejen-bot.pdf)
 
 :::
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mapping of Czech links (from _quarto.yml) to English text and new href
+    const navReplacements = {
+        'index.html': { text: 'Pollinators of Handrkov', href: 'index_en.html' },
+        'index.html#mise': { text: 'Mission & Goals', href: 'index_en.html#mission' },
+        'index.html#prakticke-informace': { text: 'Practical Info', href: 'index_en.html#practical-info' },
+        'index.html#pridejse': { text: 'Join Us!', href: 'index_en.html#join-us' },
+        'index.html#kontakt': { text: 'Contact', href: 'index_en.html#contact' }
+    };
+
+    // Select all nav links
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    navLinks.forEach(link => {
+        // Get the href attribute
+        const href = link.getAttribute('href');
+        
+        // Check if we have a replacement for this href
+        // We check for endsWith because the href might be absolute or relative
+        for (const [key, value] of Object.entries(navReplacements)) {
+            if (href && href.endsWith(key)) {
+                link.textContent = value.text;
+                link.setAttribute('href', value.href);
+                break;
+            }
+        }
+    });
+});
+</script>
