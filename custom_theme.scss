@@ -1,6 +1,6 @@
 /*-- scss:defaults --*/
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Tilt+Warp&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Tilt+Warp&display=swap");
 
 // Vertical spacing between blocks of text
 $smallMargin: 5px;
@@ -12,12 +12,6 @@ $largeMargin: 20px;
 // Colors are now loaded from _colors.scss, which is auto-generated from colors.json.
 // Do not define color variables here. Edit colors.json and regenerate _colors.scss if needed.
 @import "_colors";
-
-
-
-
-
-
 
 #quarto-document-content {
   text-align: left;
@@ -157,7 +151,6 @@ $heading6Size: 14pt;
 
 /* Images */
 
-
 .banner {
   max-width: 100%;
   max-height: auto;
@@ -207,7 +200,6 @@ h2 {
   margin-top: $largeMargin;
   color: $blue;
   text-align: center;
-
 }
 
 h3 {
@@ -234,7 +226,6 @@ h5 {
   font-weight: $headingFontWeight;
   margin-top: $smallMargin;
   text-align: center;
-
 }
 
 h6 {
@@ -245,7 +236,6 @@ h6 {
   font-weight: $headingFontWeight;
   margin-top: $smallMargin;
   text-align: center;
-
 }
 
 /* Code block */
@@ -313,12 +303,54 @@ ul ul {
   }
 }
 
+/* 
+   Language-based visibility rules for Navbar 
+   
+   Logic:
+   - On Czech pages (lang="cs" or no lang), hide links pointing to English content (index_en.html)
+   - On English pages (lang="en"), hide links pointing to Czech content (index.html)
+   - Also hide the current language selector to avoid confusion (switch to EN when EN, switch to CZ when CZ)
+*/
+
+/* Default (Czech): Hide English links */
+html:not([lang="en"])
+  .navbar-nav:not(.ms-auto)
+  .nav-item
+  a[href*="index_en.html"],
+html[lang="cs"] .navbar-nav:not(.ms-auto) .nav-item a[href*="index_en.html"] {
+  display: none !important;
+}
+
+/* English: Hide Czech links */
+html[lang="en"]
+  .navbar-nav:not(.ms-auto)
+  .nav-item
+  a[href*="index.html"]:not([href*="index_en.html"]) {
+  display: none !important;
+}
+
+/* Hide current language in language switcher (Right side) 
+   Assuming the order is CZ first, EN second in _quarto.yml 
+*/
+
+/* On Czech pages, hide "CZ" (first item in right navbar) */
+html:not([lang="en"]) .navbar-nav.ms-auto .nav-item:first-child,
+html[lang="cs"] .navbar-nav.ms-auto .nav-item:first-child {
+  display: none;
+}
+
+/* On English pages, hide "EN" (second item in right navbar) */
+html[lang="en"] .navbar-nav.ms-auto .nav-item:nth-child(2) {
+  display: none;
+}
+
 .navbar-logo {
   max-height: 70px;
 }
 
 /* Language dropdown menu styling */
-.navbar .dropdown-menu {}
+.navbar .dropdown-menu {
+}
 
 .navbar .dropdown-menu .dropdown-item {
   color: $white !important;
@@ -329,7 +361,6 @@ ul ul {
   background-color: darken($blue, 10%) !important;
   color: $white !important;
 }
-
 
 .btn {
   background-color: $white;
@@ -360,7 +391,7 @@ ul ul {
 }
 
 /* Style the first child element (assumed to be the header) */
-.callout-red>*:first-child {
+.callout-red > *:first-child {
   margin: 0;
   padding-top: 10px;
   padding-right: 10px;
@@ -374,9 +405,8 @@ ul ul {
   display: flex;
 }
 
-
 /* Style the rest of the content */
-.callout-red>*:not(:first-child) {
+.callout-red > *:not(:first-child) {
   padding-top: 10px;
   padding-left: 15px;
   color: $black;

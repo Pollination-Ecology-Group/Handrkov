@@ -182,33 +182,4 @@ This year we plan to try a new methodology for observing nocturnal pollinators, 
 
 :::
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Mapping of Czech links (from _quarto.yml) to English text and new href
-    const navReplacements = {
-        'index.html': { text: 'Pollinators of Handrkov', href: 'index_en.html' },
-        'index.html#mise': { text: 'Mission & Goals', href: 'index_en.html#mission' },
-        'index.html#prakticke-informace': { text: 'Practical Info', href: 'index_en.html#practical-info' },
-        'index.html#pridejse': { text: 'Join Us!', href: 'index_en.html#join-us' },
-        'index.html#kontakt': { text: 'Contact', href: 'index_en.html#contact' }
-    };
-
-    // Select all nav links
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-    navLinks.forEach(link => {
-        // Get the href attribute
-        const href = link.getAttribute('href');
-        
-        // Check if we have a replacement for this href
-        // We check for endsWith because the href might be absolute or relative
-        for (const [key, value] of Object.entries(navReplacements)) {
-            if (href && href.endsWith(key)) {
-                link.textContent = value.text;
-                link.setAttribute('href', value.href);
-                break;
-            }
-        }
-    });
-});
-</script>
+:::

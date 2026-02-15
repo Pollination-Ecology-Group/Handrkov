@@ -27,6 +27,16 @@ website:
         text: "Přidej se!"         
       - href: index.qmd#kontakt
         text: "Kontakt"
+      - href: index_en.qmd
+        text: "Pollinators of Handrkov"
+      - href: index_en.qmd#mission
+        text: "Mission & Goals"
+      - href: index_en.qmd#practical-info
+        text: "Practical Info"
+      - href: index_en.qmd#join-us
+        text: "Join Us!"
+      - href: index_en.qmd#contact
+        text: "Contact"
     right:
       - text: "CZ"
         href: index.qmd
