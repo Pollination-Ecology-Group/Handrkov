@@ -307,45 +307,31 @@ ul ul {
 /* 
    Language-based visibility rules for Navbar 
    
-   The global navbar contains links for BOTH languages.
-   CSS hides the wrong-language links based on the html[lang] attribute.
+   The global _quarto.yml navbar contains links for BOTH languages:
+     Left items 1-5 = Czech, items 6-10 = English
+     Right items: 1=CZ switcher, 2=EN switcher, 3+=social icons
    
-   Logic:
-   - On Czech pages (lang="cs"): hide English nav items, hide "CZ" switcher (show "EN")
-   - On English pages (lang="en"): hide Czech nav items, hide "EN" switcher (show "CZ")
+   CSS hides the wrong-language links based on html[lang].
+   Uses :nth-child() positional selectors (not href-based) because
+   GitHub Pages normalizes URLs and strips "index.html" from links.
 */
 
 /* ---- Hide wrong-language nav items in left navbar ---- */
 
-/* Default (Czech): Hide English links (anything pointing to index_en) */
-html:not([lang="en"]) .navbar-nav:not(.ms-auto) a[href*="index_en"],
-html[lang="cs"] .navbar-nav:not(.ms-auto) a[href*="index_en"] {
+/* On Czech pages: hide English items (6th through 10th) */
+html:not([lang="en"]) .navbar-nav:not(.ms-auto) .nav-item:nth-child(n+6) {
   display: none !important;
 }
 
-/* Also hide the parent li on Czech pages */
-html:not([lang="en"]) .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index_en"]),
-html[lang="cs"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index_en"]) {
-  display: none !important;
-}
-
-/* English: Hide Czech links (index.html but NOT index_en.html) */
-html[lang="en"] .navbar-nav:not(.ms-auto) a[href$="index.html"],
-html[lang="en"] .navbar-nav:not(.ms-auto) a[href*="index.html#"] {
-  display: none !important;
-}
-
-/* Also hide the parent li on English pages */
-html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href$="index.html"]),
-html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index.html#"]) {
+/* On English pages: hide Czech items (1st through 5th) */
+html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:nth-child(-n+5) {
   display: none !important;
 }
 
 /* ---- Language switcher (right navbar) ---- */
 
 /* On Czech pages, hide the "CZ" link (1st item in right navbar) */
-html:not([lang="en"]) .navbar-nav.ms-auto .nav-item:first-child,
-html[lang="cs"] .navbar-nav.ms-auto .nav-item:first-child {
+html:not([lang="en"]) .navbar-nav.ms-auto .nav-item:first-child {
   display: none !important;
 }
 
