@@ -118,7 +118,7 @@ $headingFont: "Tilt Warp", sans-serif !default;
 $headingLineHeight: 1.2;
 $headingLetterSpacing: normal;
 $headingTextShadow: none;
-$headingFontWeight: bold;
+$headingFontWeight: 600;
 
 $heading1Size: 30pt;
 $heading2Size: 24pt;
@@ -237,6 +237,11 @@ h6 {
   font-weight: $headingFontWeight;
   margin-top: $smallMargin;
   text-align: center;
+}
+
+/* Hide TOC title ("Na této stránce" / "On this page") but keep the TOC items */
+#toc-title {
+  display: none !important;
 }
 
 /* Code block */
