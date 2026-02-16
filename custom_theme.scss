@@ -306,31 +306,49 @@ ul ul {
 /* 
    Language-based visibility rules for Navbar 
    
+   The global navbar contains links for BOTH languages.
+   CSS hides the wrong-language links based on the html[lang] attribute.
+   
    Logic:
-   - On Czech pages (lang="cs" or no lang), hide links pointing to English content (index_en.html)
-   - On English pages (lang="en"), hide links pointing to Czech content (index.html)
-   - Also hide the current language selector to avoid confusion (switch to EN when EN, switch to CZ when CZ)
+   - On Czech pages (lang="cs"): hide English nav items, hide "CZ" switcher (show "EN")
+   - On English pages (lang="en"): hide Czech nav items, hide "EN" switcher (show "CZ")
 */
 
-/* Default (Czech): Hide English links */
-html:not([lang="en"]) a[href*="index_en.html"],
-html[lang="cs"] a[href*="index_en.html"] {
+/* ---- Hide wrong-language nav items in left navbar ---- */
+
+/* Default (Czech): Hide English links (anything pointing to index_en) */
+html:not([lang="en"]) .navbar-nav:not(.ms-auto) a[href*="index_en"],
+html[lang="cs"] .navbar-nav:not(.ms-auto) a[href*="index_en"] {
   display: none !important;
 }
 
-/* English: Hide Czech links */
-html[lang="en"] a[href*="index.html"]:not([href*="index_en.html"]) {
+/* Also hide the parent li on Czech pages */
+html:not([lang="en"]) .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index_en"]),
+html[lang="cs"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index_en"]) {
   display: none !important;
 }
 
-/* Hide current language in language switcher (Right side) */
-/* On Czech pages, hide "CZ" */
+/* English: Hide Czech links (index.html but NOT index_en.html) */
+html[lang="en"] .navbar-nav:not(.ms-auto) a[href$="index.html"],
+html[lang="en"] .navbar-nav:not(.ms-auto) a[href*="index.html#"] {
+  display: none !important;
+}
+
+/* Also hide the parent li on English pages */
+html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href$="index.html"]),
+html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:has(a[href*="index.html#"]) {
+  display: none !important;
+}
+
+/* ---- Language switcher (right navbar) ---- */
+
+/* On Czech pages, hide the "CZ" link (1st item in right navbar) */
 html:not([lang="en"]) .navbar-nav.ms-auto .nav-item:first-child,
 html[lang="cs"] .navbar-nav.ms-auto .nav-item:first-child {
   display: none !important;
 }
 
-/* On English pages, hide "EN" */
+/* On English pages, hide the "EN" link (2nd item in right navbar) */
 html[lang="en"] .navbar-nav.ms-auto .nav-item:nth-child(2) {
   display: none !important;
 }
@@ -340,8 +358,6 @@ html[lang="en"] .navbar-nav.ms-auto .nav-item:nth-child(2) {
 }
 
 /* Language dropdown menu styling */
-.navbar .dropdown-menu {
-}
 
 .navbar .dropdown-menu .dropdown-item {
   color: $white !important;
