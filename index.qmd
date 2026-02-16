@@ -117,6 +117,13 @@ Je akorát potřeba počítat se spaním venku/ve stanu a dlouhodobým pobytem n
 </div>
 
 
+
+## Galerie {#galerie}
+
+<div data-key="Carousel Instagram Feed " class="ft" id="fthwt63hm">
+</div>
+<script src="https://wdg.fouita.com/widgets/0x3d9139.js"></script>
+
 ## Kontakt {#kontakt}
 
 - 📧 **E-mail**: [Jakub Štenc](mailto:jakubstenc@gmail.com)
