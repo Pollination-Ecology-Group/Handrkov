@@ -189,6 +189,32 @@ Letos plánujeme zkusit novou metodiku na pozorování nočních opylovačů a t
 :::
 
 
-## Opylovačské setkání 2026 - III. ročník
+## Opylovačské setkání – III. ročník {#setkani}
 
+Za mnoho let se na sezónním výzkumu opylovačů na Handrkově vystřídalo hodně lidí a teď bychom chtěli znovu shrnout dosavadní výsledky a udělat výhled do budoucna.
 
+### 📅 Kdy a kde
+
+- 🗓️ **Datum**: 21. a 22. března 2026
+- 🕙 **Sobota od**: 10:00 (konec druhý den do 14:00)
+- 📍 **Místnost**: [B121, budova Viničná 7 (1. patro)](https://natur.cuni.cz/kontakty/mapy/mapa-budov/budova-vinicna-7/budova-vinicna-7-1-patro)
+
+### 🗓️ Program
+
+- **Dopoledne & odpoledne**: Diskuse o diverzitě opylovačů na louce, dosavadních výsledcích pokusů a co nám říkají o fungování světa kolem nás
+- **Večer**: Hraní, povídání a 🍕 pizza
+- **Přespání**: Pro zájemce je možné zajistit přespání na fakultě
+
+### 📝 Přihlášení
+
+Prosíme, vyplňte přihlašovací formulář, abychom měli přehled o účasti.
+
+<div style="text-align: center; margin: 1em 0;">
+  <a href="https://forms.gle/KH4h1MFDTWYgon4a7" class="btn btn-primary" role="button" target="_blank">
+    Vyplnit formulář účasti
+  </a>
+</div>
+
+### Plakát setkání 2024
+
+![Plakát opylovačského setkání 2024](images/Plakat_setkani_opyl2024(2).png){width=70% fig-align="center" .border .rounded .shadow-sm}
