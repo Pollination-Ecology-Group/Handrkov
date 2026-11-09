@@ -174,7 +174,7 @@ V rámci tohoto experimentu budeme sbírat blizny na nichž později v laborato�
 
 ![Blizny](images/Blizna_Suc_pra_2_round.png){fig-align="center" width="650"}
 
-[🔬 Otevřít interaktivní Atlas pylu & určovací klíč Handrkov (32 druhů, 749 výřezů)](atlas_pylu.qmd){.join-button}
+[🔬 Otevřít interaktivní Atlas pylu & určovací klíč Handrkov (662 ručně ověřených výřezů)](atlas_pylu.qmd){.join-button}
 
 
 
