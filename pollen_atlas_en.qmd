@@ -1,0 +1,1635 @@
+---
+pagetitle: "Pollen Atlas & ID Key | Pollinators of Handrkov"
+description: "Interactive pollen database of 32 Handrkov meadow plant species (749 individual crops at 0.44 µm/px), dichotomous ID key & PRC/PR herbarium vouchers"
+lang: en
+toc: false
+number-sections: false
+page-layout: full
+---
+
+```{=html}
+<script>window.HANDRKOV_DEFAULT_LANG = 'en';</script>
+```
+
+```{=html}
+<script src="atlas/atlas_data_root.js"></script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tilt+Warp&family=Fira+Code:wght@500;600&display=swap");
+
+  /* Handrkov Web Palette (_colors.scss & custom_theme.scss) */
+  .atlas-wrap {
+    --han-green: #40695B;
+    --han-green-dark: #2c4a40;
+    --han-green-soft: #eef5f2;
+    --han-slate: #354e6b;
+    --han-slate-light: #5b7c99;
+    --han-yellow: #ffc107;
+    --han-cta-green: #27ae60;
+    --han-red: #dc3545;
+    --han-pink: #e83e8c;
+    --han-brown: #795548;
+    --han-black: #212529;
+    --han-white: #ffffff;
+
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--han-black);
+    margin: 0.75rem auto 2rem;
+    max-width: 1280px;
+    padding: 0 12px;
+    text-align: left;
+  }
+
+  /* Scoped overrides to protect against global custom_theme.scss rules in Handrkov web */
+  .atlas-wrap img {
+    margin: 0 !important;
+  }
+  .atlas-wrap a {
+    text-decoration: none !important;
+  }
+  .atlas-wrap code {
+    background-color: #f1f5f3 !important;
+    color: var(--han-green-dark) !important;
+    padding: 1px 5px !important;
+    font-family: "Fira Code", monospace;
+  }
+  .atlas-wrap h2,
+  .atlas-wrap h3,
+  .atlas-wrap h4 {
+    font-family: "Tilt Warp", sans-serif;
+    text-align: left !important;
+    margin-top: 0 !important;
+  }
+
+  .atlas-hero-bar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, var(--han-green) 0%, var(--han-slate) 100%);
+    color: var(--han-white);
+    padding: 1.4rem 1.6rem;
+    border-radius: 16px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 32px -8px rgba(64, 105, 91, 0.32);
+    border-top: 5px solid var(--han-yellow);
+  }
+  .atlas-hero-bar h2 {
+    margin: 0 0 0.3rem 0 !important;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--han-white) !important;
+    border: none;
+    letter-spacing: 0.01em;
+  }
+  .atlas-hero-bar p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #e2f0eb;
+  }
+  .atlas-top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+  }
+  .atlas-mode-tabs {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .atlas-tab-btn {
+    font-family: "Tilt Warp", sans-serif;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--han-white);
+    padding: 0.52rem 1.05rem;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .atlas-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+    border-color: var(--han-white);
+  }
+  .atlas-tab-btn.active {
+    background: var(--han-yellow);
+    color: var(--han-black);
+    border-color: var(--han-yellow);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  }
+  .lang-switch-pill {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 50px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .lang-btn {
+    font-family: "Tilt Warp", sans-serif;
+    border: none;
+    background: transparent;
+    color: #e2f0eb;
+    padding: 0.32rem 0.7rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    cursor: pointer;
+  }
+  .lang-btn.active {
+    background: var(--han-white);
+    color: var(--han-green-dark);
+  }
+
+  .atlas-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 0.8rem;
+    background: var(--han-green-soft);
+    border: 1px solid rgba(64, 105, 91, 0.22);
+    padding: 1.05rem 1.15rem;
+    border-radius: 14px;
+    margin-bottom: 1.3rem;
+    align-items: end;
+  }
+  .atlas-control-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--han-green-dark);
+    margin-bottom: 0.3rem;
+  }
+  .atlas-control-group input,
+  .atlas-control-group select {
+    width: 100%;
+    padding: 0.48rem 0.68rem;
+    border: 1px solid rgba(64, 105, 91, 0.32);
+    border-radius: 9px;
+    font-size: 0.88rem;
+    background: var(--han-white);
+    color: var(--han-black);
+  }
+  .atlas-toggles {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+  .atlas-pill-toggle {
+    border: 1px solid var(--han-green);
+    background: var(--han-white);
+    color: var(--han-green-dark);
+    padding: 0.46rem 0.75rem;
+    border-radius: 9px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .atlas-pill-toggle.active {
+    background: var(--han-green);
+    color: var(--han-white);
+    border-color: var(--han-green);
+  }
+
+  .atlas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    gap: 1.15rem;
+  }
+  .species-card {
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.18);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    box-shadow: 0 4px 16px -6px rgba(53, 78, 107, 0.1);
+  }
+  .species-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -6px rgba(64, 105, 91, 0.25);
+    border-color: var(--han-green);
+  }
+  .species-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .species-stage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+  .scale-bar-overlay {
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    background: rgba(33, 37, 41, 0.78);
+    color: var(--han-white);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+  }
+  .scale-bar-line {
+    height: 2.5px;
+    background: var(--han-yellow);
+    display: inline-block;
+  }
+  .prep-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.69rem;
+    font-weight: 700;
+    color: var(--han-white);
+    background: rgba(64, 105, 91, 0.9);
+  }
+  .prep-badge.raw_ethanol {
+    background: rgba(64, 105, 91, 0.92);
+  }
+  .prep-badge.cleared_koh {
+    background: rgba(53, 78, 107, 0.92);
+  }
+  .key-step-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.69rem;
+    font-weight: 700;
+    color: var(--han-black);
+    background: var(--han-yellow);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .species-card-body {
+    padding: 0.9rem 1.05rem 1.05rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+  }
+  .species-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .species-primary-name {
+    font-family: "Tilt Warp", sans-serif;
+    font-size: 1.05rem;
+    color: var(--han-green-dark);
+    line-height: 1.2;
+  }
+  .species-secondary-name {
+    font-size: 0.84rem;
+    color: var(--han-slate);
+    font-style: italic;
+    font-weight: 600;
+  }
+  .species-code-tag {
+    font-family: "Fira Code", monospace;
+    font-size: 0.73rem;
+    background: var(--han-yellow);
+    color: var(--han-black);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .species-family {
+    font-size: 0.78rem;
+    color: #5c6b64;
+    font-weight: 500;
+  }
+  .species-key-line {
+    font-size: 0.76rem;
+    color: var(--han-slate);
+    font-weight: 700;
+    margin-top: 0.1rem;
+  }
+  .species-voucher-line {
+    font-size: 0.73rem;
+    color: var(--han-green-dark);
+    background: var(--han-green-soft);
+    border-left: 3px solid var(--han-cta-green);
+    padding: 3px 7px;
+    border-radius: 4px;
+    margin-top: 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .species-metrics {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-top: 0.32rem;
+  }
+  .metric-chip {
+    font-size: 0.75rem;
+    background: #f8faf9;
+    border: 1px solid rgba(64, 105, 91, 0.2);
+    border-radius: 6px;
+    padding: 2px 7px;
+    color: var(--han-black);
+  }
+  .metric-chip strong {
+    color: var(--han-green-dark);
+  }
+
+  /* Native modal dialog following modern-web-guidance rules */
+  dialog#species-dialog {
+    border: none;
+    border-top: 6px solid var(--han-green);
+    border-radius: 16px;
+    padding: 0;
+    max-width: 1060px;
+    width: min(95vw, 1060px);
+    max-height: 90vh;
+    background: var(--han-white);
+    color: var(--han-black);
+    box-shadow: 0 24px 52px rgba(33, 37, 41, 0.4);
+  }
+  dialog#species-dialog:modal {
+    overscroll-behavior: contain;
+  }
+  dialog#species-dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgba(33, 37, 41, 0.68);
+    backdrop-filter: blur(3px);
+  }
+  .dialog-inner {
+    padding: 1.4rem 1.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .dialog-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(64, 105, 91, 0.18);
+    padding-bottom: 0.8rem;
+  }
+  .dialog-top h2 {
+    margin: 0 !important;
+    font-size: 1.45rem;
+    color: var(--han-green-dark) !important;
+    border: none;
+  }
+  .dialog-close-btn {
+    border: 2px solid var(--han-red);
+    background: var(--han-white);
+    color: var(--han-black);
+    border-radius: 10px;
+    padding: 0.4rem 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .dialog-close-btn:hover {
+    background: var(--han-pink);
+    border-color: var(--han-black);
+  }
+
+  .dialog-info-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 780px) {
+    .dialog-info-panels {
+      grid-template-columns: 1fr;
+    }
+  }
+  .info-box {
+    background: var(--han-green-soft);
+    border: 1px solid rgba(64, 105, 91, 0.22);
+    border-radius: 12px;
+    padding: 0.9rem 1.05rem;
+    font-size: 0.84rem;
+  }
+  .info-box h4 {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 0.92rem;
+    color: var(--han-green-dark) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .herbarium-scheda-layout {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+  .slide-label-thumb {
+    width: 118px;
+    border-radius: 7px;
+    border: 1px solid rgba(64, 105, 91, 0.3);
+    flex-shrink: 0;
+    background: var(--han-white);
+  }
+  .voucher-filter-bar {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .voucher-pill {
+    border: 1px solid rgba(64, 105, 91, 0.35);
+    background: var(--han-white);
+    color: var(--han-green-dark);
+    border-radius: 999px;
+    padding: 0.24rem 0.68rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .voucher-pill.active {
+    background: var(--han-green);
+    color: var(--han-white);
+    border-color: var(--han-green);
+  }
+
+  .dialog-crops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+  .dialog-crop-card {
+    border: 1px solid rgba(64, 105, 91, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f9fbfa;
+    display: flex;
+    flex-direction: column;
+  }
+  .dialog-crop-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+  .dialog-crop-meta {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.72rem;
+    color: #374151;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .lookalike-btn {
+    border: 1px solid var(--han-slate);
+    background: var(--han-white);
+    color: var(--han-slate);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    margin-right: 0.35rem;
+    margin-top: 0.25rem;
+    font-weight: 600;
+  }
+  .lookalike-btn:hover {
+    background: var(--han-slate);
+    color: var(--han-white);
+  }
+
+  /* DICHOTOMOUS KEY SECTION */
+  .key-panel {
+    display: none;
+  }
+  .key-panel.active {
+    display: block;
+  }
+  .key-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--han-green-soft);
+    border: 1px solid rgba(64, 105, 91, 0.25);
+    padding: 0.9rem 1.15rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  .key-breadcrumbs {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .key-crumb-btn {
+    border: 1px solid var(--han-green);
+    background: var(--han-white);
+    border-radius: 8px;
+    padding: 0.28rem 0.68rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--han-green-dark);
+  }
+  .key-crumb-btn:hover {
+    background: var(--han-green);
+    color: var(--han-white);
+  }
+  .key-step-card {
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.2);
+    border-radius: 14px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 14px rgba(53, 78, 107, 0.06);
+  }
+  .key-step-card.highlighted {
+    border: 2.5px solid var(--han-yellow);
+    box-shadow: 0 8px 26px rgba(255, 193, 7, 0.22);
+  }
+  .key-step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--han-green-soft);
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.8rem;
+  }
+  .key-step-header h3 {
+    margin: 0 !important;
+    font-size: 1.12rem;
+    color: var(--han-green-dark) !important;
+  }
+  .key-lead-row {
+    padding: 0.75rem 0.9rem;
+    border-radius: 10px;
+    background: var(--han-green-soft);
+    border: 1px solid rgba(64, 105, 91, 0.16);
+    margin-bottom: 0.65rem;
+  }
+  .key-lead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .key-goto-btn {
+    border: none;
+    background: var(--han-green);
+    color: var(--han-white);
+    font-weight: 700;
+    font-size: 0.79rem;
+    padding: 0.32rem 0.8rem;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .key-goto-btn:hover {
+    background: var(--han-slate);
+  }
+  .key-species-strip {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-top: 0.65rem;
+  }
+  .key-sp-mini-card {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.3);
+    border-radius: 10px;
+    padding: 0.35rem 0.7rem 0.35rem 0.35rem;
+    cursor: pointer;
+    text-align: left;
+    transition: transform 0.12s, border-color 0.12s;
+  }
+  .key-sp-mini-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--han-green);
+  }
+  .key-sp-mini-card img {
+    width: 54px;
+    height: 54px;
+    border-radius: 7px;
+    object-fit: cover;
+    background: #dcdcdc;
+  }
+  .unscanned-tag {
+    display: inline-block;
+    font-size: 0.76rem;
+    background: #fff8e1;
+    color: var(--han-brown);
+    border: 1px solid var(--han-yellow);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-top: 0.45rem;
+    margin-right: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* Quiz Section */
+  .quiz-panel {
+    display: none;
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.25);
+    border-top: 6px solid var(--han-cta-green);
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px -10px rgba(53, 78, 107, 0.16);
+  }
+  .quiz-panel.active {
+    display: block;
+  }
+  .quiz-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .quiz-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  .quiz-choice-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.72rem 1rem;
+    margin-bottom: 0.55rem;
+    border: 1px solid rgba(64, 105, 91, 0.3);
+    border-radius: 10px;
+    background: var(--han-green-soft);
+    font-size: 0.93rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .quiz-choice-btn:hover:not(:disabled) {
+    background: #dfece7;
+    border-color: var(--han-green);
+  }
+  .quiz-choice-btn.correct {
+    background: #d4edda;
+    border-color: var(--han-cta-green);
+    color: #14532d;
+    font-weight: 700;
+  }
+  .quiz-choice-btn.wrong {
+    background: #f8d7da;
+    border-color: var(--han-red);
+    color: #7f1d1d;
+  }
+</style>
+
+<div class="atlas-wrap">
+  <div class="atlas-hero-bar">
+    <div>
+      <h2 id="atlas-main-title">Atlas pylu & určovací klíč Handrkov</h2>
+      <p id="atlas-subtitle">32 lučních druhů z Handrkova · 749 jednotlivých pylových zrn (0,44 µm/px) · propojeno s herbářem PRC/PR.</p>
+    </div>
+    <div class="atlas-top-actions">
+      <div class="atlas-mode-tabs">
+        <button type="button" class="atlas-tab-btn active" id="tab-browse-btn">Prohlížet atlas (32 druhů)</button>
+        <button type="button" class="atlas-tab-btn" id="tab-key-btn">Určovací klíč pylu</button>
+        <button type="button" class="atlas-tab-btn" id="tab-quiz-btn">Pylový kvíz</button>
+      </div>
+      <div class="lang-switch-pill" aria-label="Language switcher">
+        <button type="button" class="lang-btn" id="lang-cs-btn">🇨🇿 CZ</button>
+        <button type="button" class="lang-btn" id="lang-en-btn">🇬🇧 EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. BROWSE ATLAS MODE -->
+  <div id="atlas-browse-section">
+    <div class="atlas-controls">
+      <div class="atlas-control-group">
+        <label for="atlas-search" id="lbl-search">Hledat druh / čeleď / znak</label>
+        <input type="search" id="atlas-search" placeholder="např. čertkus, Succisa, 2025-08-12...">
+      </div>
+      <div class="atlas-control-group">
+        <label for="atlas-family" id="lbl-family">Čeleď</label>
+        <select id="atlas-family">
+          <option value="ALL">Všechny čeledi</option>
+        </select>
+      </div>
+      <div class="atlas-control-group">
+        <label for="atlas-aperture" id="lbl-aperture">Typ apertur (klíč)</label>
+        <select id="atlas-aperture">
+          <option value="ALL">Všechny typy apertur</option>
+        </select>
+      </div>
+      <div class="atlas-control-group">
+        <label for="atlas-prep" id="lbl-prep">Typ preparátu / sběru</label>
+        <select id="atlas-prep">
+          <option value="ALL" id="opt-prep-all">Všechny preparáty</option>
+          <option value="raw_ethanol" id="opt-prep-herb">Herbář PRC/PR 10× (etanol + safranin)</option>
+          <option value="cleared_koh" id="opt-prep-koh">Terénní sběr 5× (projasněno KOH + H₂O₂)</option>
+        </select>
+      </div>
+      <div class="atlas-control-group">
+        <label for="atlas-sort" id="lbl-sort">Řadit druhy podle</label>
+        <select id="atlas-sort">
+          <option value="name" id="opt-sort-name">Názvu druhu (A → Z)</option>
+          <option value="key" id="opt-sort-key">Pořadí v určovacím klíči</option>
+          <option value="diam_desc" id="opt-sort-desc">Velikosti zrna (největší → nejmenší µm)</option>
+          <option value="diam_asc" id="opt-sort-asc">Velikosti zrna (nejmenší → největší µm)</option>
+          <option value="spiky" id="opt-sort-spiky">Ostnitosti / členitosti obrysu</option>
+          <option value="ecology" id="opt-sort-eco">Výskytu na bliznách a opylovačích</option>
+        </select>
+      </div>
+      <div class="atlas-control-group">
+        <label id="lbl-view">Zobrazení mikroskopu</label>
+        <div class="atlas-toggles">
+          <button type="button" class="atlas-pill-toggle active" id="toggle-true-scale">Skutečné měřítko µm</button>
+          <button type="button" class="atlas-pill-toggle" id="toggle-masked-view">AI maskovaný výřez</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="atlas-grid" class="atlas-grid"></div>
+  </div>
+
+  <!-- 2. INTERACTIVE DICHOTOMOUS ID KEY MODE -->
+  <div id="atlas-key-section" class="key-panel">
+    <div class="key-toolbar">
+      <div>
+        <strong id="key-toolbar-title">Interaktivní klíč k určování pylu lučních rostlin Handrkova</strong>
+        <span id="key-toolbar-sub" style="font-size:0.82rem; color:#475569; margin-left:0.4rem;">
+          (Podle NEPF I–IX a Beug 2004, upravil Jakub Štenc — propojeno se snímky zrn 0,44 µm/px a herbářem PRC)
+        </span>
+      </div>
+      <div class="key-breadcrumbs">
+        <button type="button" class="key-crumb-btn" id="key-reset-btn">Začít od kroku 1</button>
+        <button type="button" class="key-crumb-btn" id="key-showall-btn">Zobrazit všech 26 kroků</button>
+      </div>
+    </div>
+    <div id="key-steps-container"></div>
+  </div>
+
+  <!-- 3. QUIZ MODE -->
+  <div id="atlas-quiz-section" class="quiz-panel">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+      <div>
+        <h3 id="quiz-title" style="margin:0;">Poznáš toto pylové zrno z Handrkova?</h3>
+        <p id="quiz-subtitle" style="margin:0.2rem 0 0 0; font-size:0.86rem; color:#475569;">Vybírá ze 749 výřezů a nabízí nejpodobnější druhy podle neuronové sítě YOLO.</p>
+      </div>
+      <div style="font-weight:700; font-size:0.95rem; background:var(--han-green-soft); padding:0.4rem 0.9rem; border-radius:999px; border:1px solid rgba(64,105,91,0.25);">
+        <span id="quiz-score-lbl">Skóre</span>: <span id="quiz-score">0 / 0</span> (<span id="quiz-streak-lbl">Série</span>: <span id="quiz-streak">0</span>)
+      </div>
+    </div>
+    <div class="quiz-layout">
+      <div>
+        <div class="species-stage" style="border-radius:12px; border:2px solid var(--han-green);">
+          <img id="quiz-img" src="" alt="Mystery pollen grain">
+          <div class="scale-bar-overlay">
+            <span class="scale-bar-line" style="width:45px;"></span> 20 µm
+          </div>
+        </div>
+        <div id="quiz-hint" style="margin-top:0.55rem; font-size:0.8rem; color:#374151; text-align:center; font-weight:600;"></div>
+      </div>
+      <div>
+        <div id="quiz-choices"></div>
+        <div id="quiz-feedback" style="min-height:2.5rem; margin-top:0.6rem; font-size:0.88rem;"></div>
+        <button type="button" id="quiz-next-btn" class="atlas-pill-toggle active" style="margin-top:0.5rem;">Další pylové zrno →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NATIVE MODAL DIALOG (modern-web-guidance compliant) -->
+  <dialog id="species-dialog" closedby="any" aria-labelledby="dialog-species-title">
+    <div class="dialog-inner">
+      <div class="dialog-top">
+        <div>
+          <h2 id="dialog-species-title">Species Name</h2>
+          <div id="dialog-species-subtitle" style="font-size:0.88rem; color:#475569; margin-top:0.2rem;"></div>
+        </div>
+        <form method="dialog">
+          <button type="submit" class="dialog-close-btn" id="dialog-close-btn" autofocus>Zavřít (Esc)</button>
+        </form>
+      </div>
+
+      <div id="dialog-species-stats" class="species-metrics"></div>
+
+      <div class="dialog-info-panels">
+        <div class="info-box" id="dialog-key-box"></div>
+        <div class="info-box" id="dialog-herbarium-box"></div>
+      </div>
+
+      <div id="dialog-voucher-filter" class="voucher-filter-bar"></div>
+      <div id="dialog-crops-grid" class="dialog-crops-grid"></div>
+    </div>
+  </dialog>
+</div>
+
+<script>
+(function() {
+  const atlas = window.HANDRKOV_ATLAS;
+  if (!atlas || !atlas.species) return;
+
+  // Detect default language from <html lang="..."> or URL or window.HANDRKOV_DEFAULT_LANG
+  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+  let lang = window.HANDRKOV_DEFAULT_LANG || (htmlLang.startsWith('en') ? 'en' : 'cs');
+
+  const I18N = {
+    cs: {
+      mainTitle: 'Atlas pylu & určovací klíč Handrkov',
+      subtitle: `${atlas.n_species} lučních druhů z Handrkova · ${atlas.n_total_crops} jednotlivých pylových zrn (${atlas.um_per_px} µm/px, výřez ${atlas.crop_field_um} × ${atlas.crop_field_um} µm) · propojeno s herbářem PRC/PR a určovacím klíčem.`,
+      tabBrowse: `Prohlížet atlas (${atlas.n_species} druhů)`,
+      tabKey: 'Určovací klíč pylu (Beug / NEPF)',
+      tabQuiz: 'Pylový kvíz: Poraz AI',
+      lblSearch: 'Hledat druh / čeleď / znak / doklad',
+      searchPlaceholder: 'např. čertkus, Succisa, 2025-08-12, ostnitý...',
+      lblFamily: 'Botanická čeleď',
+      allFamilies: 'Všechny čeledi',
+      lblAperture: 'Typ apertur (podle klíče)',
+      allApertures: 'Všechny typy apertur',
+      lblPrep: 'Typ preparátu / sběru',
+      prepAll: 'Všechny preparáty',
+      prepHerb: 'Herbář PRC/PR 10× (etanol + safranin)',
+      prepKoh: 'Terénní sběr 5× (projasněno KOH + H₂O₂)',
+      lblSort: 'Řadit druhy podle',
+      sortName: 'Názvu druhu (A → Z)',
+      sortKey: 'Pořadí v určovacím klíči',
+      sortDesc: 'Velikosti zrna (největší → nejmenší µm)',
+      sortAsc: 'Velikosti zrna (nejmenší → největší µm)',
+      sortSpiky: 'Ostnitosti / členitosti obrysu',
+      sortEco: 'Výskytu na bliznách a opylovačích',
+      lblView: 'Zobrazení mikroskopu',
+      trueScaleOn: 'Skutečné měřítko µm',
+      trueScaleOff: 'Zvětšit malé pyly',
+      maskedView: 'AI maskovaný výřez',
+      badgeHerb: 'Herbář PRC 10×',
+      badgeKoh: 'KOH 5×',
+      cropsCount: 'výřezů zrn',
+      slidesCount: 'sklíček',
+      voucherHerbPrefix: '🌿 Herbář PRC/PR',
+      voucherFieldPrefix: '🔬 Terénní doklad Handrkov',
+      closeBtn: 'Zavřít (Esc)',
+      modalSub: (sp) => `Čeleď: ${sp.family_cs} (${sp.family}) · ${sp.crops.length} jednotlivých zrn (${atlas.um_per_px} µm/px, pole ${atlas.crop_field_um} × ${atlas.crop_field_um} µm)`,
+      statDiam: (sp) => `Medián průměru: <strong>${sp.diam_median_um} µm</strong> (95% rozpětí: ${sp.diam_q025_um}–${sp.diam_q975_um} µm)`,
+      statCirc: (sp) => `Kruhovitost: <strong>${sp.circularity_median}</strong>`,
+      statPool: (sp) => `Referenční soubor: <strong>${sp.n_reference_grains} zrn</strong>`,
+      statStigma: (sp) => `Nálezy na bliznách: <strong>${sp.stigma_detections}</strong>`,
+      statBody: (sp) => `Nálezy na tělech opylovačů: <strong>${sp.pollinator_body_detections}</strong>`,
+      keyBoxTitle: (c) => `🔑 Určovací klíč pylu Handrkov (krok ${c})`,
+      openInKey: 'Otevřít v klíči →',
+      pollenTypeLbl: 'Pylový typ:',
+      apertureExineLbl: 'Apertury a skulptura:',
+      lookalikesTitle: 'NEJPODOBNĚJŠÍ DRUHY PODLE AI (YOLO EMBEDDING):',
+      herbBoxTitle: '🌿 Herbářový doklad (PRC & PR)',
+      fieldBoxTitle: '🔬 Terénní referenční doklad Handrkov',
+      taxonSchedaLbl: 'Taxon (scheda):',
+      colDateLbl: 'Datum sběru:',
+      collectorsLbl: 'Sběratelé (leg.):',
+      localityLbl: 'Lokalita:',
+      herbariaLbl: 'Uloženo v herbářích:',
+      prepDescField: 'Projasněno KOH + H₂O₂ + safranin (referenční preparáty produkce pylu, objektiv 5× převzorkovaný na 0,44 µm/px)',
+      digSlidesLbl: 'Digitalizovaná sklíčka:',
+      filterCropsLbl: (n) => `Filtrovat ${n} výřezů podle herbářové položky / sklíčka:`,
+      allSlidesBtn: (n) => `Všechna sklíčka (${n})`,
+      humanTag: '✓ Ruční obrys',
+      autoTag: '⚡ AI detekce',
+      keyToolbarTitle: 'Interaktivní klíč k určování pylu lučních rostlin Handrkova',
+      keyToolbarSub: '(Podle NEPF I–IX a Beug 2004, upravil Jakub Štenc — propojeno se snímky zrn 0,44 µm/px a herbářem PRC)',
+      keyReset: 'Začít od kroku 1',
+      keyShowAll: 'Zobrazit všech 26 kroků',
+      stepWord: 'Krok',
+      gotoStep: (s) => `Přejít na krok ${s} →`,
+      alsoInKey: '📌 Další druh v klíči / herbáři PRC:',
+      quizTitle: 'Poznáš toto pylové zrno z Handrkova?',
+      quizSub: 'Vybírá ze všech 749 výřezů a nabízí nejpodobnější druhy podle neuronové sítě YOLO.',
+      scoreLbl: 'Skóre',
+      streakLbl: 'Série',
+      nextQuizBtn: 'Další záhadné zrno →',
+      quizHint: (c, sp) => `Změřený průměr Ø: ${c.diam_um} µm · Skupina: ${sp.aperture_group_cs} · Doklad: ${c.specimen_id.startsWith('herbarium') ? 'Herbář PRC 10×' : 'Terénní 5×'}`,
+      quizCorrect: (sp) => `✅ <strong>Správně!</strong> <em>${sp.name}</em> (${sp.name_cs}) — klíč ${sp.key_couplet}: ${sp.key_characters_cs}`,
+      quizWrong: (sp, c) => `❌ Toto zrno patří druhu <strong>${sp.name_cs} (<em>${sp.name}</em>, ${sp.code})</strong> ze sklíčka <code>${c.specimen_id}</code> (klíč ${sp.key_couplet}).`,
+    },
+    en: {
+      mainTitle: 'Handrkov Meadow Pollen Atlas, ID Key & Herbarium Vouchers',
+      subtitle: `${atlas.n_species} Handrkov meadow species · ${atlas.n_total_crops} individual reference crops (${atlas.um_per_px} µm/px, ${atlas.crop_field_um} × ${atlas.crop_field_um} µm frame) · linked to PRC/PR Herbarium Vouchers & Dichotomous ID Key.`,
+      tabBrowse: `Browse Atlas (${atlas.n_species} Species)`,
+      tabKey: 'Dichotomous ID Key (Beug / NEPF)',
+      tabQuiz: 'Pollen Quiz: Beat the AI',
+      lblSearch: 'Search Species / Family / Voucher / Trait',
+      searchPlaceholder: 'e.g. Succisa, čertkus, 2025-08-12, echinate...',
+      lblFamily: 'Botanical Family',
+      allFamilies: 'All Families',
+      lblAperture: 'Key Aperture Group',
+      allApertures: 'All Aperture Types',
+      lblPrep: 'Voucher Preparation',
+      prepAll: 'All Preparations',
+      prepHerb: 'PRC/PR Herbarium 10× (Raw Ethanol + Safranin)',
+      prepKoh: 'Field Voucher 5× (Cleared KOH + H₂O₂)',
+      lblSort: 'Sort Species By',
+      sortName: 'Species Name (A → Z)',
+      sortKey: 'Dichotomous Key Step Order',
+      sortDesc: 'Grain Size (Largest → Smallest µm)',
+      sortAsc: 'Grain Size (Smallest → Largest µm)',
+      sortSpiky: 'Spikiness / Lobed Outline',
+      sortEco: 'Detected on Stigmas & Pollinators',
+      lblView: 'Microscope View',
+      trueScaleOn: 'True µm Scale',
+      trueScaleOff: 'Fit to Frame',
+      maskedView: 'AI Masked View',
+      badgeHerb: 'PRC Herbarium 10×',
+      badgeKoh: 'Cleared KOH 5×',
+      cropsCount: 'individual crops',
+      slidesCount: 'slides',
+      voucherHerbPrefix: '🌿 PRC/PR Voucher',
+      voucherFieldPrefix: '🔬 Handrkov Field Voucher',
+      closeBtn: 'Close (Esc)',
+      modalSub: (sp) => `Family: ${sp.family} (${sp.family_cs}) · ${sp.crops.length} curated individual grains (${atlas.um_per_px} µm/px, frame = ${atlas.crop_field_um} × ${atlas.crop_field_um} µm)`,
+      statDiam: (sp) => `Median Diameter: <strong>${sp.diam_median_um} µm</strong> (95% range: ${sp.diam_q025_um}–${sp.diam_q975_um} µm)`,
+      statCirc: (sp) => `Median Circularity: <strong>${sp.circularity_median}</strong>`,
+      statPool: (sp) => `Reference Pool: <strong>${sp.n_reference_grains} grains</strong>`,
+      statStigma: (sp) => `Stigma Detections: <strong>${sp.stigma_detections}</strong>`,
+      statBody: (sp) => `Pollinator Body Detections: <strong>${sp.pollinator_body_detections}</strong>`,
+      keyBoxTitle: (c) => `🔑 Handrkov Dichotomous ID Key (Step ${c})`,
+      openInKey: 'Open in Key →',
+      pollenTypeLbl: 'Pollen Type:',
+      apertureExineLbl: 'Aperture & Exine:',
+      lookalikesTitle: 'CLOSEST AI MORPHOLOGICAL LOOK-ALIKES (YOLO EMBEDDING):',
+      herbBoxTitle: '🌿 Herbarium Voucher Specimen (PRC & PR)',
+      fieldBoxTitle: '🔬 Handrkov Field Pollen Reference Voucher',
+      taxonSchedaLbl: 'Taxon (Scheda):',
+      colDateLbl: 'Collection Date:',
+      collectorsLbl: 'Collectors (Leg.):',
+      localityLbl: 'Locality:',
+      herbariaLbl: 'Deposited in Herbaria:',
+      prepDescField: 'Cleared KOH + H₂O₂ + Safranin (Pollen production reference slides, 5× objective upscaled to 0.44 µm/px)',
+      digSlidesLbl: 'Digitized Replicate Slides:',
+      filterCropsLbl: (n) => `Filter ${n} Crops by Voucher Slide / Replicate:`,
+      allSlidesBtn: (n) => `All Slides (${n})`,
+      humanTag: '✓ Human',
+      autoTag: '⚡ Auto',
+      keyToolbarTitle: 'Interactive Handrkov Pollen Determination Key',
+      keyToolbarSub: '(Based on NEPF Vols I–IX & Beug 2004, edited by Jakub Štenc — linked to live 0.44 µm/px Handrkov crops & PRC Herbarium vouchers)',
+      keyReset: 'Start at Step 1',
+      keyShowAll: 'Show All 26 Steps',
+      stepWord: 'Step',
+      gotoStep: (s) => `Go to Step ${s} →`,
+      alsoInKey: '📌 Also in Key / PRC Herbarium:',
+      quizTitle: 'Can You Identify This Handrkov Pollen Grain?',
+      quizSub: 'Draws from all 749 individual crops and pits you against the grain\'s closest YOLO morphological look-alikes.',
+      scoreLbl: 'Score',
+      streakLbl: 'Streak',
+      nextQuizBtn: 'Next Mystery Grain →',
+      quizHint: (c, sp) => `Measured Ø: ${c.diam_um} µm · Key Group: ${sp.aperture_group} · Voucher: ${c.specimen_id.startsWith('herbarium') ? 'PRC Herbarium 10×' : 'Field 5×'}`,
+      quizCorrect: (sp) => `✅ <strong>Correct!</strong> <em>${sp.name}</em> (${sp.name_cs}) — Key ${sp.key_couplet}: ${sp.key_characters}`,
+      quizWrong: (sp, c) => `❌ That grain is <strong><em>${sp.name}</em> (${sp.name_cs}, ${sp.code})</strong> from voucher <code>${c.specimen_id}</code> (Key ${sp.key_couplet}).`,
+    }
+  };
+
+  const spByCode = Object.fromEntries(atlas.species.map(s => [s.code, s]));
+  const gridEl = document.getElementById('atlas-grid');
+  const searchInput = document.getElementById('atlas-search');
+  const familySelect = document.getElementById('atlas-family');
+  const apertureSelect = document.getElementById('atlas-aperture');
+  const prepSelect = document.getElementById('atlas-prep');
+  const sortSelect = document.getElementById('atlas-sort');
+  const trueScaleBtn = document.getElementById('toggle-true-scale');
+  const maskedViewBtn = document.getElementById('toggle-masked-view');
+  const dialog = document.getElementById('species-dialog');
+
+  let useTrueScale = true;
+  let useMaskedView = false;
+
+  // Fallback for browsers without native <dialog closedby="any"> support (per light-dismiss-a-dialog guide)
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const isDialogContent = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (isDialogContent) return;
+      dialog.close();
+    });
+  }
+
+  function populateSelectOptions() {
+    const t = I18N[lang];
+    const prevFam = familySelect.value || 'ALL';
+    const prevAp = apertureSelect.value || 'ALL';
+
+    familySelect.innerHTML = `<option value="ALL">${t.allFamilies}</option>`;
+    const families = Array.from(new Set(atlas.species.map(s => s.family))).sort();
+    for (const fam of families) {
+      const sampleSp = atlas.species.find(s => s.family === fam);
+      const opt = document.createElement('option');
+      opt.value = fam;
+      opt.textContent = lang === 'cs' && sampleSp && sampleSp.family_cs
+        ? `${sampleSp.family_cs} (${fam})`
+        : fam;
+      familySelect.appendChild(opt);
+    }
+    familySelect.value = prevFam;
+
+    apertureSelect.innerHTML = `<option value="ALL">${t.allApertures}</option>`;
+    const apertures = Array.from(new Set(atlas.species.map(s => s.aperture_group).filter(Boolean))).sort();
+    for (const ap of apertures) {
+      const sampleSp = atlas.species.find(s => s.aperture_group === ap);
+      const opt = document.createElement('option');
+      opt.value = ap;
+      opt.textContent = lang === 'cs' && sampleSp && sampleSp.aperture_group_cs
+        ? sampleSp.aperture_group_cs
+        : ap;
+      apertureSelect.appendChild(opt);
+    }
+    apertureSelect.value = prevAp;
+  }
+
+  function applyLanguageUI() {
+    const t = I18N[lang];
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('lang-cs-btn').classList.toggle('active', lang === 'cs');
+    document.getElementById('lang-en-btn').classList.toggle('active', lang === 'en');
+
+    // If inside Handrkov website navbar, point top-right CZ / EN switcher to the Atlas pages
+    const rightNavLinks = document.querySelectorAll('.navbar-nav.ms-auto .nav-link');
+    rightNavLinks.forEach(a => {
+      const txt = (a.textContent || '').trim();
+      if (txt === 'CZ' && window.location.pathname.includes('pollen_atlas_en')) {
+        a.setAttribute('href', 'atlas_pylu.html');
+      } else if (txt === 'EN' && window.location.pathname.includes('atlas_pylu')) {
+        a.setAttribute('href', 'pollen_atlas_en.html');
+      }
+    });
+
+    document.getElementById('atlas-main-title').textContent = t.mainTitle;
+    document.getElementById('atlas-subtitle').textContent = t.subtitle;
+    document.getElementById('tab-browse-btn').textContent = t.tabBrowse;
+    document.getElementById('tab-key-btn').textContent = t.tabKey;
+    document.getElementById('tab-quiz-btn').textContent = t.tabQuiz;
+
+    document.getElementById('lbl-search').textContent = t.lblSearch;
+    searchInput.placeholder = t.searchPlaceholder;
+    document.getElementById('lbl-family').textContent = t.lblFamily;
+    document.getElementById('lbl-aperture').textContent = t.lblAperture;
+    document.getElementById('lbl-prep').textContent = t.lblPrep;
+    document.getElementById('opt-prep-all').textContent = t.prepAll;
+    document.getElementById('opt-prep-herb').textContent = t.prepHerb;
+    document.getElementById('opt-prep-koh').textContent = t.prepKoh;
+    document.getElementById('lbl-sort').textContent = t.lblSort;
+    document.getElementById('opt-sort-name').textContent = t.sortName;
+    document.getElementById('opt-sort-key').textContent = t.sortKey;
+    document.getElementById('opt-sort-desc').textContent = t.sortDesc;
+    document.getElementById('opt-sort-asc').textContent = t.sortAsc;
+    document.getElementById('opt-sort-spiky').textContent = t.sortSpiky;
+    document.getElementById('opt-sort-eco').textContent = t.sortEco;
+    document.getElementById('lbl-view').textContent = t.lblView;
+    trueScaleBtn.textContent = useTrueScale ? t.trueScaleOn : t.trueScaleOff;
+    maskedViewBtn.textContent = t.maskedView;
+    document.getElementById('dialog-close-btn').textContent = t.closeBtn;
+
+    document.getElementById('key-toolbar-title').textContent = t.keyToolbarTitle;
+    document.getElementById('key-toolbar-sub').textContent = t.keyToolbarSub;
+    document.getElementById('key-reset-btn').textContent = t.keyReset;
+    document.getElementById('key-showall-btn').textContent = t.keyShowAll;
+
+    document.getElementById('quiz-title').textContent = t.quizTitle;
+    document.getElementById('quiz-subtitle').textContent = t.quizSub;
+    document.getElementById('quiz-score-lbl').textContent = t.scoreLbl;
+    document.getElementById('quiz-streak-lbl').textContent = t.streakLbl;
+    document.getElementById('quiz-next-btn').textContent = t.nextQuizBtn;
+
+    populateSelectOptions();
+    renderGrid();
+    renderDichotomousKey();
+  }
+
+  document.getElementById('lang-cs-btn').addEventListener('click', () => {
+    lang = 'cs';
+    applyLanguageUI();
+  });
+  document.getElementById('lang-en-btn').addEventListener('click', () => {
+    lang = 'en';
+    applyLanguageUI();
+  });
+
+  function renderGrid() {
+    const t = I18N[lang];
+    const q = searchInput.value.trim().toLowerCase();
+    const fam = familySelect.value;
+    const ap = apertureSelect.value;
+    const prep = prepSelect.value;
+    const sortBy = sortSelect.value;
+
+    let filtered = atlas.species.filter(s => {
+      if (fam !== 'ALL' && s.family !== fam) return false;
+      if (ap !== 'ALL' && s.aperture_group !== ap) return false;
+      if (prep !== 'ALL' && !s.preparations.includes(prep)) return false;
+      if (q) {
+        const hay = [
+          s.name, s.name_cs, s.code, s.family, s.family_cs,
+          s.aperture_group, s.aperture_group_cs, s.ornamentation, s.ornamentation_cs,
+          s.key_type, s.key_type_cs, s.key_characters, s.key_characters_cs, s.key_couplet,
+          s.herbarium_scheda ? s.herbarium_scheda.taxon_scheda : '',
+          s.herbarium_scheda ? s.herbarium_scheda.collection_date : '',
+          ...(s.voucher_specimens || []).map(v => v.specimen_id)
+        ].join(' ').toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    filtered.sort((a, b) => {
+      if (sortBy === 'diam_desc') return b.diam_median_um - a.diam_median_um;
+      if (sortBy === 'diam_asc') return a.diam_median_um - b.diam_median_um;
+      if (sortBy === 'spiky') return a.circularity_median - b.circularity_median;
+      if (sortBy === 'key') return (a.key_couplet || '').localeCompare(b.key_couplet || '', undefined, {numeric: true});
+      if (sortBy === 'ecology') {
+        return (b.stigma_detections + b.pollinator_body_detections) - (a.stigma_detections + a.pollinator_body_detections);
+      }
+      const nameA = lang === 'cs' ? (a.name_cs || a.name) : a.name;
+      const nameB = lang === 'cs' ? (b.name_cs || b.name) : b.name;
+      return nameA.localeCompare(nameB, lang);
+    });
+
+    gridEl.innerHTML = '';
+    filtered.forEach((sp, idx) => {
+      const hero = sp.crops[0];
+      if (!hero) return;
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'species-card';
+
+      const zoomFactor = useTrueScale ? 1.0 : Math.min(2.3, Math.max(1.0, 52.0 / Math.max(14.0, sp.diam_median_um)));
+      const barPx = Math.round((20.0 / 84.5) * 240 * zoomFactor);
+      const imgSrc = useMaskedView ? hero.masked_url : hero.url;
+      const prepLabel = hero.prep_code === 'raw_ethanol' ? t.badgeHerb : t.badgeKoh;
+
+      // Optimize image priority per modern-web-guidance: fetchpriority="high" on LCP candidate (idx===0),
+      // loading="lazy" on below-the-fold cards (idx >= 4).
+      const imgAttrs = idx === 0
+        ? 'fetchpriority="high"'
+        : (idx >= 4 ? 'loading="lazy"' : '');
+
+      const primaryTitle = lang === 'cs' ? (sp.name_cs || sp.name) : sp.name;
+      const secondaryTitle = lang === 'cs' ? sp.name : (sp.name_cs || '');
+      const famLabel = lang === 'cs' ? `${sp.family_cs} (${sp.family})` : sp.family;
+      const apLabel = lang === 'cs' ? (sp.aperture_group_cs || sp.aperture_group) : sp.aperture_group;
+      const ornLabel = lang === 'cs' ? (sp.ornamentation_cs || sp.ornamentation) : sp.ornamentation;
+
+      const voucherSummary = sp.herbarium_scheda
+        ? `${t.voucherHerbPrefix} (${sp.herbarium_scheda.collection_date}) · ${sp.voucher_specimens.length} ${t.slidesCount}`
+        : `${t.voucherFieldPrefix} · ${sp.voucher_specimens.length} ${t.slidesCount}`;
+
+      card.innerHTML = `
+        <div class="species-stage">
+          <img src="${imgSrc}" alt="${sp.name} (${sp.code}) pollen grain" ${imgAttrs}
+               style="transform: scale(${zoomFactor.toFixed(2)});" width="192" height="192">
+          <span class="prep-badge ${hero.prep_code}">${prepLabel}</span>
+          <span class="key-step-badge">${t.stepWord} ${sp.key_couplet || ''}</span>
+          <div class="scale-bar-overlay">
+            <span class="scale-bar-line" style="width:${barPx}px;"></span> 20 µm
+          </div>
+        </div>
+        <div class="species-card-body">
+          <div class="species-header-row">
+            <span class="species-primary-name">${primaryTitle}</span>
+            <span class="species-code-tag">${sp.code}</span>
+          </div>
+          <div class="species-secondary-name">${secondaryTitle}</div>
+          <div class="species-family">${famLabel} · <strong>${sp.crops.length}</strong> ${t.cropsCount}</div>
+          <div class="species-key-line">${apLabel} · ${ornLabel}</div>
+          <div class="species-voucher-line" title="${voucherSummary}">${voucherSummary}</div>
+          <div class="species-metrics">
+            <span class="metric-chip">Ø <strong>${sp.diam_median_um} µm</strong> (${sp.diam_q025_um}–${sp.diam_q975_um})</span>
+            <span class="metric-chip">Circ. <strong>${sp.circularity_median}</strong></span>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', () => openSpeciesModal(sp));
+      gridEl.appendChild(card);
+    });
+  }
+
+  function openSpeciesModal(sp) {
+    const t = I18N[lang];
+    const titleHtml = lang === 'cs'
+      ? `${sp.name_cs} — <em>${sp.name}</em> <span class="species-code-tag">${sp.code}</span>`
+      : `<em>${sp.name}</em> (${sp.name_cs}) <span class="species-code-tag">${sp.code}</span>`;
+    document.getElementById('dialog-species-title').innerHTML = titleHtml;
+    document.getElementById('dialog-species-subtitle').textContent = t.modalSub(sp);
+
+    document.getElementById('dialog-species-stats').innerHTML = `
+      <span class="metric-chip">${t.statDiam(sp)}</span>
+      <span class="metric-chip">${t.statCirc(sp)}</span>
+      <span class="metric-chip">${t.statPool(sp)}</span>
+      <span class="metric-chip">${t.statStigma(sp)}</span>
+      <span class="metric-chip">${t.statBody(sp)}</span>
+    `;
+
+    // 1. Dichotomous Key & Lookalikes Box
+    const keyBox = document.getElementById('dialog-key-box');
+    const kType = lang === 'cs' ? (sp.key_type_cs || sp.key_type) : sp.key_type;
+    const kAp = lang === 'cs' ? (sp.aperture_group_cs || sp.aperture_group) : sp.aperture_group;
+    const kOrn = lang === 'cs' ? (sp.ornamentation_cs || sp.ornamentation) : sp.ornamentation;
+    const kChars = lang === 'cs' ? (sp.key_characters_cs || sp.key_characters) : sp.key_characters;
+
+    keyBox.innerHTML = `
+      <h4>
+        <span>${t.keyBoxTitle(sp.key_couplet || sp.key_step)}</span>
+        <button type="button" class="key-goto-btn" id="modal-jump-key-btn">${t.openInKey}</button>
+      </h4>
+      <div style="margin-bottom:0.35rem;">
+        <strong>${t.pollenTypeLbl}</strong> ${kType}<br>
+        <strong>${t.apertureExineLbl}</strong> ${kAp} · ${kOrn}
+      </div>
+      <div style="color:#212529; background:#fff; padding:0.5rem 0.65rem; border-radius:8px; border:1px solid rgba(64,105,91,0.2); margin-bottom:0.5rem;">
+        ${kChars}
+      </div>
+      <div id="modal-lookalikes-wrap"></div>
+    `;
+    const jumpBtn = document.getElementById('modal-jump-key-btn');
+    if (jumpBtn) {
+      jumpBtn.addEventListener('click', () => {
+        dialog.close();
+        switchToKeyStep(sp.key_step, sp.code);
+      });
+    }
+    const lookWrap = document.getElementById('modal-lookalikes-wrap');
+    if (sp.lookalikes && sp.lookalikes.length) {
+      lookWrap.innerHTML = `<div style="font-size:0.75rem; font-weight:700; color:#354e6b;">${t.lookalikesTitle}</div>`;
+      sp.lookalikes.forEach(lk => {
+        const target = spByCode[lk.species];
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lookalike-btn';
+        const tName = target ? (lang === 'cs' ? `${target.name_cs} (${target.name})` : target.name) : lk.species;
+        btn.textContent = `${tName} (cos = ${lk.similarity})`;
+        if (target) {
+          btn.addEventListener('click', () => openSpeciesModal(target));
+        }
+        lookWrap.appendChild(btn);
+      });
+    }
+
+    // 2. Herbarium Voucher Box
+    const herbBox = document.getElementById('dialog-herbarium-box');
+    const sch = sp.herbarium_scheda;
+    const thumbHtml = sp.slide_label_thumb
+      ? `<img src="${sp.slide_label_thumb}" alt="${sp.name} microscope slide QR label" class="slide-label-thumb" fetchpriority="low">`
+      : '';
+    if (sch) {
+      herbBox.innerHTML = `
+        <h4><span>${t.herbBoxTitle}</span> <span class="species-code-tag">Scheda #${sch.scheda_no}</span></h4>
+        <div class="herbarium-scheda-layout">
+          ${thumbHtml}
+          <div style="font-size:0.8rem; line-height:1.45; color:#212529;">
+            <div><strong>${t.taxonSchedaLbl}</strong> <em>${sch.taxon_scheda}</em> (${sp.name_cs})</div>
+            <div><strong>${t.colDateLbl}</strong> <strong>${sch.collection_date}</strong> · <strong>Det.:</strong> ${sch.determined_by}</div>
+            <div><strong>${t.collectorsLbl}</strong> ${sch.collectors}</div>
+            <div><strong>${t.localityLbl}</strong> ${sch.locality} (${sch.gps})</div>
+            <div><strong>${t.herbariaLbl}</strong> ${sch.herbaria}</div>
+          </div>
+        </div>
+      `;
+    } else {
+      herbBox.innerHTML = `
+        <h4><span>${t.fieldBoxTitle}</span></h4>
+        <div class="herbarium-scheda-layout">
+          ${thumbHtml}
+          <div style="font-size:0.8rem; line-height:1.45; color:#212529;">
+            <div><strong>Taxon:</strong> <em>${sp.name}</em> (${sp.name_cs})</div>
+            <div><strong>${t.localityLbl}</strong> Handrkov u Vernýřova (49°50'46.5"N, 15°08'58.8"E, 515 m n. m.)</div>
+            <div><strong>Prep.:</strong> ${t.prepDescField}</div>
+            <div><strong>${t.digSlidesLbl}</strong> ${(sp.voucher_specimens || []).map(v => v.specimen_id).join(', ')}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 3. Voucher Specimen Filter Pills + 24 Individual Crops Grid
+    const filterBar = document.getElementById('dialog-voucher-filter');
+    const uniqueSpecimens = Array.from(new Set(sp.crops.map(c => c.specimen_id)));
+    let activeSpecimen = 'ALL';
+
+    function renderModalCrops() {
+      filterBar.innerHTML = `<span style="font-size:0.78rem; font-weight:700; color:#2c4a40; margin-right:0.3rem;">${t.filterCropsLbl(sp.crops.length)}</span>`;
+      const allBtn = document.createElement('button');
+      allBtn.type = 'button';
+      allBtn.className = 'voucher-pill' + (activeSpecimen === 'ALL' ? ' active' : '');
+      allBtn.textContent = t.allSlidesBtn(sp.crops.length);
+      allBtn.addEventListener('click', () => { activeSpecimen = 'ALL'; renderModalCrops(); });
+      filterBar.appendChild(allBtn);
+
+      uniqueSpecimens.forEach(specId => {
+        const cnt = sp.crops.filter(c => c.specimen_id === specId).length;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'voucher-pill' + (activeSpecimen === specId ? ' active' : '');
+        b.textContent = `${specId} (${cnt})`;
+        b.addEventListener('click', () => { activeSpecimen = specId; renderModalCrops(); });
+        filterBar.appendChild(b);
+      });
+
+      const cropsGrid = document.getElementById('dialog-crops-grid');
+      cropsGrid.innerHTML = '';
+      const visibleCrops = activeSpecimen === 'ALL'
+        ? sp.crops
+        : sp.crops.filter(c => c.specimen_id === activeSpecimen);
+
+      visibleCrops.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'dialog-crop-card';
+        const src = useMaskedView ? c.masked_url : c.url;
+        const srcBadge = c.outline_source === 'human_verified' ? t.humanTag : t.autoTag;
+        div.innerHTML = `
+          <img src="${src}" alt="${sp.name} crop ${c.id} from ${c.specimen_id}" fetchpriority="low" width="192" height="192">
+          <div class="dialog-crop-meta">
+            <div style="display:flex; justify-content:space-between;">
+              <span>Ø <strong>${c.diam_um} µm</strong></span>
+              <span>${srcBadge}</span>
+            </div>
+            <div style="font-family:'Fira Code',monospace; font-size:0.67rem; color:#2c4a40; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${c.specimen_id} (${c.collection_date})">
+              🏷️ ${c.specimen_id}
+            </div>
+          </div>
+        `;
+        cropsGrid.appendChild(div);
+      });
+    }
+
+    renderModalCrops();
+
+    if (!dialog.open) {
+      dialog.showModal();
+    }
+  }
+
+  // Event listeners for Browse controls
+  searchInput.addEventListener('input', renderGrid);
+  familySelect.addEventListener('change', renderGrid);
+  apertureSelect.addEventListener('change', renderGrid);
+  prepSelect.addEventListener('change', renderGrid);
+  sortSelect.addEventListener('change', renderGrid);
+
+  trueScaleBtn.addEventListener('click', () => {
+    const t = I18N[lang];
+    useTrueScale = !useTrueScale;
+    trueScaleBtn.classList.toggle('active', useTrueScale);
+    trueScaleBtn.textContent = useTrueScale ? t.trueScaleOn : t.trueScaleOff;
+    renderGrid();
+  });
+
+  maskedViewBtn.addEventListener('click', () => {
+    useMaskedView = !useMaskedView;
+    maskedViewBtn.classList.toggle('active', useMaskedView);
+    renderGrid();
+  });
+
+  // DICHOTOMOUS KEY RENDERING & NAVIGATION
+  const keyContainer = document.getElementById('key-steps-container');
+  let keyShowAll = true;
+  let activeKeyStepId = 'step1';
+  let highlightedSpCode = null;
+
+  function renderDichotomousKey() {
+    if (!atlas.dichotomous_key) return;
+    const t = I18N[lang];
+    keyContainer.innerHTML = '';
+    const stepsToShow = keyShowAll
+      ? atlas.dichotomous_key
+      : atlas.dichotomous_key.filter(st => st.id === activeKeyStepId);
+
+    stepsToShow.forEach(st => {
+      const card = document.createElement('div');
+      card.className = 'key-step-card' + (st.id === activeKeyStepId ? ' highlighted' : '');
+      card.id = 'key-dom-' + st.id;
+
+      const stTitle = lang === 'cs' ? (st.title_cs || st.title) : st.title;
+      const header = document.createElement('div');
+      header.className = 'key-step-header';
+      header.innerHTML = `
+        <h3>${t.stepWord} ${st.number}. ${stTitle}</h3>
+        <span class="species-code-tag">#${st.id}</span>
+      `;
+      card.appendChild(header);
+
+      st.leads.forEach(lead => {
+        const row = document.createElement('div');
+        row.className = 'key-lead-row';
+
+        const top = document.createElement('div');
+        top.className = 'key-lead-top';
+        const leftTxt = document.createElement('div');
+        const lText = lang === 'cs' ? (lead.text_cs || lead.text) : lead.text;
+        leftTxt.innerHTML = `<strong>${lead.code}.</strong> ${lText}`;
+        top.appendChild(leftTxt);
+
+        if (lead.next) {
+          const nextBtn = document.createElement('button');
+          nextBtn.type = 'button';
+          nextBtn.className = 'key-goto-btn';
+          nextBtn.textContent = t.gotoStep(lead.next.replace('step', ''));
+          nextBtn.addEventListener('click', () => {
+            activeKeyStepId = lead.next;
+            renderDichotomousKey();
+            const targetEl = document.getElementById('key-dom-' + lead.next);
+            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+          top.appendChild(nextBtn);
+        }
+        row.appendChild(top);
+
+        if (lead.species && lead.species.length > 0) {
+          const strip = document.createElement('div');
+          strip.className = 'key-species-strip';
+          lead.species.forEach(spCode => {
+            const sp = spByCode[spCode];
+            if (!sp || !sp.crops.length) return;
+            const mini = document.createElement('button');
+            mini.type = 'button';
+            mini.className = 'key-sp-mini-card';
+            if (highlightedSpCode === spCode) {
+              mini.style.border = '2px solid #ffc107';
+              mini.style.background = '#fffdf2';
+            }
+            const c0 = useMaskedView ? sp.crops[0].masked_url : sp.crops[0].url;
+            const vTag = sp.herbarium_scheda ? `PRC ${sp.herbarium_scheda.collection_date}` : 'Handrkov';
+            const dispName = lang === 'cs' ? `${sp.name_cs} (<em>${sp.name}</em>)` : `<em>${sp.name}</em> (${sp.name_cs})`;
+            mini.innerHTML = `
+              <img src="${c0}" alt="${sp.name}" loading="lazy" width="54" height="54">
+              <div>
+                <div style="font-weight:700; font-size:0.83rem; color:#2c4a40;">${dispName}</div>
+                <div style="font-size:0.72rem; color:#475569;">Ø ${sp.diam_median_um} µm · ${sp.crops.length} ${t.cropsCount} · ${vTag}</div>
+              </div>
+            `;
+            mini.addEventListener('click', () => openSpeciesModal(sp));
+            strip.appendChild(mini);
+          });
+          row.appendChild(strip);
+        }
+
+        if (lead.unscanned_taxa && lead.unscanned_taxa.length > 0) {
+          const uWrap = document.createElement('div');
+          lead.unscanned_taxa.forEach(ut => {
+            const span = document.createElement('span');
+            span.className = 'unscanned-tag';
+            span.textContent = `${t.alsoInKey} ${ut}`;
+            uWrap.appendChild(span);
+          });
+          row.appendChild(uWrap);
+        }
+
+        card.appendChild(row);
+      });
+
+      keyContainer.appendChild(card);
+    });
+  }
+
+  document.getElementById('key-reset-btn').addEventListener('click', () => {
+    keyShowAll = false;
+    activeKeyStepId = 'step1';
+    highlightedSpCode = null;
+    renderDichotomousKey();
+  });
+
+  document.getElementById('key-showall-btn').addEventListener('click', () => {
+    keyShowAll = true;
+    renderDichotomousKey();
+  });
+
+  // Top-level Mode Switching
+  const browseBtn = document.getElementById('tab-browse-btn');
+  const keyBtn = document.getElementById('tab-key-btn');
+  const quizBtn = document.getElementById('tab-quiz-btn');
+  const browseSec = document.getElementById('atlas-browse-section');
+  const keySec = document.getElementById('atlas-key-section');
+  const quizSec = document.getElementById('atlas-quiz-section');
+
+  let quizScore = 0, quizTotal = 0, quizStreak = 0;
+
+  function setActiveTab(mode) {
+    browseBtn.classList.toggle('active', mode === 'browse');
+    keyBtn.classList.toggle('active', mode === 'key');
+    quizBtn.classList.toggle('active', mode === 'quiz');
+    browseSec.style.display = mode === 'browse' ? 'block' : 'none';
+    keySec.classList.toggle('active', mode === 'key');
+    quizSec.classList.toggle('active', mode === 'quiz');
+  }
+
+  function switchToKeyStep(stepId, spCode) {
+    setActiveTab('key');
+    keyShowAll = true;
+    activeKeyStepId = stepId || 'step1';
+    highlightedSpCode = spCode || null;
+    renderDichotomousKey();
+    const targetEl = document.getElementById('key-dom-' + activeKeyStepId);
+    if (targetEl) {
+      setTimeout(() => targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+    }
+  }
+
+  browseBtn.addEventListener('click', () => setActiveTab('browse'));
+  keyBtn.addEventListener('click', () => {
+    setActiveTab('key');
+    renderDichotomousKey();
+  });
+  quizBtn.addEventListener('click', () => {
+    setActiveTab('quiz');
+    if (quizTotal === 0) nextQuizQuestion();
+  });
+
+  function nextQuizQuestion() {
+    const t = I18N[lang];
+    const pool = atlas.species.filter(s => s.crops && s.crops.length > 0);
+    const answer = pool[Math.floor(Math.random() * pool.length)];
+    const crop = answer.crops[Math.floor(Math.random() * answer.crops.length)];
+
+    const distractorCodes = [];
+    for (const lk of (answer.lookalikes || [])) {
+      if (spByCode[lk.species] && distractorCodes.length < 2) {
+        distractorCodes.push(lk.species);
+      }
+    }
+    while (distractorCodes.length < 3) {
+      const cand = pool[Math.floor(Math.random() * pool.length)].code;
+      if (cand !== answer.code && !distractorCodes.includes(cand)) {
+        distractorCodes.push(cand);
+      }
+    }
+
+    const options = [answer, ...distractorCodes.map(c => spByCode[c])].sort(() => Math.random() - 0.5);
+    document.getElementById('quiz-img').src = crop.url;
+    document.getElementById('quiz-hint').textContent = t.quizHint(crop, answer);
+    document.getElementById('quiz-feedback').textContent = '';
+
+    const choicesEl = document.getElementById('quiz-choices');
+    choicesEl.innerHTML = '';
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-choice-btn';
+      const optLabel = lang === 'cs'
+        ? `<strong>${opt.name_cs}</strong> (<em>${opt.name}</em>) <span class="species-code-tag">${opt.code}</span> <span style="color:#475569; font-size:0.8rem;">(${opt.family_cs}, Ø ~${opt.diam_median_um} µm)</span>`
+        : `<em>${opt.name}</em> (${opt.name_cs}) <span class="species-code-tag">${opt.code}</span> <span style="color:#475569; font-size:0.8rem;">(${opt.family}, Ø ~${opt.diam_median_um} µm)</span>`;
+      btn.innerHTML = optLabel;
+      btn.addEventListener('click', () => {
+        Array.from(choicesEl.children).forEach(b => b.disabled = true);
+        quizTotal += 1;
+        if (opt.code === answer.code) {
+          btn.classList.add('correct');
+          quizScore += 1;
+          quizStreak += 1;
+          document.getElementById('quiz-feedback').innerHTML = t.quizCorrect(answer);
+        } else {
+          btn.classList.add('wrong');
+          quizStreak = 0;
+          Array.from(choicesEl.children).forEach(b => {
+            if (b.textContent.includes(answer.code)) b.classList.add('correct');
+          });
+          document.getElementById('quiz-feedback').innerHTML = t.quizWrong(answer, crop);
+        }
+        document.getElementById('quiz-score').textContent = `${quizScore} / ${quizTotal}`;
+        document.getElementById('quiz-streak').textContent = `${quizStreak}`;
+      });
+      choicesEl.appendChild(btn);
+    });
+  }
+
+  document.getElementById('quiz-next-btn').addEventListener('click', nextQuizQuestion);
+
+  applyLanguageUI();
+})();
+</script>
+```

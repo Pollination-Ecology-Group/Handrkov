@@ -323,13 +323,13 @@ ul ul {
 
 /* ---- Hide wrong-language nav items in left navbar ---- */
 
-/* On Czech pages: hide English items (6th through 10th) */
-html:not([lang="en"]) .navbar-nav:not(.ms-auto) .nav-item:nth-child(n+6) {
+/* On Czech pages: hide English items (7th through 12th) */
+html:not([lang="en"]) .navbar-nav:not(.ms-auto) .nav-item:nth-child(n+7) {
   display: none !important;
 }
 
-/* On English pages: hide Czech items (1st through 5th) */
-html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:nth-child(-n+5) {
+/* On English pages: hide Czech items (1st through 6th) */
+html[lang="en"] .navbar-nav:not(.ms-auto) .nav-item:nth-child(-n+6) {
   display: none !important;
 }
 

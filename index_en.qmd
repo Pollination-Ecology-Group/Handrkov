@@ -175,6 +175,9 @@ As part of this experiment, we will collect stigmas on which we will later ident
 
 ![Stigmas](images/Blizna_Suc_pra_2_round.png){fig-align="center" width="650"}
 
+[🔬 Explore Interactive Handrkov Pollen Atlas & ID Key (32 species, 749 crops)](pollen_atlas_en.qmd){.join-button}
+
+
 
 ### Forks (Vidle)
 

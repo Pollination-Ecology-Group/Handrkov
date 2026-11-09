@@ -5,6 +5,7 @@ project:
   type: website
   resources:
     - ".nojekyll"
+    - "atlas/**"
   render:
     - "*.qmd"
     - "!archive/"
@@ -27,6 +28,8 @@ website:
         text: "Přidej se!"         
       - href: index.qmd#kontakt
         text: "Kontakt"
+      - href: atlas_pylu.qmd
+        text: "Atlas pylu"
       - href: index_en.qmd
         text: "Pollinators of Handrkov"
       - href: index_en.qmd#mission
@@ -37,6 +40,8 @@ website:
         text: "Join Us!"
       - href: index_en.qmd#contact
         text: "Contact"
+      - href: pollen_atlas_en.qmd
+        text: "Pollen Atlas"
     right:
       - text: "CZ"
         href: index.qmd
