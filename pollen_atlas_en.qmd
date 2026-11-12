@@ -808,6 +808,70 @@ page-layout: full
   .m3d-canvas-stage canvas.m3d-gl {
     pointer-events: none;
   }
+  .m3d-methods {
+    margin-bottom: 1.1rem;
+    padding: 0.75rem 1.2rem;
+  }
+  .m3d-methods summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--han-green-dark);
+    font-size: 0.98rem;
+  }
+  .m3d-methods summary span {
+    font-weight: 400;
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-left: 0.4rem;
+  }
+  .m3d-methods-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin: 0.85rem 0 0.6rem;
+  }
+  .m3d-step {
+    background: #f8faf9;
+    border: 1px solid rgba(64, 105, 91, 0.18);
+    border-radius: 10px;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: #334155;
+  }
+  .m3d-step b.m3d-step-n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 999px;
+    background: var(--han-green);
+    color: #fff;
+    font-size: 0.78rem;
+    margin-right: 0.35rem;
+  }
+  .m3d-step h5 {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.35rem;
+    font-size: 0.88rem;
+    color: var(--han-green-dark);
+  }
+  .m3d-methods-body p, .m3d-methods-body li {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #334155;
+  }
+  .m3d-methods-body h6 {
+    margin: 0.8rem 0 0.3rem;
+    font-size: 0.85rem;
+    color: var(--han-green-dark);
+  }
+  .m3d-methods-body ul {
+    margin: 0.2rem 0 0.4rem;
+    padding-left: 1.2rem;
+  }
   .m3d-sch-note {
     font-size: 0.76rem;
     color: #475569;
@@ -1060,6 +1124,10 @@ page-layout: full
   <div id="atlas-3d-section" class="models3d-panel">
     <div id="m3d-kpi-strip" class="m3d-kpi-grid"></div>
     <div id="m3d-mentha-alert" class="m3d-mentha-banner"></div>
+    <details id="m3d-methods" class="m3d-card m3d-methods">
+      <summary id="m3d-methods-sum">Jak modely vznikají</summary>
+      <div id="m3d-methods-body"></div>
+    </details>
 
     <div class="m3d-studio-grid">
       <!-- Left: Interactive 3D Mesh Viewer + Real Microscopy Crop Strip -->
@@ -2140,6 +2208,56 @@ page-layout: full
       },
     };
 
+    // "How the models are made" — text for the public atlas (CZ / EN)
+    const METHODS = {
+      cs: {
+        sum: 'Jak modely vznikají <span>(metodika — kliknutím rozbalíte)</span>',
+        body: () => `
+          <p>Pylové zrno je trojrozměrné, ale v mikroskopu vidíme vždy jen jeho dvourozměrný obrys. Každé zrno leží na sklíčku natočené jinak — jednou ho vidíme z pólu, jindy z boku. Z tisíců takových obrysů jednoho druhu lze zpětně dopočítat, jaký 3D tvar musí zrna mít, aby dala právě takovou směs obrysů.</p>
+          <div class="m3d-methods-steps">
+            <div class="m3d-step"><h5><b class="m3d-step-n">1</b>Obrysy zrn</h5>Ze skenů sklíček (zvětšení 10×, 0,44 µm na pixel) jsme vzali obrysy ${fmt(s3d.n_total_clean_polygons)} pylových zrn ${recon.length} druhů: ${fmt(s3d.n_total_verified_polygons)} ručně zkontrolovaných a další, které na referenčních sklíčkách našla neuronová síť a které velikostí odpovídají ručně ověřeným zrnům. Svraštělá zrna a extrémně odlehlé hodnoty jsme vyřadili.</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">2</b>3D tvar a osy</h5>Počítač vyzkouší čtyři tvary — kouli, protáhlý (prolátní) a zploštělý (oblátní) sféroid a trojosý elipsoid — a pro každý nasimuluje, jaké obrysy by dal při náhodném natočení na sklíčku. Vybere se nejjednodušší tvar, jehož simulované obrysy odpovídají skutečným. Výsledkem jsou délky tří os A, B, C.</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">3</b>Povrch zrna</h5>Nejkulatější obrysy (pohled z pólu) a nejprotáhlejší obrysy (pohled z boku) zarovnáme a zprůměrujeme. Tyto průměrné profily „natáhneme“ na tělo s osami A, B, C — tak se zachytí např. trojlaločný obrys nebo zúžení v rovníku u miříkovitých. Výsledkem je uzavřená 3D síť v mikrometrech (.obj).</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">4</b>Objem a srovnání</h5>Z 3D sítě spočítáme objem, povrch a sféricitu zrna a porovnáme je s běžnými odhady z 2D obrysu (koule z průměru, rotační těleso). Zploštělá a protáhlá zrna mají skutečný objem až zhruba o čtvrtinu menší, než by plynulo z 2D obrysu.</div>
+          </div>
+          <h6>Schematická morfologie</h6>
+          <p>Apertury (kolpy, póry) a ornamentiku (ostny, síťování, rýhování) v obrysech ze skenů 10× vidět nejsou. V režimu <em>Schematická morfologie</em> je proto dokreslujeme na změřené tělo podle určovacího klíče a typických rozměrů z palynologické literatury. Počet a typ apertur odpovídá klíči; jejich přesná velikost a hustota ostnů jsou přibližné. Tvar a velikost těla zrna jsou vždy změřené.</p>
+          <h6>Omezení</h6>
+          <ul>
+            <li>Druhy s méně než ${LOW_N} ručně ověřenými zrny jsou označeny ⚠️ jako orientační.</li>
+            <li><em>Mentha arvensis</em> model nemá: na jejích sklíčkách nebyla žádná pylová zrna.</li>
+            <li>Zrna z herbářových (lihových) a terénních (KOH) preparátů jsou zpracována společně; preparace může velikost zrn mírně ovlivnit.</li>
+            <li>Osy A ≥ B ≥ C jsou průměrem druhu, jednotlivá zrna se liší. Nejistota poměrů os (±) je odhadnuta opakovaným výpočtem s náhodně převzorkovanými sklíčky.</li>
+          </ul>
+          <details style="margin-top:0.4rem;"><summary style="font-size:0.82rem; font-weight:600; color:var(--han-green-dark);">Technické podrobnosti</summary>
+            <p style="margin-top:0.4rem;">Stereologický model: pro každý tvar se simuluje rozdělení (log ekvivalentního průměru, ½ log poměru stran) obrysů při náhodné orientaci s parametrem usazování na sklíčku (zrna mají sklon ležet „naplocho“), biologickou variabilitou velikosti a šumem obrysu. Parametry se fitují minimalizací Sliced Wassersteinovy vzdálenosti k pozorovanému rozdělení (diferenciální evoluce); složitější tvar se přijme jen, když zlepší shodu alespoň o 8 %. Nejistota: 20× bootstrap přes sklíčka. Absolutní měřítko je ukotveno na ručně ověřená zrna. Povrch: 30 % nejkulatějších a 30 % nejprotáhlejších obrysů (max. 200 na skupinu), zarovnání podle hlavních os, radiální profil vyhlazený do 16. harmonické. Objem: objem elipsoidu A·B·C × tvarová korekce sítě (divergenční věta). Kód: <code>scripts/06_reconstruct_3d_pollen.py</code> a <code>07_schematic_morphology.py</code> v repozitáři Han_YOLO_pollen.</p>
+          </details>`,
+      },
+      en: {
+        sum: 'How the models are made <span>(methods — click to expand)</span>',
+        body: () => `
+          <p>A pollen grain is three-dimensional, but under the microscope we only ever see its two-dimensional outline. Every grain lies on the slide at a different angle — sometimes seen from the pole, sometimes from the side. From thousands of such outlines of one species we can work back to the 3D shape the grains must have to produce exactly that mix of outlines.</p>
+          <div class="m3d-methods-steps">
+            <div class="m3d-step"><h5><b class="m3d-step-n">1</b>Grain outlines</h5>From slide scans (10× magnification, 0.44 µm per pixel) we took the outlines of ${fmt(s3d.n_total_clean_polygons)} pollen grains of ${recon.length} species: ${fmt(s3d.n_total_verified_polygons)} checked by hand, plus grains that a neural network found on the reference slides and whose size matches the hand-checked ones. Shrivelled grains and extreme outliers were removed.</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">2</b>3D shape and axes</h5>The computer tries four shapes — a sphere, an elongated (prolate) and a flattened (oblate) spheroid, and a three-axis ellipsoid — and simulates the outlines each would give when lying at random angles on a slide. The simplest shape whose simulated outlines match the real ones is chosen. The result is the length of the three axes A, B, C.</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">3</b>Grain surface</h5>The roundest outlines (pole view) and the most elongated outlines (side view) are aligned and averaged. These average profiles are wrapped onto a body with axes A, B, C, which keeps features such as a three-lobed outline or the waist of Apiaceae grains. The result is a closed 3D mesh in micrometres (.obj).</div>
+            <div class="m3d-step"><h5><b class="m3d-step-n">4</b>Volume and comparison</h5>From the 3D mesh we compute the grain's volume, surface area and sphericity, and compare them with the usual estimates from the 2D outline (a sphere from the diameter, a body of revolution). Flattened and elongated grains have a true volume up to about a quarter smaller than the 2D outline suggests.</div>
+          </div>
+          <h6>Schematic morphology</h6>
+          <p>Apertures (colpi, pores) and ornamentation (spines, reticulum, striae) are not visible in outlines from 10× scans. In <em>Schematic morphology</em> mode we therefore draw them onto the measured body, following the identification key and typical sizes from the palynological literature. The number and type of apertures follow the key; their exact size and the spine density are approximate. The shape and size of the grain body are always measured.</p>
+          <h6>Limitations</h6>
+          <ul>
+            <li>Species with fewer than ${LOW_N} hand-checked grains are marked ⚠️ as indicative.</li>
+            <li><em>Mentha arvensis</em> has no model: its slides contained no pollen grains.</li>
+            <li>Grains from herbarium (ethanol) and field (KOH) preparations are pooled; preparation can slightly change grain size.</li>
+            <li>The axes A ≥ B ≥ C describe the species average; individual grains vary. The uncertainty of the axis ratios (±) comes from repeating the fit on randomly resampled slides.</li>
+          </ul>
+          <details style="margin-top:0.4rem;"><summary style="font-size:0.82rem; font-weight:600; color:var(--han-green-dark);">Technical details</summary>
+            <p style="margin-top:0.4rem;">Stereological model: for each shape we simulate the distribution of (log equivalent diameter, ½ log aspect ratio) of outlines under random orientation, with a slide-settling parameter (grains tend to lie "flat"), biological size variation and outline noise. Parameters are fitted by minimising the Sliced Wasserstein distance to the observed distribution (differential evolution); a more complex shape is accepted only if it improves the fit by at least 8 %. Uncertainty: 20× bootstrap over slides. The absolute scale is anchored to hand-checked grains. Surface: the 30 % roundest and 30 % most elongated outlines (max. 200 per group), aligned on their principal axes, radial profile smoothed to the 16th harmonic. Volume: ellipsoid volume A·B·C × mesh shape correction (divergence theorem). Code: <code>scripts/06_reconstruct_3d_pollen.py</code> and <code>07_schematic_morphology.py</code> in the Han_YOLO_pollen repository.</p>
+          </details>`,
+      },
+    };
+
     const $ = id => document.getElementById(id);
     const canvas = $('han-canvas-3d');
     const ctx = canvas.getContext('2d');
@@ -2426,6 +2544,7 @@ page-layout: full
       $('m3d-dl-zip').textContent = t.zip(recon.length);
       if (s3d.mesh_zip_url) $('m3d-dl-zip').href = s3d.mesh_zip_url;
       $('m3d-open-modal-btn').textContent = t.detail;
+      $('m3d-methods-sum').innerHTML = METHODS[lang].sum; $('m3d-methods-body').innerHTML = METHODS[lang].body();
       $('m3d-mode-sch').textContent = t.modeSch; $('m3d-mode-meas').textContent = t.modeMeas; $('m3d-dl-sch').textContent = t.dlSch;
       $('m3d-crops-lbl').textContent = t.cropsLbl;
       $('m3d-vol-title').textContent = t.volTitle;
