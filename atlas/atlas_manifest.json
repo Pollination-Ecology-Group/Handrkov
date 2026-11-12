@@ -740,6 +740,25 @@
           1.0212
         ],
         "obj_url": "../atlas/meshes/Ach_pta.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "echinate",
+        "note": "~12 spines in polar view (atlas key); Anthemis-type",
+        "colpus_len_frac": 0.55,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 2.5,
+        "orn_base_um": 2.2,
+        "orn_spacing_um": 6.7,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.5923,
+        "polar_axis": "z"
       }
     },
     {
@@ -1472,6 +1491,25 @@
           0.9946
         ],
         "obj_url": "../atlas/meshes/Ang_syl.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "microreticulate",
+        "note": "Apiaceae pererect; long narrow colpi; lalongate endopori",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 2.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.6,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6638,
+        "polar_axis": "x"
       }
     },
     {
@@ -2133,6 +2171,25 @@
           1.0293
         ],
         "obj_url": "../atlas/meshes/Bet_off.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "Lamiaceae 3-colpate",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.8,
+        "orn_base_um": 0.35,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6268,
+        "polar_axis": "z"
       }
     },
     {
@@ -2904,6 +2961,25 @@
           1.023
         ],
         "obj_url": "../atlas/meshes/Cen_jac.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "scabrate",
+        "note": "Centaurea jacea-type; micro-echinate/scabrate",
+        "colpus_len_frac": 0.7,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.5,
+        "orn_base_um": 0.5,
+        "orn_spacing_um": 1.5,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.4578,
+        "polar_axis": "z"
       }
     },
     {
@@ -3405,6 +3481,25 @@
           1.0345
         ],
         "obj_url": "../atlas/meshes/Cir_pal.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "echinate",
+        "note": ">15 prominent spines in polar view (atlas key)",
+        "colpus_len_frac": 0.55,
+        "colpus_width_um": 1.8,
+        "pore_diam_um": 4.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 4.5,
+        "orn_base_um": 3.5,
+        "orn_spacing_um": 10.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.3332,
+        "polar_axis": "z"
       }
     },
     {
@@ -4141,6 +4236,25 @@
           0.9865
         ],
         "obj_url": "../atlas/meshes/Dau_car.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "microreticulate",
+        "note": "Apiaceae erect; lalongate endopori",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 2.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.5,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6895,
+        "polar_axis": "x"
       }
     },
     {
@@ -4765,6 +4879,25 @@
           1.0322
         ],
         "obj_url": "../atlas/meshes/Gal_alb.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "representative count from the 6–9 colpi range",
+        "colpus_len_frac": 0.7,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.6,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 8,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "x"
       }
     },
     {
@@ -5501,6 +5634,25 @@
           1.0268
         ],
         "obj_url": "../atlas/meshes/Gal_uli.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "representative count from the 6–9 colpi range",
+        "colpus_len_frac": 0.7,
+        "colpus_width_um": 0.9,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.5,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 7,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -6237,6 +6389,25 @@
           1.0204
         ],
         "obj_url": "../atlas/meshes/Gal_ver.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "representative count from the 6–9 colpi range",
+        "colpus_len_frac": 0.7,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.6,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 8,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -6969,6 +7140,25 @@
           1.0069
         ],
         "obj_url": "../atlas/meshes/Her_sph.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "microreticulate",
+        "note": "large Apiaceae; reticulate/clavate",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 3.5,
+        "pore_lalongate": 2.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.8,
+        "orn_base_um": 0.35,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.8489,
+        "polar_axis": "x"
       }
     },
     {
@@ -7688,6 +7878,25 @@
           1.0083
         ],
         "obj_url": "../atlas/meshes/Hol_lan.obj"
+      },
+      "schematic": {
+        "aperture_kind": "monoporate",
+        "ornament": "scabrate",
+        "note": "grass pore with annulus and operculum",
+        "colpus_len_frac": 0.0,
+        "colpus_width_um": 0.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 1.0,
+        "annulus_um": 2.0,
+        "orn_size_um": 0.3,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 1.0,
+        "n_apertures": 1,
+        "n_pseudocolpi": 0,
+        "operculum": 1,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -8424,6 +8633,25 @@
           1.0156
         ],
         "obj_url": "../atlas/meshes/Hyp_per.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "microreticulate",
+        "note": "long colpi; fine reticulum",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 2.0,
+        "pore_lalongate": 1.5,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.7,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.61,
+        "polar_axis": "z"
       }
     },
     {
@@ -8861,6 +9089,25 @@
           1.017
         ],
         "obj_url": "../atlas/meshes/Lat_pra.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "reticulate",
+        "note": "coarse reticulum; large round pores",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 5.0,
+        "pore_lalongate": 1.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 1.6,
+        "orn_base_um": 0.6,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.7793,
+        "polar_axis": "z"
       }
     },
     {
@@ -9457,6 +9704,25 @@
           1.0131
         ],
         "obj_url": "../atlas/meshes/Leo_his.obj"
+      },
+      "schematic": {
+        "aperture_kind": "fenestrate",
+        "ornament": "echinolophate",
+        "note": "lacunae framed by spiny ridges (Cichorioideae)",
+        "colpus_len_frac": 0.0,
+        "colpus_width_um": 0.0,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 2.0,
+        "orn_base_um": 1.6,
+        "orn_spacing_um": 3.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 14,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -10193,6 +10459,25 @@
           1.0363
         ],
         "obj_url": "../atlas/meshes/Leu_vul.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "echinate",
+        "note": "~12 tall spines in polar view (atlas key)",
+        "colpus_len_frac": 0.55,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 3.0,
+        "orn_base_um": 2.6,
+        "orn_spacing_um": 9.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6022,
+        "polar_axis": "z"
       }
     },
     {
@@ -10915,6 +11200,25 @@
           1.0086
         ],
         "obj_url": "../atlas/meshes/Lyc_eur.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "Mentha-type hexacolpate",
+        "colpus_len_frac": 0.75,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.8,
+        "orn_base_um": 0.35,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 6,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -11637,6 +11941,25 @@
           1.0101
         ],
         "obj_url": "../atlas/meshes/Lys_vul.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "microreticulate",
+        "note": "lalongate endoapertures",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 2.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.5,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.7338,
+        "polar_axis": "z"
       }
     },
     {
@@ -12369,6 +12692,25 @@
           1.0158
         ],
         "obj_url": "../atlas/meshes/Lyt_sal.obj"
+      },
+      "schematic": {
+        "aperture_kind": "heterocolpate",
+        "ornament": "striate",
+        "note": "3 colpori alternating with 3 pseudocolpi",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 1.0,
+        "orn_base_um": 0.5,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 3,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -13067,6 +13409,25 @@
           1.0076
         ],
         "obj_url": "../atlas/meshes/Mol_cae.obj"
+      },
+      "schematic": {
+        "aperture_kind": "monoporate",
+        "ornament": "scabrate",
+        "note": "grass pore with annulus and operculum",
+        "colpus_len_frac": 0.0,
+        "colpus_width_um": 0.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 1.0,
+        "annulus_um": 2.0,
+        "orn_size_um": 0.3,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 1.0,
+        "n_apertures": 1,
+        "n_pseudocolpi": 0,
+        "operculum": 1,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -13792,6 +14153,25 @@
           1.0052
         ],
         "obj_url": "../atlas/meshes/Pim_sax.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "psilate",
+        "note": "colpi 1/2–2/3 of polar axis (atlas key)",
+        "colpus_len_frac": 0.6,
+        "colpus_width_um": 1.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 2.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.0,
+        "orn_base_um": 0.0,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.733,
+        "polar_axis": "x"
       }
     },
     {
@@ -14517,6 +14897,25 @@
           1.0157
         ],
         "obj_url": "../atlas/meshes/Pla_lan.obj"
+      },
+      "schematic": {
+        "aperture_kind": "periporate",
+        "ornament": "verrucate",
+        "note": "5–14 annulate pores; representative 10",
+        "colpus_len_frac": 0.0,
+        "colpus_width_um": 0.0,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 1.0,
+        "annulus_um": 1.0,
+        "orn_size_um": 1.0,
+        "orn_base_um": 0.5,
+        "orn_spacing_um": 1.9,
+        "n_apertures": 10,
+        "n_pseudocolpi": 0,
+        "operculum": 1,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -15253,6 +15652,25 @@
           1.0212
         ],
         "obj_url": "../atlas/meshes/Pot_ere.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "striate",
+        "note": "fingerprint striae; opercula over pores",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 1.0,
+        "orn_base_um": 0.5,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 1,
+        "n_lacunae": 0,
+        "phase_rad": 0.6241,
+        "polar_axis": "x"
       }
     },
     {
@@ -15975,6 +16393,25 @@
           1.0085
         ],
         "obj_url": "../atlas/meshes/Ran_acr.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "scabrate",
+        "note": "no pores",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 2.0,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.4,
+        "orn_base_um": 0.4,
+        "orn_spacing_um": 1.5,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.7768,
+        "polar_axis": "x"
       }
     },
     {
@@ -16711,6 +17148,25 @@
           1.0189
         ],
         "obj_url": "../atlas/meshes/Ran_fla.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "scabrate",
+        "note": "no pores",
+        "colpus_len_frac": 0.75,
+        "colpus_width_um": 1.8,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.35,
+        "orn_base_um": 0.35,
+        "orn_spacing_um": 1.3,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6644,
+        "polar_axis": "z"
       }
     },
     {
@@ -17447,6 +17903,25 @@
           1.0069
         ],
         "obj_url": "../atlas/meshes/San_off.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "scabrate",
+        "note": "6-colporate (atlas key)",
+        "colpus_len_frac": 0.6,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 2.5,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.3,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 1.2,
+        "n_apertures": 6,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.0,
+        "polar_axis": "z"
       }
     },
     {
@@ -18207,6 +18682,25 @@
           1.0264
         ],
         "obj_url": "../atlas/meshes/Scu_gal.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microreticulate",
+        "note": "Lamiaceae 3-colpate",
+        "colpus_len_frac": 0.85,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.7,
+        "orn_base_um": 0.3,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.5682,
+        "polar_axis": "z"
       }
     },
     {
@@ -18733,6 +19227,25 @@
           1.0174
         ],
         "obj_url": "../atlas/meshes/Suc_pra.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colpate",
+        "ornament": "microechinate",
+        "note": "very large; thick exine; microechinate",
+        "colpus_len_frac": 0.35,
+        "colpus_width_um": 3.0,
+        "pore_diam_um": 0.0,
+        "pore_lalongate": 0.0,
+        "annulus_um": 0.0,
+        "orn_size_um": 0.9,
+        "orn_base_um": 0.9,
+        "orn_spacing_um": 2.6,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.3807,
+        "polar_axis": "z"
       }
     },
     {
@@ -19451,6 +19964,25 @@
           1.0398
         ],
         "obj_url": "../atlas/meshes/Tan_vul.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "echinate",
+        "note": "~12 spines in polar view (atlas key)",
+        "colpus_len_frac": 0.55,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 2.5,
+        "orn_base_um": 2.2,
+        "orn_spacing_um": 7.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.593,
+        "polar_axis": "z"
       }
     },
     {
@@ -20187,6 +20719,25 @@
           1.0196
         ],
         "obj_url": "../atlas/meshes/Tri_hyb.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "reticulate",
+        "note": "fine reticulum (<2 µm)",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 1.1,
+        "orn_base_um": 0.45,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6272,
+        "polar_axis": "z"
       }
     },
     {
@@ -20896,6 +21447,25 @@
           1.0174
         ],
         "obj_url": "../atlas/meshes/Tri_pra.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "reticulate",
+        "note": "coarse reticulum (>2 µm brochi)",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.5,
+        "pore_diam_um": 4.0,
+        "pore_lalongate": 1.2,
+        "annulus_um": 0.0,
+        "orn_size_um": 2.4,
+        "orn_base_um": 0.7,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6954,
+        "polar_axis": "x"
       }
     },
     {
@@ -21543,6 +22113,25 @@
           1.012
         ],
         "obj_url": "../atlas/meshes/Tri_rep.obj"
+      },
+      "schematic": {
+        "aperture_kind": "colporate",
+        "ornament": "reticulate",
+        "note": "fine reticulum (<2 µm)",
+        "colpus_len_frac": 0.8,
+        "colpus_width_um": 1.2,
+        "pore_diam_um": 3.0,
+        "pore_lalongate": 1.3,
+        "annulus_um": 0.0,
+        "orn_size_um": 1.1,
+        "orn_base_um": 0.45,
+        "orn_spacing_um": 0.0,
+        "n_apertures": 3,
+        "n_pseudocolpi": 0,
+        "operculum": 0,
+        "n_lacunae": 0,
+        "phase_rad": 0.6332,
+        "polar_axis": "z"
       }
     }
   ],
@@ -22488,6 +23077,10 @@
         "reason_en": "Excluded from 3D reconstruction: all 6 field slides (Men_arv_1_A to 2_C) contained sterile anthers with 0 verified pollen grains (only 26 anther debris objects).",
         "reason_cs": "Vyřazeno z 3D rekonstrukce: všech 6 terénních sklíček (Men_arv_1_A až 2_C) obsahovalo sterilní prašníky s 0 verifikovanými pylovými zrny (pouze 26 úlomků pletiv)."
       }
-    ]
+    ],
+    "schematic_note": {
+      "en": "Apertures and ornamentation are schematic: drawn from the identification key and typical literature sizes on the measured grain body. They were not measured in the scans.",
+      "cs": "Apertury a ornamentika jsou schematické: zakresleny podle určovacího klíče a typických literárních rozměrů na změřené tělo zrna. Ve skenech měřeny nebyly."
+    }
   }
 }

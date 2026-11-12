@@ -798,10 +798,30 @@ page-layout: full
     overflow: hidden;
   }
   .m3d-canvas-stage canvas {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;
     cursor: grab;
+  }
+  .m3d-canvas-stage canvas.m3d-gl {
+    pointer-events: none;
+  }
+  .m3d-sch-note {
+    font-size: 0.76rem;
+    color: #475569;
+    margin-top: 0.45rem;
+    line-height: 1.4;
+  }
+  .m3d-sch-note .m3d-sch-tag {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: 700;
+    margin-right: 0.3rem;
   }
   .m3d-canvas-stage canvas:active {
     cursor: grabbing;
@@ -1055,9 +1075,17 @@ page-layout: full
           </div>
         </div>
 
+        <div class="m3d-toolbar" style="margin:0 0 0.5rem 0;">
+          <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
+            <button type="button" class="m3d-btn active" id="m3d-mode-sch">Schematická morfologie</button>
+            <button type="button" class="m3d-btn" id="m3d-mode-meas">Měřený tvar</button>
+          </div>
+          <a id="m3d-dl-sch" class="m3d-btn" href="#">⬇ schéma .obj</a>
+        </div>
         <div class="m3d-canvas-stage">
           <canvas id="han-canvas-3d" width="600" height="360"></canvas>
         </div>
+        <div id="m3d-sch-note" class="m3d-sch-note"></div>
 
         <div class="m3d-toolbar">
           <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
@@ -1997,7 +2025,7 @@ page-layout: full
 
   // ---------------------------------------------------------------------------
   // 3D MODELS & POLLEN VOLUME STUDIO
-  // Meshes: closed .obj (µm, z = polar axis C) written by scripts/06_reconstruct_3d_pollen.py
+  // Meshes: closed .obj (µm; polar axis z for sphere/oblate, x for prolate/triaxial) from scripts/06_reconstruct_3d_pollen.py
   // ---------------------------------------------------------------------------
   (function init3D() {
     const s3d = atlas.models_3d_summary || {};
@@ -2046,6 +2074,19 @@ page-layout: full
         detail: '🔍 Detail & doklad',
         noFetch: 'Síť .obj nelze načíst — zobrazen elipsoid z os A, B, C.',
         scale: '10 µm',
+        schTag: 'SCHÉMA – apertury a ornamentika nejsou měřené',
+        modeSch: 'Schematická morfologie', modeMeas: 'Měřený tvar', dlSch: '⬇ schéma .obj',
+        noGL: 'Prohlížeč nepodporuje WebGL – zobrazen jen měřený tvar.',
+        ap: (t) => ({ colporate: `${t.n_apertures} kolporátní apertury (kolpy s vnitřními póry)`, colpate: `${t.n_apertures} kolpátní apertury (kolpy bez pórů)`,
+          heterocolpate: `${t.n_apertures} kolpory střídající se s ${t.n_pseudocolpi} pseudokolpy`, monoporate: '1 pór s prstencem (anulem) a víčkem (operkulem)',
+          periporate: `${t.n_apertures} pórů s anulem po celém povrchu (periporátní)`, fenestrate: `${t.n_lacunae} lakun (okének), ve 3 rovníkových jsou póry` })[t.aperture_kind],
+        orn: (t) => ({ echinate: `echinátní – trny ~${fmt(t.orn_size_um, 1)} µm`, microechinate: `mikroechinátní – drobné ostny ~${fmt(t.orn_size_um, 1)} µm`,
+          echinolophate: 'echinolofátní – ostnité hřebeny mezi lakunami', verrucate: `verukátní – bradavky ~${fmt(t.orn_size_um, 1)} µm`,
+          scabrate: 'skabrátní – zrnitý povrch (< 1 µm)', reticulate: `retikulátní – lumina ~${fmt(t.orn_size_um, 1)} µm`,
+          microreticulate: `mikroretikulátní – lumina ~${fmt(t.orn_size_um, 1)} µm`, striate: `striátní – rýhy ~${fmt(t.orn_size_um, 1)} µm`,
+          psilate: 'psilátní – hladký povrch' })[t.ornament],
+        schNote: (t) => `<span class="m3d-sch-tag">SCHÉMA</span>Tvar a velikost těla jsou změřené; apertury a ornamentika jsou zakresleny podle určovacího klíče a typických literárních rozměrů (ve skenech 10× je nelze změřit). <strong>Apertury:</strong> ${T3.cs.ap(t)}. <strong>Ornamentika:</strong> ${T3.cs.orn(t)}.${t.note ? ' <em>(' + t.note + ')</em>' : ''}`,
+        measNote: '<span class="m3d-sch-tag" style="background:#dcfce7;color:#166534;">MĚŘENO</span>Průměrný tvar z obrysů zrn ve skenech 10× (0,44 µm/px). Apertury a ornamentika jsou pod rozlišením obrysů, proto tu chybí.',
       },
       en: {
         tab: `🧊 3D models & pollen volume (${recon.length})`,
@@ -2083,6 +2124,19 @@ page-layout: full
         detail: '🔍 Details & voucher',
         noFetch: 'Could not load the .obj mesh — showing the ellipsoid from axes A, B, C.',
         scale: '10 µm',
+        schTag: 'SCHEMATIC – apertures & ornament not measured',
+        modeSch: 'Schematic morphology', modeMeas: 'Measured shape', dlSch: '⬇ schematic .obj',
+        noGL: 'Your browser has no WebGL – showing the measured shape only.',
+        ap: (t) => ({ colporate: `${t.n_apertures} colporate apertures (colpi with inner pores)`, colpate: `${t.n_apertures} colpate apertures (colpi, no pores)`,
+          heterocolpate: `${t.n_apertures} colpori alternating with ${t.n_pseudocolpi} pseudocolpi`, monoporate: '1 pore with a ring (annulus) and lid (operculum)',
+          periporate: `${t.n_apertures} annulate pores over the whole surface (periporate)`, fenestrate: `${t.n_lacunae} lacunae (windows), pores in the 3 equatorial ones` })[t.aperture_kind],
+        orn: (t) => ({ echinate: `echinate – spines ~${fmt(t.orn_size_um, 1)} µm`, microechinate: `microechinate – small spinules ~${fmt(t.orn_size_um, 1)} µm`,
+          echinolophate: 'echinolophate – spiny ridges between lacunae', verrucate: `verrucate – warts ~${fmt(t.orn_size_um, 1)} µm`,
+          scabrate: 'scabrate – granular surface (< 1 µm)', reticulate: `reticulate – lumina ~${fmt(t.orn_size_um, 1)} µm`,
+          microreticulate: `microreticulate – lumina ~${fmt(t.orn_size_um, 1)} µm`, striate: `striate – striae ~${fmt(t.orn_size_um, 1)} µm`,
+          psilate: 'psilate – smooth surface' })[t.ornament],
+        schNote: (t) => `<span class="m3d-sch-tag">SCHEMATIC</span>Body shape and size are measured; apertures and ornamentation are drawn from the identification key with typical literature sizes (they cannot be measured in the 10× scans). <strong>Apertures:</strong> ${T3.en.ap(t)}. <strong>Ornamentation:</strong> ${T3.en.orn(t)}.${t.note ? ' <em>(' + t.note + ')</em>' : ''}`,
+        measNote: '<span class="m3d-sch-tag" style="background:#dcfce7;color:#166534;">MEASURED</span>Average shape from grain outlines in 10× scans (0.44 µm/px). Apertures and ornamentation are below the resolution of the outlines, so they are absent here.',
       },
     };
 
@@ -2090,7 +2144,7 @@ page-layout: full
     const canvas = $('han-canvas-3d');
     const ctx = canvas.getContext('2d');
     const meshCache = {};
-    const st = { sp: recon[0], mesh: null, yaw: 0.6, pitch: -0.45, spin: true, wire: true, axes: true, ghost: true, visible: false, drag: null, msg: '' };
+    const st = { sp: recon[0], mesh: null, yaw: 0.6, pitch: -0.45, spin: true, wire: true, axes: true, ghost: true, visible: false, drag: null, msg: '', mode: 'sch' };
     st.wire = false; $('m3d-btn-wire').classList.remove('active');
 
     // --- mesh loading -------------------------------------------------------
@@ -2178,14 +2232,16 @@ page-layout: full
       // fixed µm scale per species: the mesh fills ~70 % of the shorter side
       const scale = 0.36 * Math.min(W, H) / mesh.R;
       const cy = Math.cos(st.yaw), sy = Math.sin(st.yaw), cp = Math.cos(st.pitch), sp_ = Math.sin(st.pitch);
-      const P = mesh.V.map(([x, y, z]) => {
+      const useGL = st.mode === 'sch' && SCH.render(st.sp.code, W, H, scale, st.yaw, st.pitch);
+      if (!useGL) SCH.hide();
+      const P = useGL ? [] : mesh.V.map(([x, y, z]) => {
         const x1 = cy * x - sy * y, y1 = sy * x + cy * y; // yaw about z (polar axis)
         const y2 = cp * y1 - sp_ * z, z2 = sp_ * y1 + cp * z; // pitch about screen x
         return [W / 2 + x1 * scale, H / 2 - z2 * scale, y2];
       });
       const L = [-0.35, 0.55, -0.75]; const ln = Math.hypot(...L); L[0] /= ln; L[1] /= ln; L[2] /= ln;
       const faces = [];
-      for (const f of mesh.F) {
+      if (!useGL) for (const f of mesh.F) {
         const a = P[f[0]], b = P[f[1]], c = P[f[2]];
         const ux = b[0] - a[0], uy = b[1] - a[1], vx = c[0] - a[0], vy = c[1] - a[1];
         const area2 = ux * vy - uy * vx; // screen-space orientation (y down)
@@ -2228,6 +2284,11 @@ page-layout: full
       ctx.fillStyle = '#f8fafc'; ctx.fillRect(bx, by, bar, 3 * dpr);
       ctx.font = `${11 * dpr}px system-ui, sans-serif`; ctx.fillText(T3[lang].scale, bx, by - 6 * dpr);
       if (st.msg) { ctx.fillStyle = '#fde68a'; ctx.fillText(st.msg, bx, 18 * dpr); }
+      if (useGL) {
+        ctx.font = `bold ${11 * dpr}px system-ui, sans-serif`; ctx.fillStyle = '#fde68a';
+        const tag = T3[lang].schTag, tw = ctx.measureText(tag).width;
+        ctx.fillText(tag, W - tw - 12 * dpr, 18 * dpr);
+      }
     }
     let raf = null, lastT = 0;
     function loop(t) {
@@ -2275,6 +2336,7 @@ page-layout: full
       const mesh = await loadMesh(sp);
       if (st.sp !== sp) return;
       st.mesh = mesh; st.msg = mesh.fromObj ? '' : T3[lang].noFetch;
+      if (st.mode === 'sch') SCH.prepare(sp, mesh);
       kick(); draw();
     }
 
@@ -2284,6 +2346,7 @@ page-layout: full
       $('m3d-sp-sub').innerHTML = t.sub(sp) + (isLowN(sp) ? `<br><span style="color:#b45309; font-weight:600;">${t.lowN(m.n_verified_grains)}</span>` : '');
       const badge = $('m3d-sp-badge');
       badge.className = `m3d-badge ${m.model_3d}`; badge.textContent = t.modelLbl[m.model_3d] || m.model_3d;
+      renderSchNote();
       $('m3d-dl-obj').href = m.obj_url; $('m3d-dl-obj').setAttribute('download', `${sp.code}.obj`);
 
       const strip = $('m3d-crops-strip'); strip.innerHTML = '';
@@ -2363,6 +2426,7 @@ page-layout: full
       $('m3d-dl-zip').textContent = t.zip(recon.length);
       if (s3d.mesh_zip_url) $('m3d-dl-zip').href = s3d.mesh_zip_url;
       $('m3d-open-modal-btn').textContent = t.detail;
+      $('m3d-mode-sch').textContent = t.modeSch; $('m3d-mode-meas').textContent = t.modeMeas; $('m3d-dl-sch').textContent = t.dlSch;
       $('m3d-crops-lbl').textContent = t.cropsLbl;
       $('m3d-vol-title').textContent = t.volTitle;
       $('m3d-scatter-title').textContent = t.scatterTitle;
@@ -2383,10 +2447,409 @@ page-layout: full
     $('lang-en-btn').addEventListener('click', renderAll);
     threeDBtn.addEventListener('click', () => setActiveTab('3d'));
 
+    // --- SCHEMATIC MORPHOLOGY (WebGL) ---------------------------------------
+    // Apertures & ornamentation from sp.schematic (data_references/pollen_schematic_traits.csv via
+    // scripts/07_schematic_morphology.py) drawn on the measured body. Illustrative, not measured.
+    const SCH = (function () {
+      const stage = canvas.parentElement;
+      const glc = document.createElement('canvas');
+      glc.className = 'm3d-gl';
+      stage.insertBefore(glc, canvas);
+      let gl = null, isGL2 = false;
+      try {
+        gl = glc.getContext('webgl2', { antialias: true, premultipliedAlpha: false });
+        isGL2 = !!gl;
+        if (!gl) {
+          gl = glc.getContext('webgl', { antialias: true, premultipliedAlpha: false }) || glc.getContext('experimental-webgl');
+          if (gl && !gl.getExtension('OES_element_index_uint')) gl = null;
+        }
+      } catch (e) { gl = null; }
+      const cache = {};
+      let prog = null, loc = {};
+
+      const VS = `
+        attribute vec3 aPos; attribute vec3 aNrm; attribute vec3 aDir; attribute vec2 aMask;
+        uniform vec4 uRot; uniform vec3 uScl;
+        varying vec3 vN; varying vec3 vDir; varying vec2 vMask;
+        void main() {
+          float cy = uRot.x, sy = uRot.y, cp = uRot.z, sp = uRot.w;
+          vec3 p = aPos; vec3 n = aNrm;
+          float x1 = cy * p.x - sy * p.y, y1 = sy * p.x + cy * p.y;
+          float y2 = cp * y1 - sp * p.z, z2 = sp * y1 + cp * p.z;
+          float nx1 = cy * n.x - sy * n.y, ny1 = sy * n.x + cy * n.y;
+          float ny2 = cp * ny1 - sp * n.z, nz2 = sp * ny1 + cp * n.z;
+          vN = vec3(nx1, nz2, -ny2);
+          vDir = aDir; vMask = aMask;
+          gl_Position = vec4(x1 * uScl.x, z2 * uScl.y, y2 * uScl.z, 1.0);
+        }`;
+      const FS = `
+        #ifdef GL_FRAGMENT_PRECISION_HIGH
+        precision highp float;
+        #else
+        precision mediump float;
+        #endif
+        varying vec3 vN; varying vec3 vDir; varying vec2 vMask;
+        uniform int uOrn; uniform vec3 uOP;
+        vec3 hash3(vec3 p) {
+          p = vec3(dot(p, vec3(127.1, 311.7, 74.7)), dot(p, vec3(269.5, 183.3, 246.1)), dot(p, vec3(113.5, 271.9, 124.6)));
+          return fract(sin(p) * 43758.5453);
+        }
+        vec2 worley(vec3 x) {
+          vec3 i = floor(x), f = fract(x); float d1 = 8.0, d2 = 8.0;
+          for (int a = -1; a <= 1; a++) for (int b = -1; b <= 1; b++) for (int c = -1; c <= 1; c++) {
+            vec3 g = vec3(float(a), float(b), float(c));
+            vec3 r = g + hash3(i + g) - f; float d = length(r);
+            if (d < d1) { d2 = d1; d1 = d; } else if (d < d2) { d2 = d; }
+          }
+          return vec2(d1, d2);
+        }
+        void main() {
+          vec3 n = normalize(vN);
+          if (n.z < 0.0) n = -n; // visible fragments face the viewer
+          vec3 L = normalize(vec3(-0.45, 0.6, 0.75));
+          float membrane = vMask.x, feature = vMask.y;
+          // features (spines, verrucae) get half-Lambert so tip-on spines do not read as holes
+          float lam = mix(max(dot(n, L), 0.0), 0.5 + 0.5 * dot(n, L), feature);
+          float spec = pow(max(dot(n, normalize(L + vec3(0.0, 0.0, 1.0))), 0.0), 24.0);
+          vec3 exine = vec3(0.93, 0.78, 0.42);
+          vec3 col = exine;
+          float orn = 1.0;
+          if (feature < 0.5 && membrane < 0.98) {
+            if (uOrn == 1) {            // (micro)reticulate: muri bright, lumina dark
+              vec2 w = worley(vDir / uOP.x);
+              float wall = 1.0 - smoothstep(uOP.y * 0.3, uOP.y * 0.6, w.y - w.x);
+              orn = mix(0.62, 1.08, wall);
+            } else if (uOrn == 2) {     // scabrate: small bright granules
+              vec2 w = worley(vDir / uOP.x);
+              orn = mix(0.9, 1.12, 1.0 - smoothstep(uOP.y * 0.7, uOP.y, w.x));
+            } else if (uOrn == 3) {     // striate: wavy, roughly meridional ridges
+              vec2 w = worley(vDir * 0.18);
+              float lon = atan(vDir.y, vDir.x) * length(vDir.xy);
+              float v = (lon + 2.2 * w.x) / uOP.x;
+              orn = mix(0.68, 1.08, 0.5 + 0.5 * sin(6.2831853 * v));
+            }
+          }
+          col *= mix(orn, 1.0, membrane);
+          col = mix(col, vec3(0.70, 0.45, 0.22), membrane * 0.85);
+          col = mix(col, vec3(1.0, 0.88, 0.58), feature * 0.35);
+          vec3 c = col * (0.28 + 0.72 * lam) + vec3(0.22) * spec * (1.0 - membrane);
+          gl_FragColor = vec4(c, 1.0);
+        }`;
+
+      function initProg() {
+        if (prog || !gl) return !!prog;
+        const mk = (type, src) => { const sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh);
+          if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh)); return sh; };
+        try {
+          prog = gl.createProgram();
+          gl.attachShader(prog, mk(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, mk(gl.FRAGMENT_SHADER, FS));
+          gl.linkProgram(prog);
+          if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+        } catch (e) { console.warn('schematic WebGL disabled:', e); prog = null; gl = null; return false; }
+        ['aPos', 'aNrm', 'aDir', 'aMask'].forEach(a => { loc[a] = gl.getAttribLocation(prog, a); });
+        ['uRot', 'uScl', 'uOrn', 'uOP'].forEach(u => { loc[u] = gl.getUniformLocation(prog, u); });
+        return true;
+      }
+
+      // ---- base-surface sampler in the biological polar frame (t = colatitude, p = longitude)
+      function makeSampler(mesh, sch, m3) {
+        const V = mesh.V, nf0 = mesh.F.filter(f => f[0] === 0 || f[1] === 0 || f[2] === 0).length;
+        const NP = nf0, NT = NP ? (V.length - 2) / NP : 0;
+        if (mesh.fromObj && NP >= 8 && Number.isInteger(NT) && NT >= 4) {
+          const S = V.length - 1;
+          const ring = (i, j) => V[1 + i * NP + (((j % NP) + NP) % NP)];
+          const lerp = (a, b, w) => [a[0] + (b[0] - a[0]) * w, a[1] + (b[1] - a[1]) * w, a[2] + (b[2] - a[2]) * w];
+          const atRing = (i, p) => { const fj = p / (2 * Math.PI) * NP, j0 = Math.floor(fj); return lerp(ring(i, j0), ring(i, j0 + 1), fj - j0); };
+          return (t, p) => {
+            const fi = t / Math.PI * (NT + 1) - 1;
+            if (fi <= 0) return lerp(V[0], atRing(0, p), Math.max(0, fi + 1));
+            if (fi >= NT - 1) return lerp(atRing(NT - 1, p), V[S], Math.min(1, fi - (NT - 1)));
+            const i0 = Math.floor(fi); return lerp(atRing(i0, p), atRing(i0 + 1, p), fi - i0);
+          };
+        }
+        const [A, B, C] = m3.axes_um.map(v => v / 2);
+        return sch.polar_axis === 'x'
+          ? (t, p) => [A * Math.cos(t), B * Math.sin(t) * Math.cos(p), C * Math.sin(t) * Math.sin(p)]
+          : (t, p) => [A * Math.sin(t) * Math.cos(p), B * Math.sin(t) * Math.sin(p), C * Math.cos(t)];
+      }
+
+      const wrapPi = a => { a = (a + Math.PI) % (2 * Math.PI); if (a < 0) a += 2 * Math.PI; return a - Math.PI; };
+      const sstep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+      const udir = (t, p) => [Math.sin(t) * Math.cos(p), Math.sin(t) * Math.sin(p), Math.cos(t)];
+      const angBetween = (u, c) => Math.acos(Math.max(-1, Math.min(1, u[0] * c[0] + u[1] * c[1] + u[2] * c[2])));
+      function fibDirs(n) {
+        const out = [], ga = Math.PI * (3 - Math.sqrt(5));
+        for (let k = 0; k < n; k++) { const z = 1 - 2 * (k + 0.5) / n, r = Math.sqrt(1 - z * z); out.push([r * Math.cos(k * ga), r * Math.sin(k * ga), z]); }
+        return out;
+      }
+
+      // ---- aperture field: returns [displacement µm, membrane 0..1, ridgeGap µm or -1]
+      function apertureField(sch) {
+        const k = sch.aperture_kind, n = sch.n_apertures, ph = sch.phase_rad || 0;
+        const rp = (sch.pore_diam_um || 0) / 2, lal = sch.pore_lalongate || 1;
+        if (k === 'colporate' || k === 'colpate' || k === 'heterocolpate') {
+          const halfT = Math.max(0.05, sch.colpus_len_frac * Math.PI / 2), w2 = sch.colpus_width_um / 2;
+          const pores = k === 'colporate' || k === 'heterocolpate';
+          const nps = sch.n_pseudocolpi || 0;
+          return (t, p, r) => {
+            let disp = 0, mem = 0;
+            const dt = t - Math.PI / 2, along = Math.abs(dt) / halfT;
+            for (let i = 0; i < n + nps; i++) {
+              const pseudo = i >= n;
+              const pk = ph + (pseudo ? (i - n + 0.5) : i) * 2 * Math.PI / n;
+              const dp = wrapPi(p - pk), du = Math.abs(dp) * r * Math.sin(t);
+              const al = pseudo ? along / 0.75 : along;
+              if (al < 1) {
+                const hw = (pseudo ? 0.55 : 1) * w2 * Math.sqrt(1 - al * al) + 0.15;
+                const m = 1 - sstep(hw - 0.2, hw + 0.25, du);
+                if (m > 0) { mem = Math.max(mem, pseudo ? 0.6 * m : m); disp = Math.min(disp, -(pseudo ? 0.35 : 0.75) * m); }
+              }
+              if (pores && !pseudo && rp > 0) {
+                const e = Math.pow(dp * r / (rp * lal), 2) + Math.pow(dt * r / rp, 2);
+                const m = 1 - sstep(0.75, 1.15, e);
+                if (m > 0) { mem = Math.max(mem, m); disp = Math.min(disp, -(0.75 + 0.6) * m); }
+                if (sch.operculum) { const mo = 1 - sstep(0.15, 0.3, e); if (mo > 0) disp = Math.max(disp, -0.4 * mo); }
+              }
+            }
+            return [disp, mem, -1];
+          };
+        }
+        if (k === 'monoporate' || k === 'periporate') {
+          const centers = k === 'monoporate' ? [[0, 0, -1]] : fibDirs(n); // lower pole faces the default and polar views
+          const an = sch.annulus_um || 0;
+          return (t, p, r) => {
+            const u = udir(t, p); let disp = 0, mem = 0;
+            for (const c of centers) {
+              const d = angBetween(u, c) * r;
+              if (d > rp + an + 0.6) continue;
+              const mPore = 1 - sstep(rp - 0.25, rp + 0.2, d);
+              if (an > 0) { const x = (d - rp) / an; if (x > -0.2 && x < 1.2) disp = Math.max(disp, 0.7 * Math.sin(Math.PI * Math.min(1, Math.max(0, x)))); }
+              if (mPore > 0) { mem = Math.max(mem, mPore); disp = Math.min(disp, -0.9 * mPore); }
+              if (sch.operculum && d < rp * 0.45) { disp = -0.9 + 0.55 * (1 - sstep(rp * 0.3, rp * 0.45, d)); mem = 0.55; }
+            }
+            return [disp, mem, -1];
+          };
+        }
+        if (k === 'fenestrate') {
+          const C = [], deg = Math.PI / 180;
+          for (let i = 0; i < 6; i++) C.push({ d: udir(90 * deg, ph + i * 60 * deg), pore: i % 2 === 0 });
+          for (let i = 0; i < 3; i++) { C.push({ d: udir(42 * deg, ph + (30 + i * 120) * deg) }); C.push({ d: udir(138 * deg, ph + (30 + i * 120) * deg) }); }
+          C.push({ d: [0, 0, 1] }); C.push({ d: [0, 0, -1] });
+          const lac = C.slice(0, sch.n_lacunae || C.length), ridge = 1.0;
+          return (t, p, r) => {
+            const u = udir(t, p); let d1 = 9, d2 = 9, c1 = null;
+            for (const c of lac) { const a = angBetween(u, c.d); if (a < d1) { d2 = d1; d1 = a; c1 = c; } else if (a < d2) d2 = a; }
+            const gap = (d2 - d1) * r * 0.5;
+            const inside = sstep(ridge, ridge + 0.8, gap);
+            let disp = -1.3 * inside, mem = 0.35 * inside;
+            if (c1 && c1.pore) { const m = 1 - sstep(rp - 0.3, rp + 0.2, d1 * r); if (m > 0) { disp -= 0.6 * m; mem = Math.max(mem, m); } }
+            return [disp, mem, gap];
+          };
+        }
+        return () => [0, 0, -1];
+      }
+
+      function build(sp, mesh) {
+        const sch = sp.schematic, m3 = sp.model_3d;
+        if (!sch) return null;
+        const base = makeSampler(mesh, sch, m3), apf = apertureField(sch);
+        const R = mesh.R, NT = R > 30 ? 200 : 150, NP = 2 * NT;
+        const nV = 2 + NT * NP;
+        const P0 = new Float32Array(nV * 3), TP = new Float32Array(nV * 2);
+        const setV = (i, t, p) => { const q = base(t, p); P0.set(q, i * 3); TP[i * 2] = t; TP[i * 2 + 1] = p; };
+        setV(0, 0, 0);
+        for (let i = 0; i < NT; i++) for (let j = 0; j < NP; j++) setV(1 + i * NP + j, Math.PI * (i + 1) / (NT + 1), 2 * Math.PI * j / NP);
+        setV(nV - 1, Math.PI, 0);
+        const idx = [];
+        for (let j = 0; j < NP; j++) idx.push(0, 1 + j, 1 + (j + 1) % NP);
+        for (let i = 0; i < NT - 1; i++) for (let j = 0; j < NP; j++) {
+          const a = 1 + i * NP + j, b = 1 + (i + 1) * NP + j, c = 1 + (i + 1) * NP + (j + 1) % NP, d = 1 + i * NP + (j + 1) % NP;
+          idx.push(a, b, c, a, c, d);
+        }
+        const last = 1 + (NT - 1) * NP;
+        for (let j = 0; j < NP; j++) idx.push(nV - 1, last + (j + 1) % NP, last + j);
+        const normals = (P, I, n) => {
+          const N = new Float32Array(n * 3);
+          for (let f = 0; f < I.length; f += 3) {
+            const a = I[f] * 3, b = I[f + 1] * 3, c = I[f + 2] * 3;
+            const ux = P[b] - P[a], uy = P[b + 1] - P[a + 1], uz = P[b + 2] - P[a + 2];
+            const vx = P[c] - P[a], vy = P[c + 1] - P[a + 1], vz = P[c + 2] - P[a + 2];
+            const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+            for (const k of [a, b, c]) { N[k] += nx; N[k + 1] += ny; N[k + 2] += nz; }
+          }
+          // orient outward (centroid at origin)
+          let dot = 0; for (let i = 0; i < n * 3; i += 3) dot += N[i] * P[i] + N[i + 1] * P[i + 1] + N[i + 2] * P[i + 2];
+          const sgn = dot < 0 ? -1 : 1;
+          for (let i = 0; i < n * 3; i += 3) { const l = Math.hypot(N[i], N[i + 1], N[i + 2]) || 1; N[i] *= sgn / l; N[i + 1] *= sgn / l; N[i + 2] *= sgn / l; }
+          return N;
+        };
+        const N0 = normals(P0, idx, nV);
+        const Pp = new Float32Array(nV * 3), Dir = new Float32Array(nV * 3), Msk = new Float32Array(nV * 2), Gap = new Float32Array(nV);
+        let rMean = 0;
+        for (let i = 0; i < nV; i++) rMean += Math.hypot(P0[i * 3], P0[i * 3 + 1], P0[i * 3 + 2]);
+        rMean /= nV;
+        for (let i = 0; i < nV; i++) {
+          const t = TP[i * 2], p = TP[i * 2 + 1], r = Math.hypot(P0[i * 3], P0[i * 3 + 1], P0[i * 3 + 2]);
+          const [disp, mem, gap] = apf(t, p, r);
+          for (let k = 0; k < 3; k++) Pp[i * 3 + k] = P0[i * 3 + k] + N0[i * 3 + k] * disp;
+          const u = udir(t, p);
+          Dir[i * 3] = u[0] * rMean; Dir[i * 3 + 1] = u[1] * rMean; Dir[i * 3 + 2] = u[2] * rMean;
+          Msk[i * 2] = mem; Gap[i] = gap;
+        }
+        // ---- spines / spinules / verrucae as real geometry
+        const orn = sch.ornament;
+        const pos = Array.from(Pp), dir = Array.from(Dir), msk = Array.from(Msk), I = idx.slice();
+        if (['echinate', 'microechinate', 'echinolophate', 'verrucate'].includes(orn) && sch.orn_spacing_um > 0) {
+          const area = m3.surf_area_3d_um2 || 4 * Math.PI * rMean * rMean;
+          const nPts = Math.min(6000, Math.round(area / (sch.orn_spacing_um * sch.orn_spacing_um * 0.866)));
+          const dome = orn === 'verrucate';
+          // spines: orn_size = height, orn_base = base width; verrucae: orn_size = diameter, orn_base = height
+          const h = dome ? sch.orn_base_um : sch.orn_size_um, rb = dome ? sch.orn_size_um / 2 : sch.orn_base_um / 2;
+          const seg = orn === 'microechinate' || dome ? 6 : 10;
+          for (const u of fibDirs(nPts)) {
+            const t = Math.acos(Math.max(-1, Math.min(1, u[2]))), p = (Math.atan2(u[1], u[0]) + 2 * Math.PI) % (2 * Math.PI);
+            const fi = Math.min(NT - 1, Math.max(0, Math.round(t / Math.PI * (NT + 1) - 1))), fj = Math.round(p / (2 * Math.PI) * NP) % NP;
+            const vi = 1 + fi * NP + fj;
+            if (Msk[vi * 2] > 0.02) continue;
+            if (orn === 'echinolophate' && !(Gap[vi] >= 0 && Gap[vi] < 0.9)) continue;
+            // check the whole spine base stays off the apertures
+            const r = Math.hypot(P0[vi * 3], P0[vi * 3 + 1], P0[vi * 3 + 2]);
+            const da = (rb + 0.4) / r;
+            if (apf(t + da, p, r)[1] > 0.02 || apf(t - da, p, r)[1] > 0.02 || apf(t, p + da / Math.max(0.05, Math.sin(t)), r)[1] > 0.02 || apf(t, p - da / Math.max(0.05, Math.sin(t)), r)[1] > 0.02) continue;
+            const o = [Pp[vi * 3], Pp[vi * 3 + 1], Pp[vi * 3 + 2]], n = [N0[vi * 3], N0[vi * 3 + 1], N0[vi * 3 + 2]];
+            const a0 = Math.abs(n[0]) < 0.9 ? [1, 0, 0] : [0, 1, 0];
+            let e1 = [n[1] * a0[2] - n[2] * a0[1], n[2] * a0[0] - n[0] * a0[2], n[0] * a0[1] - n[1] * a0[0]];
+            const l1 = Math.hypot(...e1); e1 = e1.map(v => v / l1);
+            const e2 = [n[1] * e1[2] - n[2] * e1[1], n[2] * e1[0] - n[0] * e1[2], n[0] * e1[1] - n[1] * e1[0]];
+            const rings = dome ? [[1, 0], [0.75, 0.62], [0.35, 0.92]] : [[1, -0.25], [0.45, 0.45]];
+            const start = pos.length / 3;
+            for (const [rf, hf] of rings) for (let s = 0; s < seg; s++) {
+              const a = 2 * Math.PI * s / seg, c = Math.cos(a) * rb * rf, sn = Math.sin(a) * rb * rf;
+              pos.push(o[0] + e1[0] * c + e2[0] * sn + n[0] * h * hf, o[1] + e1[1] * c + e2[1] * sn + n[1] * h * hf, o[2] + e1[2] * c + e2[2] * sn + n[2] * h * hf);
+              dir.push(0, 0, 0); msk.push(0, 1);
+            }
+            const tip = pos.length / 3;
+            pos.push(o[0] + n[0] * h, o[1] + n[1] * h, o[2] + n[2] * h); dir.push(0, 0, 0); msk.push(0, 1);
+            for (let rI = 0; rI < rings.length - 1; rI++) for (let s = 0; s < seg; s++) {
+              const a = start + rI * seg + s, b = start + rI * seg + (s + 1) % seg, c = start + (rI + 1) * seg + (s + 1) % seg, d = start + (rI + 1) * seg + s;
+              I.push(a, b, c, a, c, d);
+            }
+            const lr = start + (rings.length - 1) * seg;
+            for (let s = 0; s < seg; s++) I.push(lr + s, lr + (s + 1) % seg, tip);
+          }
+        }
+        const nAll = pos.length / 3;
+        const P = new Float32Array(pos);
+        const res = { P, N: null, D: new Float32Array(dir), M: new Float32Array(msk), I: new Uint32Array(I), nV: nAll, nGrid: nV, R, sch };
+        fixFeatureNormals(res);
+        return res;
+      }
+      // spine/dome normals: average of their own faces, oriented away from the feature axis base
+      function fixFeatureNormals(g) {
+        const { P, I, nGrid } = g, N = new Float32Array(g.nV * 3);
+        for (let f = 0; f < I.length; f += 3) {
+          const a = I[f] * 3, b = I[f + 1] * 3, c = I[f + 2] * 3;
+          const ux = P[b] - P[a], uy = P[b + 1] - P[a + 1], uz = P[b + 2] - P[a + 2];
+          const vx = P[c] - P[a], vy = P[c + 1] - P[a + 1], vz = P[c + 2] - P[a + 2];
+          const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+          for (const k of [a, b, c]) { N[k] += nx; N[k + 1] += ny; N[k + 2] += nz; }
+        }
+        // grid winding: north fan (0, ring j, ring j+1); test sign on the grid, apply the same to features
+        let dot = 0;
+        for (let i = 0; i < nGrid * 3; i += 3) dot += N[i] * P[i] + N[i + 1] * P[i + 1] + N[i + 2] * P[i + 2];
+        const sgnGrid = dot < 0 ? -1 : 1;
+        // features were wound (base ring CCW about n) -> outward normals have the opposite sign to the grid fan; detect per feature
+        let featDot = 0;
+        for (let i = nGrid * 3; i < g.nV * 3; i += 3) featDot += N[i] * P[i] + N[i + 1] * P[i + 1] + N[i + 2] * P[i + 2];
+        const sgnFeat = featDot < 0 ? -1 : 1;
+        for (let i = 0; i < g.nV * 3; i += 3) {
+          const s = i < nGrid * 3 ? sgnGrid : sgnFeat, l = Math.hypot(N[i], N[i + 1], N[i + 2]) || 1;
+          N[i] *= s / l; N[i + 1] *= s / l; N[i + 2] *= s / l;
+        }
+        g.N = N;
+      }
+
+      function upload(g) {
+        const mkBuf = (arr, target = gl.ARRAY_BUFFER) => { const b = gl.createBuffer(); gl.bindBuffer(target, b); gl.bufferData(target, arr, gl.STATIC_DRAW); return b; };
+        g.buf = { P: mkBuf(g.P), N: mkBuf(g.N), D: mkBuf(g.D), M: mkBuf(g.M), I: mkBuf(g.I, gl.ELEMENT_ARRAY_BUFFER) };
+      }
+
+      const ORN_CODE = { reticulate: 1, microreticulate: 1, scabrate: 2, striate: 3 };
+      return {
+        available: () => !!gl,
+        has: code => !!cache[code],
+        prepare(sp, mesh) {
+          if (!gl || cache[sp.code] || !sp.schematic) return;
+          if (!initProg()) return;
+          const g = build(sp, mesh);
+          if (!g) return;
+          upload(g); cache[sp.code] = g;
+        },
+        render(code, W, H, scale, yaw, pitch) {
+          const g = cache[code];
+          if (!gl || !g) return false;
+          if (glc.width !== W || glc.height !== H) { glc.width = W; glc.height = H; }
+          glc.style.display = 'block';
+          gl.viewport(0, 0, W, H);
+          gl.clearColor(0, 0, 0, 0); gl.clearDepth(1);
+          gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+          gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LESS);
+          gl.useProgram(prog);
+          gl.uniform4f(loc.uRot, Math.cos(yaw), Math.sin(yaw), Math.cos(pitch), Math.sin(pitch));
+          gl.uniform3f(loc.uScl, 2 * scale / W, 2 * scale / H, 1 / (g.R * 1.6 + 8));
+          const s = g.sch, oc = ORN_CODE[s.ornament] || 0;
+          gl.uniform1i(loc.uOrn, oc);
+          if (oc === 1) gl.uniform3f(loc.uOP, (s.orn_size_um + s.orn_base_um) * 0.9, s.orn_base_um / ((s.orn_size_um + s.orn_base_um) * 0.9), 0);
+          else if (oc === 2) gl.uniform3f(loc.uOP, s.orn_spacing_um || 1.2, (s.orn_size_um / 2) / (s.orn_spacing_um || 1.2), 0);
+          else if (oc === 3) gl.uniform3f(loc.uOP, s.orn_size_um + s.orn_base_um, 0, 0);
+          else gl.uniform3f(loc.uOP, 1, 0, 0);
+          [['aPos', 'P', 3], ['aNrm', 'N', 3], ['aDir', 'D', 3], ['aMask', 'M', 2]].forEach(([a, b, n]) => {
+            gl.bindBuffer(gl.ARRAY_BUFFER, g.buf[b]); gl.enableVertexAttribArray(loc[a]); gl.vertexAttribPointer(loc[a], n, gl.FLOAT, false, 0, 0);
+          });
+          gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, g.buf.I);
+          gl.drawElements(gl.TRIANGLES, g.I.length, gl.UNSIGNED_INT, 0);
+          return true;
+        },
+        hide() { glc.style.display = 'none'; },
+        objText(sp) {
+          const g = cache[sp.code]; if (!g) return null;
+          const L = [`# ${sp.code} (${sp.name}) SCHEMATIC morphology on the measured body, units um`,
+            '# apertures & ornamentation drawn from the identification key + typical literature sizes; NOT measured'];
+          for (let i = 0; i < g.nV; i++) L.push(`v ${g.P[i * 3].toFixed(3)} ${g.P[i * 3 + 1].toFixed(3)} ${g.P[i * 3 + 2].toFixed(3)}`);
+          for (let f = 0; f < g.I.length; f += 3) L.push(`f ${g.I[f] + 1} ${g.I[f + 1] + 1} ${g.I[f + 2] + 1}`);
+          return L.join('\n') + '\n';
+        },
+      };
+    })();
+
+    function setMode(m) {
+      st.mode = (m === 'sch' && SCH.available()) ? 'sch' : 'meas';
+      $('m3d-mode-sch').classList.toggle('active', st.mode === 'sch');
+      $('m3d-mode-meas').classList.toggle('active', st.mode === 'meas');
+      $('m3d-btn-wire').style.display = st.mode === 'sch' ? 'none' : '';
+      $('m3d-dl-sch').style.display = st.mode === 'sch' ? '' : 'none';
+      if (st.mode === 'sch' && st.mesh) SCH.prepare(st.sp, st.mesh);
+      renderSchNote(); kick(); draw();
+    }
+    function renderSchNote() {
+      const t = T3[lang], sch = st.sp.schematic;
+      $('m3d-sch-note').innerHTML = !SCH.available() ? t.noGL : (st.mode === 'sch' && sch ? t.schNote(sch) : t.measNote);
+    }
+    $('m3d-mode-sch').addEventListener('click', () => setMode('sch'));
+    $('m3d-mode-meas').addEventListener('click', () => setMode('meas'));
+    $('m3d-dl-sch').addEventListener('click', e => {
+      e.preventDefault();
+      const txt = SCH.objText(st.sp); if (!txt) return;
+      const url = URL.createObjectURL(new Blob([txt], { type: 'text/plain' }));
+      const a = document.createElement('a'); a.href = url; a.download = `${st.sp.code}_schematic.obj`;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+    });
+
     window.HAN3D = {
       setVisible(v) { st.visible = v; if (v) { kick(); requestAnimationFrame(() => draw()); } },
     };
     renderAll();
+    setMode('sch');
     selectSpecies(recon.find(s => s.code === 'Her_sph') || recon[0]);
   })();
 
