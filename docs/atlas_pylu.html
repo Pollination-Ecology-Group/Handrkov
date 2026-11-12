@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Interaktivní databáze pylových zrn 32 lučních druhů z Handrkova (749 výřezů při 0,44 µm/px), dichotomický určovací klíč a herbářové doklady PRC/PR">
+<meta name="description" content="Interaktivní databáze pylových zrn 31 lučních druhů z Handrkova (662 výřezů při 0,44 µm/px), 31 3D modelů pylových zrn, dichotomický určovací klíč a herbářové doklady PRC/PR">
 
 <title>Atlas pylu &amp; určovací klíč | Opylovači Handrkov</title>
 <style>
@@ -889,17 +889,271 @@ ul.task-list li input[type="checkbox"] {
     border-color: var(--han-red);
     color: #7f1d1d;
   }
+
+  /* 3D MODELS & POLLEN VOLUME STUDIO SECTION */
+  .models3d-panel {
+    display: none;
+  }
+  .models3d-panel.active {
+    display: block;
+  }
+  .m3d-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 0.85rem;
+    margin-bottom: 0.9rem;
+  }
+  .m3d-kpi-card {
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.22);
+    border-left: 5px solid var(--han-green);
+    border-radius: 12px;
+    padding: 0.78rem 1rem;
+    box-shadow: 0 3px 10px rgba(53, 78, 107, 0.06);
+  }
+  .m3d-kpi-lbl {
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--han-slate);
+    font-weight: 700;
+  }
+  .m3d-kpi-val {
+    font-family: "Tilt Warp", sans-serif;
+    font-size: 1.32rem;
+    color: var(--han-green-dark);
+    margin: 0.15rem 0;
+  }
+  .m3d-kpi-sub {
+    font-size: 0.76rem;
+    color: #475569;
+  }
+  .m3d-mentha-banner {
+    background: #fff8e1;
+    border: 1px solid #f59e0b;
+    border-left: 5px solid #d97706;
+    border-radius: 11px;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    color: #78350f;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .m3d-studio-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: 1.1rem;
+    margin-bottom: 1.15rem;
+  }
+  .m3d-studio-grid > * {
+    min-width: 0;
+  }
+  .m3d-card .metric-chip {
+    white-space: normal;
+  }
+  @media (max-width: 960px) {
+    .m3d-studio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .m3d-card {
+    background: var(--han-white);
+    border: 1px solid rgba(64, 105, 91, 0.22);
+    border-radius: 15px;
+    padding: 1.05rem 1.2rem;
+    box-shadow: 0 6px 18px -6px rgba(53, 78, 107, 0.1);
+  }
+  .m3d-canvas-stage {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    background: radial-gradient(circle at 50% 42%, #1e293b 0%, #0f172a 74%, #090d16 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(64, 105, 91, 0.35);
+    overflow: hidden;
+  }
+  .m3d-canvas-stage canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+  }
+  .m3d-canvas-stage canvas:active {
+    cursor: grabbing;
+  }
+  .m3d-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+    margin-top: 0.65rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .m3d-btn {
+    border: 1px solid rgba(64, 105, 91, 0.32);
+    background: var(--han-green-soft);
+    color: var(--han-green-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.28rem 0.62rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .m3d-btn.active, .m3d-btn:hover {
+    background: var(--han-green);
+    color: var(--han-white);
+    border-color: var(--han-green);
+  }
+  .m3d-crops-mini-strip {
+    display: flex;
+    gap: 0.45rem;
+    overflow-x: auto;
+    padding: 0.45rem 0 0.2rem;
+  }
+  .m3d-crops-mini-strip img {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1.5px solid rgba(64, 105, 91, 0.3);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.14s, border-color 0.14s;
+  }
+  .m3d-crops-mini-strip img:hover {
+    transform: scale(1.06);
+    border-color: var(--han-yellow);
+  }
+  .m3d-vol-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.48rem;
+    margin: 0.6rem 0 0.85rem;
+  }
+  .m3d-bar-row {
+    display: grid;
+    grid-template-columns: 155px 1fr 105px;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.78rem;
+  }
+  @media (max-width: 580px) {
+    .m3d-bar-row {
+      grid-template-columns: 120px 1fr 90px;
+    }
+  }
+  .m3d-bar-track {
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .m3d-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+  }
+  .m3d-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+  .m3d-badge.sphere { background: #dcfce7; color: #166534; }
+  .m3d-badge.prolate { background: #dbeafe; color: #1e40af; }
+  .m3d-badge.oblate { background: #fef3c7; color: #92400e; }
+  .m3d-badge.triaxial { background: #f3e8ff; color: #6b21a8; }
+
+  .m3d-table-wrap {
+    overflow-x: auto;
+    max-height: 520px;
+    border: 1px solid rgba(64, 105, 91, 0.2);
+    border-radius: 12px;
+  }
+  .m3d-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.81rem;
+  }
+  .m3d-table th {
+    position: sticky;
+    top: 0;
+    background: var(--han-green-dark);
+    color: var(--han-white);
+    padding: 0.58rem 0.65rem;
+    text-align: left;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .m3d-table td {
+    padding: 0.5rem 0.65rem;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+  }
+  .m3d-table tr {
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .m3d-table tbody tr:hover {
+    background: var(--han-green-soft);
+  }
+  .m3d-table tbody tr.selected {
+    background: #fef9c3;
+    font-weight: 600;
+  }
+  .modal-3d-box {
+    background: linear-gradient(135deg, #f3f7f5 0%, #eef2f6 100%);
+    border: 1px solid rgba(64, 105, 91, 0.28);
+    border-radius: 12px;
+    padding: 0.85rem 1.05rem;
+    display: grid;
+    grid-template-columns: 205px 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  @media (max-width: 680px) {
+    .modal-3d-box {
+      grid-template-columns: 1fr;
+    }
+  }
+  .modal-3d-canvas-wrap {
+    width: 205px;
+    height: 175px;
+    background: radial-gradient(circle at 50% 45%, #1e293b 0%, #0f172a 85%);
+    border-radius: 10px;
+    border: 1px solid rgba(64, 105, 91, 0.35);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  .modal-3d-canvas-wrap canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+  }
 </style>
 
 <div class="atlas-wrap">
   <div class="atlas-hero-bar">
     <div>
       <h2 id="atlas-main-title" class="anchored">Atlas pylu &amp; určovací klíč Handrkov</h2>
-      <p id="atlas-subtitle">32 lučních druhů z Handrkova · 749 jednotlivých pylových zrn (0,44 µm/px) · propojeno s herbářem PRC/PR.</p>
+      <p id="atlas-subtitle">32 lučních druhů z Handrkova · 749 jednotlivých pylových zrn (0,44 µm/px) · 31 3D modelů pylu · propojeno s herbářem PRC/PR.</p>
     </div>
     <div class="atlas-top-actions">
       <div class="atlas-mode-tabs">
-        <button type="button" class="atlas-tab-btn active" id="tab-browse-btn">Prohlížet atlas (32 druhů)</button>
+        <button type="button" class="atlas-tab-btn active" id="tab-browse-btn">Prohlížet atlas (31 druhů)</button>
+        <button type="button" class="atlas-tab-btn" id="tab-3d-btn">🧊 3D modely &amp; objem pylu</button>
         <button type="button" class="atlas-tab-btn" id="tab-key-btn">Určovací klíč pylu</button>
         <button type="button" class="atlas-tab-btn" id="tab-quiz-btn">Pylový kvíz</button>
       </div>
@@ -944,6 +1198,7 @@ ul.task-list li input[type="checkbox"] {
           <option value="key" id="opt-sort-key">Pořadí v určovacím klíči</option>
           <option value="diam_desc" id="opt-sort-desc">Velikosti zrna (největší → nejmenší µm)</option>
           <option value="diam_asc" id="opt-sort-asc">Velikosti zrna (nejmenší → největší µm)</option>
+          <option value="vol3d_desc" id="opt-sort-vol3d">Skutečného 3D objemu (µm³)</option>
           <option value="spiky" id="opt-sort-spiky">Ostnitosti / členitosti obrysu</option>
           <option value="ecology" id="opt-sort-eco">Výskytu na bliznách a opylovačích</option>
         </select>
@@ -958,6 +1213,109 @@ ul.task-list li input[type="checkbox"] {
     </div>
 
     <div id="atlas-grid" class="atlas-grid"></div>
+  </div>
+
+  <!-- 1B. 3D MODELS & POLLEN VOLUME STUDIO MODE -->
+  <div id="atlas-3d-section" class="models3d-panel">
+    <div id="m3d-kpi-strip" class="m3d-kpi-grid"></div>
+    <div id="m3d-mentha-alert" class="m3d-mentha-banner"></div>
+
+    <div class="m3d-studio-grid">
+      <!-- Left: Interactive 3D Mesh Viewer + Real Microscopy Crop Strip -->
+      <div class="m3d-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.55rem;">
+          <div>
+            <h3 id="m3d-sp-title" style="margin:0; font-size:1.18rem; color:var(--han-green-dark);" class="anchored">—</h3>
+            <div id="m3d-sp-sub" style="font-size:0.8rem; color:#475569; margin-top:0.12rem;"></div>
+          </div>
+          <div style="display:flex; gap:0.35rem; align-items:center;">
+            <span id="m3d-sp-badge" class="m3d-badge sphere">sphere</span>
+            <button type="button" class="m3d-btn" id="m3d-open-modal-btn">🔍 Detail &amp; doklad</button>
+          </div>
+        </div>
+
+        <div class="m3d-canvas-stage">
+          <canvas id="han-canvas-3d" width="600" height="360"></canvas>
+        </div>
+
+        <div class="m3d-toolbar">
+          <div style="display:flex; gap:0.3rem; flex-wrap:wrap;">
+            <button type="button" class="m3d-btn active" id="m3d-view-tilt">3D pohled</button>
+            <button type="button" class="m3d-btn" id="m3d-view-polar">Polární</button>
+            <button type="button" class="m3d-btn" id="m3d-view-equat">Rovníkový</button>
+            <button type="button" class="m3d-btn active" id="m3d-btn-spin">⟳ Otáčet</button>
+            <button type="button" class="m3d-btn active" id="m3d-btn-wire">Síť</button>
+            <button type="button" class="m3d-btn active" id="m3d-btn-axes">Osy A,B,C</button>
+            <button type="button" class="m3d-btn active" id="m3d-btn-ghost">2D koule (duch)</button>
+          </div>
+          <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+            <a id="m3d-dl-obj" class="m3d-btn" href="#" download="">⬇ .obj</a>
+            <a id="m3d-dl-zip" class="m3d-btn" href="../atlas/meshes/handrkov_pollen_3d_meshes.zip" download="">⬇ ZIP (31 .obj)</a>
+          </div>
+        </div>
+
+        <div style="margin-top:0.75rem; border-top:1px solid rgba(64,105,91,0.16); padding-top:0.55rem;">
+          <div id="m3d-crops-lbl" style="font-size:0.76rem; font-weight:700; color:var(--han-green-dark);">
+            Skutečné mikroskopické výřezy zrn (0,44 µm/px — kliknutím otevřete detail):
+          </div>
+          <div id="m3d-crops-strip" class="m3d-crops-mini-strip"></div>
+        </div>
+      </div>
+
+      <!-- Right: Volume Comparison Bars, Stereological Metrics & Interactive Scatter Plot -->
+      <div class="m3d-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h4 id="m3d-vol-title" style="margin:0 0 0.25rem 0; font-size:1rem; color:var(--han-green-dark);" class="anchored">
+            Porovnání skutečného 3D objemu s 2D aproximacemi
+          </h4>
+          <div id="m3d-vol-bars" class="m3d-vol-bars"></div>
+          <div id="m3d-metrics-grid" class="species-metrics" style="margin-bottom:0.85rem;"></div>
+        </div>
+
+        <div style="border-top:1px solid rgba(64,105,91,0.16); padding-top:0.7rem;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.35rem;">
+            <strong id="m3d-scatter-title" style="font-size:0.83rem; color:var(--han-green-dark);">
+              Zploštění zrna (C/A) vs. korekce 3D objemu (Vol 3D / Vol 2D koule)
+            </strong>
+            <span id="m3d-scatter-hint" style="font-size:0.73rem; color:#64748b;">Klikněte na bod pro výběr druhu</span>
+          </div>
+          <div id="m3d-scatter-wrap" style="width:100%; overflow:hidden;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filterable 31-Species 3D Morphometrics & Volume Table -->
+    <div class="m3d-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.75rem;">
+        <h4 id="m3d-table-title" style="margin:0; font-size:1.02rem; color:var(--han-green-dark);" class="anchored">
+          Přehled 3D modelů a objemů pylových zrn (31 lučních druhů Handrkova)
+        </h4>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+          <input type="search" id="m3d-search" placeholder="Hledat druh..." style="padding:0.36rem 0.65rem; border:1px solid rgba(64,105,91,0.3); border-radius:8px; font-size:0.82rem;">
+          <select id="m3d-filter-model" style="padding:0.36rem 0.6rem; border:1px solid rgba(64,105,91,0.3); border-radius:8px; font-size:0.82rem;">
+            <option value="ALL" id="m3d-opt-all">Všechny 3D tvary (31)</option>
+            <option value="sphere" id="m3d-opt-sph">Koule / sféroidální</option>
+            <option value="prolate" id="m3d-opt-pro">Prolátní (protáhlé)</option>
+            <option value="oblate" id="m3d-opt-obl">Oblátní (zploštělé)</option>
+            <option value="triaxial" id="m3d-opt-tri">Triaxiální (piškotovité / trojosé)</option>
+          </select>
+          <select id="m3d-sort" style="padding:0.36rem 0.6rem; border:1px solid rgba(64,105,91,0.3); border-radius:8px; font-size:0.82rem;">
+            <option value="name" id="m3d-sort-name">Podle názvu (A → Z)</option>
+            <option value="vol_desc" id="m3d-sort-vdesc">3D objem (největší → nejmenší)</option>
+            <option value="vol_asc" id="m3d-sort-vasc">3D objem (nejmenší → největší)</option>
+            <option value="ratio_asc" id="m3d-sort-rasc">Korekce 3D / 2D (největší rozdíl)</option>
+            <option value="ca_asc" id="m3d-sort-ca">Poměr os C/A (nejvíce protáhlé/zploštělé)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="m3d-table-wrap">
+        <table class="m3d-table">
+          <thead id="m3d-thead"></thead>
+          <tbody id="m3d-tbody"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <!-- 2. INTERACTIVE DICHOTOMOUS ID KEY MODE -->
@@ -1020,6 +1378,8 @@ ul.task-list li input[type="checkbox"] {
       </div>
 
       <div id="dialog-species-stats" class="species-metrics"></div>
+
+      <div id="dialog-3d-box" class="modal-3d-box" style="display:none;"></div>
 
       <div class="dialog-info-panels">
         <div class="info-box" id="dialog-key-box"></div>
@@ -1718,13 +2078,19 @@ ul.task-list li input[type="checkbox"] {
 
   let quizScore = 0, quizTotal = 0, quizStreak = 0;
 
+  const threeDBtn = document.getElementById('tab-3d-btn');
+  const threeDSec = document.getElementById('atlas-3d-section');
+
   function setActiveTab(mode) {
     browseBtn.classList.toggle('active', mode === 'browse');
     keyBtn.classList.toggle('active', mode === 'key');
     quizBtn.classList.toggle('active', mode === 'quiz');
+    threeDBtn.classList.toggle('active', mode === '3d');
     browseSec.style.display = mode === 'browse' ? 'block' : 'none';
     keySec.classList.toggle('active', mode === 'key');
     quizSec.classList.toggle('active', mode === 'quiz');
+    threeDSec.classList.toggle('active', mode === '3d');
+    if (window.HAN3D) window.HAN3D.setVisible(mode === '3d');
   }
 
   function switchToKeyStep(stepId, spCode) {
@@ -1807,6 +2173,401 @@ ul.task-list li input[type="checkbox"] {
   }
 
   document.getElementById('quiz-next-btn').addEventListener('click', nextQuizQuestion);
+
+  // ---------------------------------------------------------------------------
+  // 3D MODELS & POLLEN VOLUME STUDIO
+  // Meshes: closed .obj (µm, z = polar axis C) written by scripts/06_reconstruct_3d_pollen.py
+  // ---------------------------------------------------------------------------
+  (function init3D() {
+    const s3d = atlas.models_3d_summary || {};
+    const recon = atlas.species.filter(s => s.model_3d && s.model_3d.status === 'reconstructed');
+    if (!recon.length) { threeDBtn.style.display = 'none'; return; }
+    const LOW_N = 20; // fewer human-verified grains than this -> indicative model only
+    const isLowN = sp => (sp.model_3d.n_verified_grains || 0) < LOW_N;
+    const fmt = (v, d = 0) => (v == null || isNaN(v)) ? '—' : Number(v).toLocaleString(lang === 'cs' ? 'cs-CZ' : 'en-GB', { minimumFractionDigits: d, maximumFractionDigits: d });
+    const spName = sp => lang === 'cs' ? `${sp.name_cs || sp.name} (<em>${sp.name}</em>)` : `<em>${sp.name}</em> (${sp.name_cs || ''})`;
+    const famName = sp => lang === 'cs' ? (sp.family_cs || sp.family) : sp.family;
+
+    const T3 = {
+      cs: {
+        tab: `🧊 3D modely & objem pylu (${recon.length})`,
+        modelLbl: { sphere: 'koule', prolate: 'prolátní', oblate: 'oblátní', triaxial: 'triaxiální' },
+        kpi: [
+          ['Rekonstruováno druhů', `${recon.length}`, `+ ${s3d.n_excluded_species || 0} vyřazen (málo pylu)`],
+          ['Obrysů zrn použito', fmt(s3d.n_total_clean_polygons), `z toho ${fmt(s3d.n_total_verified_polygons)} ručně ověřených`],
+          ['3D tvary', Object.entries(s3d.model_counts || {}).map(([k, v]) => `${v}× ${({ sphere: 'koule', prolate: 'prolát.', oblate: 'oblát.', triaxial: 'triax.' })[k] || k}`).join(' · '), 'výběr modelu podle shody 2D projekcí'],
+          ['Rozlišení', `${s3d.um_per_px || atlas.um_per_px} µm/px`, 'skeny 10×, obrysy z Labels/ + Harvest/'],
+        ],
+        mentha: e => `⚠️ <strong>${e.name_cs} (<em>${e.name}</em>)</strong> nemá 3D model. ${e.reason_cs}`,
+        sub: sp => `${famName(sp)} · ${sp.model_3d.model_3d_cs || sp.model_3d.model_3d} · Erdtman: ${sp.model_3d.shape_class_erdtman_cs || sp.model_3d.shape_class_erdtman}`,
+        views: ['3D pohled', 'Polární', 'Rovníkový', '⟳ Otáčet', 'Síť', 'Osy A,B,C', '2D kruh (duch)'],
+        zip: n => `⬇ ZIP (${n} .obj)`,
+        cropsLbl: 'Skutečné mikroskopické výřezy zrn (0,44 µm/px — kliknutím otevřete detail):',
+        volTitle: 'Objem zrna: skutečný 3D model vs. 2D odhady (medián, µm³)',
+        bars: ['Koule z 2D průměru', 'Rotační těleso z 2D obrysu', '2D elipsa (rotace)', '3D elipsoid (A·B·C)', '3D síť (výsledek)'],
+        lowN: n => `⚠️ Orientační model: jen ${n} ručně ověřených zrn (< ${LOW_N}).`,
+        chips: m => [
+          `Osy A × B × C: <strong>${fmt(m.axes_um[0], 1)} × ${fmt(m.axes_um[1], 1)} × ${fmt(m.axes_um[2], 1)} µm</strong>`,
+          `B/A: <strong>${fmt(m.ratio_BA, 2)} ± ${fmt(m.ratio_BA_se, 2)}</strong>`,
+          `C/A: <strong>${fmt(m.ratio_CA, 2)} ± ${fmt(m.ratio_CA_se, 2)}</strong>`,
+          `Povrch: <strong>${fmt(m.surf_area_3d_um2)} µm²</strong>`,
+          `Sféricita (Wadell): <strong>${fmt(m.sphericity_3d, 3)}</strong>`,
+          `Sklíčka / ověřená zrna / obrysy: <strong>${m.n_slides} / ${m.n_verified_grains} / ${m.n_clean_polygons}</strong>`,
+        ],
+        scatterTitle: 'Zploštění/protažení (C/A) vs. korekce objemu (3D / rotační těleso z 2D)',
+        scatterHint: 'Klikněte na bod pro výběr druhu',
+        tableTitle: `Přehled 3D modelů a objemů pylových zrn (${recon.length} lučních druhů Handrkova)`,
+        search: 'Hledat druh...',
+        optAll: `Všechny 3D tvary (${recon.length})`,
+        opts: ['Koule / sféroidální', 'Prolátní (protáhlé)', 'Oblátní (zploštělé)', 'Triaxiální (trojosé)'],
+        sorts: ['Podle názvu (A → Z)', '3D objem (největší → nejmenší)', '3D objem (nejmenší → největší)', 'Korekce 3D / 2D (největší rozdíl)', 'Poměr os C/A (nejvíce protáhlé/zploštělé)'],
+        cols: ['Druh', 'Čeleď', 'Model', 'A × B × C (µm)', 'Objem 3D (µm³)', '3D / 2D', 'Sféricita', 'Ověřená zrna', '.obj'],
+        detail: '🔍 Detail & doklad',
+        noFetch: 'Síť .obj nelze načíst — zobrazen elipsoid z os A, B, C.',
+        scale: '10 µm',
+      },
+      en: {
+        tab: `🧊 3D models & pollen volume (${recon.length})`,
+        modelLbl: { sphere: 'sphere', prolate: 'prolate', oblate: 'oblate', triaxial: 'triaxial' },
+        kpi: [
+          ['Species reconstructed', `${recon.length}`, `+ ${s3d.n_excluded_species || 0} excluded (too little pollen)`],
+          ['Grain outlines used', fmt(s3d.n_total_clean_polygons), `incl. ${fmt(s3d.n_total_verified_polygons)} human-verified`],
+          ['3D shapes', Object.entries(s3d.model_counts || {}).map(([k, v]) => `${v}× ${k}`).join(' · '), 'model chosen by fit to 2D projections'],
+          ['Resolution', `${s3d.um_per_px || atlas.um_per_px} µm/px`, '10× scans, outlines from Labels/ + Harvest/'],
+        ],
+        mentha: e => `⚠️ <strong><em>${e.name}</em> (${e.name_cs})</strong> has no 3D model. ${e.reason_en}`,
+        sub: sp => `${famName(sp)} · ${sp.model_3d.model_3d} · Erdtman: ${sp.model_3d.shape_class_erdtman}`,
+        views: ['3D view', 'Polar', 'Equatorial', '⟳ Spin', 'Wireframe', 'Axes A,B,C', '2D circle (ghost)'],
+        zip: n => `⬇ ZIP (${n} .obj)`,
+        cropsLbl: 'Real microscopy grain crops (0.44 µm/px — click to open details):',
+        volTitle: 'Grain volume: true 3D model vs. 2D estimates (median, µm³)',
+        bars: ['Sphere from 2D diameter', 'Body of revolution (2D outline)', '2D ellipse (revolved)', '3D ellipsoid (A·B·C)', '3D mesh (result)'],
+        lowN: n => `⚠️ Indicative model: only ${n} human-verified grains (< ${LOW_N}).`,
+        chips: m => [
+          `Axes A × B × C: <strong>${fmt(m.axes_um[0], 1)} × ${fmt(m.axes_um[1], 1)} × ${fmt(m.axes_um[2], 1)} µm</strong>`,
+          `B/A: <strong>${fmt(m.ratio_BA, 2)} ± ${fmt(m.ratio_BA_se, 2)}</strong>`,
+          `C/A: <strong>${fmt(m.ratio_CA, 2)} ± ${fmt(m.ratio_CA_se, 2)}</strong>`,
+          `Surface: <strong>${fmt(m.surf_area_3d_um2)} µm²</strong>`,
+          `Sphericity (Wadell): <strong>${fmt(m.sphericity_3d, 3)}</strong>`,
+          `Slides / verified grains / outlines: <strong>${m.n_slides} / ${m.n_verified_grains} / ${m.n_clean_polygons}</strong>`,
+        ],
+        scatterTitle: 'Flattening/elongation (C/A) vs. volume correction (3D / 2D body of revolution)',
+        scatterHint: 'Click a point to select a species',
+        tableTitle: `3D models and pollen grain volumes (${recon.length} Handrkov meadow species)`,
+        search: 'Search species...',
+        optAll: `All 3D shapes (${recon.length})`,
+        opts: ['Sphere / spheroidal', 'Prolate (elongated)', 'Oblate (flattened)', 'Triaxial (three unequal axes)'],
+        sorts: ['By name (A → Z)', '3D volume (largest → smallest)', '3D volume (smallest → largest)', '3D / 2D correction (largest difference)', 'C/A axis ratio (most elongated/flattened)'],
+        cols: ['Species', 'Family', 'Model', 'A × B × C (µm)', '3D volume (µm³)', '3D / 2D', 'Sphericity', 'Verified grains', '.obj'],
+        detail: '🔍 Details & voucher',
+        noFetch: 'Could not load the .obj mesh — showing the ellipsoid from axes A, B, C.',
+        scale: '10 µm',
+      },
+    };
+
+    const $ = id => document.getElementById(id);
+    const canvas = $('han-canvas-3d');
+    const ctx = canvas.getContext('2d');
+    const meshCache = {};
+    const st = { sp: recon[0], mesh: null, yaw: 0.6, pitch: -0.45, spin: true, wire: true, axes: true, ghost: true, visible: false, drag: null, msg: '' };
+    st.wire = false; $('m3d-btn-wire').classList.remove('active');
+
+    // --- mesh loading -------------------------------------------------------
+    function parseObj(txt) {
+      const V = [], F = [];
+      for (const line of txt.split('\n')) {
+        if (line.charCodeAt(0) === 118 && line.charCodeAt(1) === 32) { // 'v '
+          const p = line.split(/\s+/); V.push([+p[1], +p[2], +p[3]]);
+        } else if (line.charCodeAt(0) === 102 && line.charCodeAt(1) === 32) { // 'f '
+          const p = line.trim().split(/\s+/).slice(1).map(x => parseInt(x, 10) - 1);
+          for (let i = 1; i + 1 < p.length; i++) F.push([p[0], p[i], p[i + 1]]);
+        }
+      }
+      return { V, F };
+    }
+    function ellipsoidMesh(a, b, c) {
+      const V = [], F = [], nt = 24, np = 48;
+      V.push([0, 0, c]);
+      for (let i = 1; i < nt; i++) {
+        const th = Math.PI * i / nt;
+        for (let j = 0; j < np; j++) {
+          const ph = 2 * Math.PI * j / np;
+          V.push([a * Math.sin(th) * Math.cos(ph), b * Math.sin(th) * Math.sin(ph), c * Math.cos(th)]);
+        }
+      }
+      V.push([0, 0, -c]);
+      const idx = (i, j) => 1 + (i - 1) * np + (j % np);
+      for (let j = 0; j < np; j++) F.push([0, idx(1, j), idx(1, j + 1)]);
+      for (let i = 1; i < nt - 1; i++) for (let j = 0; j < np; j++) {
+        F.push([idx(i, j), idx(i + 1, j), idx(i + 1, j + 1)]);
+        F.push([idx(i, j), idx(i + 1, j + 1), idx(i, j + 1)]);
+      }
+      const last = V.length - 1;
+      for (let j = 0; j < np; j++) F.push([last, idx(nt - 1, j + 1), idx(nt - 1, j)]);
+      return { V, F };
+    }
+    function finishMesh(m) {
+      // orient faces outward (centroid test) so back-face shading is consistent
+      let cx = 0, cy = 0, cz = 0;
+      for (const v of m.V) { cx += v[0]; cy += v[1]; cz += v[2]; }
+      cx /= m.V.length; cy /= m.V.length; cz /= m.V.length;
+      for (const f of m.F) {
+        const [a, b, c] = f.map(i => m.V[i]);
+        const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
+        const vx = c[0] - a[0], vy = c[1] - a[1], vz = c[2] - a[2];
+        const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+        if (nx * (a[0] - cx) + ny * (a[1] - cy) + nz * (a[2] - cz) < 0) { const t = f[1]; f[1] = f[2]; f[2] = t; }
+      }
+      m.R = Math.max(...m.V.map(v => Math.hypot(v[0], v[1], v[2])));
+      return m;
+    }
+    async function loadMesh(sp) {
+      if (meshCache[sp.code]) return meshCache[sp.code];
+      const m3 = sp.model_3d;
+      let mesh, fromObj = false;
+      try {
+        const r = await fetch(m3.obj_url);
+        if (!r.ok) throw new Error(r.status);
+        mesh = parseObj(await r.text());
+        if (mesh.V.length < 10 || mesh.F.length < 10) throw new Error('empty');
+        fromObj = true;
+      } catch (e) {
+        mesh = ellipsoidMesh(m3.axes_um[0] / 2, m3.axes_um[1] / 2, m3.axes_um[2] / 2);
+      }
+      mesh.fromObj = fromObj;
+      meshCache[sp.code] = finishMesh(mesh);
+      return meshCache[sp.code];
+    }
+
+    // --- rendering ----------------------------------------------------------
+    const BASE = { sphere: [74, 222, 128], prolate: [96, 165, 250], oblate: [251, 191, 36], triaxial: [192, 132, 252] };
+    function resizeCanvas() {
+      const r = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(200, Math.round(r.width * dpr)), h = Math.max(150, Math.round(r.height * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    }
+    function draw() {
+      resizeCanvas();
+      const W = canvas.width, H = canvas.height, dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, W, H);
+      const mesh = st.mesh;
+      if (!mesh) return;
+      const m3 = st.sp.model_3d;
+      // fixed µm scale per species: the mesh fills ~70 % of the shorter side
+      const scale = 0.36 * Math.min(W, H) / mesh.R;
+      const cy = Math.cos(st.yaw), sy = Math.sin(st.yaw), cp = Math.cos(st.pitch), sp_ = Math.sin(st.pitch);
+      const P = mesh.V.map(([x, y, z]) => {
+        const x1 = cy * x - sy * y, y1 = sy * x + cy * y; // yaw about z (polar axis)
+        const y2 = cp * y1 - sp_ * z, z2 = sp_ * y1 + cp * z; // pitch about screen x
+        return [W / 2 + x1 * scale, H / 2 - z2 * scale, y2];
+      });
+      const L = [-0.35, 0.55, -0.75]; const ln = Math.hypot(...L); L[0] /= ln; L[1] /= ln; L[2] /= ln;
+      const faces = [];
+      for (const f of mesh.F) {
+        const a = P[f[0]], b = P[f[1]], c = P[f[2]];
+        const ux = b[0] - a[0], uy = b[1] - a[1], vx = c[0] - a[0], vy = c[1] - a[1];
+        const area2 = ux * vy - uy * vx; // screen-space orientation (y down)
+        if (area2 > 0) continue; // back face
+        // view-space normal for shading
+        const uz = b[2] - a[2], vz = c[2] - a[2];
+        let nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx;
+        const nn = Math.hypot(nx, ny, nz) || 1; nx /= nn; ny /= nn; nz /= nn;
+        const lam = Math.abs(nx * L[0] - ny * L[1] + nz * L[2]);
+        faces.push([(a[2] + b[2] + c[2]) / 3, a, b, c, lam]);
+      }
+      faces.sort((p, q) => q[0] - p[0]);
+      const base = BASE[m3.model_3d] || BASE.sphere;
+      ctx.lineWidth = 0.6 * dpr;
+      ctx.strokeStyle = 'rgba(15,23,42,0.35)';
+      for (const [, a, b, c, lam] of faces) {
+        const k = 0.28 + 0.72 * lam;
+        ctx.fillStyle = `rgb(${base[0] * k | 0},${base[1] * k | 0},${base[2] * k | 0})`;
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.closePath();
+        ctx.fill();
+        if (st.wire) ctx.stroke(); else { ctx.strokeStyle = ctx.fillStyle; ctx.stroke(); ctx.strokeStyle = 'rgba(15,23,42,0.35)'; }
+      }
+      if (st.ghost && m3.diam_2d_med_um) { // circle of the median 2D equivalent diameter
+        ctx.save(); ctx.setLineDash([6 * dpr, 5 * dpr]); ctx.strokeStyle = 'rgba(248,250,252,0.75)'; ctx.lineWidth = 1.4 * dpr;
+        ctx.beginPath(); ctx.arc(W / 2, H / 2, m3.diam_2d_med_um / 2 * scale, 0, 2 * Math.PI); ctx.stroke(); ctx.restore();
+      }
+      if (st.axes) {
+        const ax = m3.axes_um;
+        [[[ax[0] / 2, 0, 0], '#f87171', 'A'], [[0, ax[1] / 2, 0], '#4ade80', 'B'], [[0, 0, ax[2] / 2], '#60a5fa', 'C']].forEach(([v, col, lbl]) => {
+          const [x, y, z] = v;
+          const x1 = cy * x - sy * y, y1 = sy * x + cy * y, z2 = sp_ * y1 + cp * z;
+          const ex = W / 2 + x1 * scale * 1.18, ey = H / 2 - z2 * scale * 1.18;
+          ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 2 * dpr;
+          ctx.beginPath(); ctx.moveTo(W / 2, H / 2); ctx.lineTo(ex, ey); ctx.stroke();
+          ctx.font = `bold ${12 * dpr}px system-ui, sans-serif`; ctx.fillText(lbl, ex + 4 * dpr, ey - 4 * dpr);
+        });
+      }
+      // scale bar 10 µm
+      const bar = 10 * scale, bx = 14 * dpr, by = H - 16 * dpr;
+      ctx.fillStyle = '#f8fafc'; ctx.fillRect(bx, by, bar, 3 * dpr);
+      ctx.font = `${11 * dpr}px system-ui, sans-serif`; ctx.fillText(T3[lang].scale, bx, by - 6 * dpr);
+      if (st.msg) { ctx.fillStyle = '#fde68a'; ctx.fillText(st.msg, bx, 18 * dpr); }
+    }
+    let raf = null, lastT = 0;
+    function loop(t) {
+      raf = null;
+      if (!st.visible) return;
+      if (st.spin && !st.drag) st.yaw += Math.min(50, t - (lastT || t)) * 0.0006;
+      lastT = t;
+      draw();
+      if (st.spin && !st.drag) raf = requestAnimationFrame(loop);
+    }
+    function kick() { if (!raf && st.visible) raf = requestAnimationFrame(loop); }
+
+    canvas.addEventListener('pointerdown', e => { st.drag = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', e => {
+      if (!st.drag) return;
+      st.yaw += (e.clientX - st.drag[0]) * 0.01;
+      st.pitch = Math.max(-1.57, Math.min(1.57, st.pitch + (e.clientY - st.drag[1]) * 0.01));
+      st.drag = [e.clientX, e.clientY]; kick();
+    });
+    const endDrag = () => { st.drag = null; kick(); };
+    canvas.addEventListener('pointerup', endDrag);
+    canvas.addEventListener('pointercancel', endDrag);
+    window.addEventListener('resize', kick);
+
+    const viewBtns = { tilt: $('m3d-view-tilt'), polar: $('m3d-view-polar'), equat: $('m3d-view-equat') };
+    function setView(v) {
+      Object.entries(viewBtns).forEach(([k, b]) => b.classList.toggle('active', k === v));
+      if (v === 'tilt') { st.pitch = -0.45; }
+      if (v === 'polar') { st.pitch = -Math.PI / 2; st.yaw = 0; st.spin = false; }
+      if (v === 'equat') { st.pitch = 0; st.yaw = 0; st.spin = false; }
+      $('m3d-btn-spin').classList.toggle('active', st.spin);
+      kick();
+    }
+    viewBtns.tilt.addEventListener('click', () => setView('tilt'));
+    viewBtns.polar.addEventListener('click', () => setView('polar'));
+    viewBtns.equat.addEventListener('click', () => setView('equat'));
+    [['m3d-btn-spin', 'spin'], ['m3d-btn-wire', 'wire'], ['m3d-btn-axes', 'axes'], ['m3d-btn-ghost', 'ghost']].forEach(([id, key]) => {
+      $(id).addEventListener('click', () => { st[key] = !st[key]; $(id).classList.toggle('active', st[key]); kick(); });
+    });
+
+    // --- panels -------------------------------------------------------------
+    async function selectSpecies(sp) {
+      st.sp = sp; st.mesh = null; st.msg = '';
+      renderSpeciesPanel(); renderTable(); renderScatter();
+      const mesh = await loadMesh(sp);
+      if (st.sp !== sp) return;
+      st.mesh = mesh; st.msg = mesh.fromObj ? '' : T3[lang].noFetch;
+      kick(); draw();
+    }
+
+    function renderSpeciesPanel() {
+      const t = T3[lang], sp = st.sp, m = sp.model_3d;
+      $('m3d-sp-title').innerHTML = spName(sp);
+      $('m3d-sp-sub').innerHTML = t.sub(sp) + (isLowN(sp) ? `<br><span style="color:#b45309; font-weight:600;">${t.lowN(m.n_verified_grains)}</span>` : '');
+      const badge = $('m3d-sp-badge');
+      badge.className = `m3d-badge ${m.model_3d}`; badge.textContent = t.modelLbl[m.model_3d] || m.model_3d;
+      $('m3d-dl-obj').href = m.obj_url; $('m3d-dl-obj').setAttribute('download', `${sp.code}.obj`);
+
+      const strip = $('m3d-crops-strip'); strip.innerHTML = '';
+      (sp.crops || []).slice(0, 14).forEach(c => {
+        const img = document.createElement('img');
+        img.src = c.url; img.loading = 'lazy'; img.alt = `${sp.name} ${c.id}`; img.title = `${c.id} · Ø ${c.diam_um} µm`;
+        img.addEventListener('click', () => openSpeciesModal(sp));
+        strip.appendChild(img);
+      });
+
+      const d = m.diam_2d_med_um;
+      const vals = [d ? Math.PI / 6 * d * d * d : null, m.vol_rev_med_um3, m.vol_ell2d_med_um3, m.vol_3d_ell_med_um3, m.vol_3d_mesh_med_um3];
+      const vmax = Math.max(...vals.filter(v => v != null));
+      const cols = ['#94a3b8', '#94a3b8', '#94a3b8', '#60a5fa', 'var(--han-green)'];
+      $('m3d-vol-bars').innerHTML = vals.map((v, i) => `
+        <div class="m3d-bar-row"><span>${t.bars[i]}</span>
+          <div class="m3d-bar-track"><div class="m3d-bar-fill" style="width:${v ? (100 * v / vmax).toFixed(1) : 0}%; background:${cols[i]};"></div></div>
+          <span style="text-align:right; font-variant-numeric:tabular-nums;${i === 4 ? ' font-weight:700;' : ''}">${fmt(v)} µm³</span></div>`).join('');
+      $('m3d-metrics-grid').innerHTML = t.chips(m).map(c => `<span class="metric-chip">${c}</span>`).join('');
+    }
+
+    function renderScatter() {
+      const t = T3[lang];
+      const W = 460, H = 230, pl = 44, pr = 12, pt = 10, pb = 34;
+      const xs = recon.map(s => s.model_3d.ratio_CA), ys = recon.map(s => s.model_3d.ratio_vol3d_to_rev);
+      const x0 = Math.min(...xs) - 0.03, x1 = Math.max(...xs, 1) + 0.03, y0 = Math.min(...ys) - 0.03, y1 = Math.max(...ys) + 0.03;
+      const X = v => pl + (v - x0) / (x1 - x0) * (W - pl - pr), Y = v => H - pb - (v - y0) / (y1 - y0) * (H - pt - pb);
+      const col = { sphere: '#16a34a', prolate: '#2563eb', oblate: '#d97706', triaxial: '#9333ea' };
+      const ticks = (a, b) => { const r = []; for (let v = Math.ceil(a * 10) / 10; v <= b + 1e-9; v += 0.1) r.push(+v.toFixed(1)); return r; };
+      let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${t.scatterTitle}" style="font-family:system-ui,sans-serif; font-size:10px;">`;
+      ticks(x0, x1).forEach(v => { svg += `<line x1="${X(v)}" x2="${X(v)}" y1="${pt}" y2="${H - pb}" stroke="#e2e8f0"/><text x="${X(v)}" y="${H - pb + 13}" text-anchor="middle" fill="#64748b">${v.toFixed(1)}</text>`; });
+      ticks(y0, y1).forEach(v => { svg += `<line x1="${pl}" x2="${W - pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e2e8f0"/><text x="${pl - 5}" y="${Y(v) + 3}" text-anchor="end" fill="#64748b">${v.toFixed(1)}</text>`; });
+      if (y0 < 1 && y1 > 1) svg += `<line x1="${pl}" x2="${W - pr}" y1="${Y(1)}" y2="${Y(1)}" stroke="#94a3b8" stroke-dasharray="4 3"/>`;
+      svg += `<text x="${(pl + W - pr) / 2}" y="${H - 4}" text-anchor="middle" fill="#334155">C/A</text>`;
+      svg += `<text transform="translate(11 ${(pt + H - pb) / 2}) rotate(-90)" text-anchor="middle" fill="#334155">Vol 3D / Vol 2D</text>`;
+      recon.forEach(s => {
+        const m = s.model_3d, sel = s === st.sp;
+        svg += `<circle data-code="${s.code}" cx="${X(m.ratio_CA)}" cy="${Y(m.ratio_vol3d_to_rev)}" r="${sel ? 7 : 4.5}" fill="${col[m.model_3d] || '#475569'}" fill-opacity="${isLowN(s) ? 0.35 : 0.85}" stroke="${sel ? '#111827' : '#fff'}" stroke-width="${sel ? 2 : 1}" style="cursor:pointer"><title>${s.name} (${s.code}) · C/A ${m.ratio_CA} · ${m.ratio_vol3d_to_rev}</title></circle>`;
+      });
+      svg += '</svg>';
+      $('m3d-scatter-wrap').innerHTML = svg;
+      $('m3d-scatter-wrap').querySelectorAll('circle[data-code]').forEach(c => c.addEventListener('click', () => selectSpecies(spByCode[c.dataset.code])));
+    }
+
+    function renderTable() {
+      const t = T3[lang];
+      const q = $('m3d-search').value.trim().toLowerCase(), f = $('m3d-filter-model').value, so = $('m3d-sort').value;
+      let rows = recon.filter(s => (f === 'ALL' || s.model_3d.model_3d === f) &&
+        (!q || [s.name, s.name_cs, s.code, s.family, s.family_cs].join(' ').toLowerCase().includes(q)));
+      const key = { name: s => (lang === 'cs' ? s.name_cs || s.name : s.name), vol_desc: s => -s.model_3d.vol_3d_mesh_med_um3, vol_asc: s => s.model_3d.vol_3d_mesh_med_um3,
+        ratio_asc: s => -Math.abs(1 - s.model_3d.ratio_vol3d_to_rev), ca_asc: s => -Math.abs(1 - s.model_3d.ratio_CA) }[so];
+      rows.sort((a, b) => { const ka = key(a), kb = key(b); return typeof ka === 'string' ? ka.localeCompare(kb, lang) : ka - kb; });
+      $('m3d-thead').innerHTML = `<tr>${t.cols.map(c => `<th>${c}</th>`).join('')}</tr>`;
+      $('m3d-tbody').innerHTML = rows.map(s => {
+        const m = s.model_3d;
+        return `<tr data-code="${s.code}" class="${s === st.sp ? 'selected' : ''}">
+          <td>${spName(s)}</td><td>${famName(s)}</td>
+          <td><span class="m3d-badge ${m.model_3d}">${t.modelLbl[m.model_3d] || m.model_3d}</span></td>
+          <td>${fmt(m.axes_um[0], 1)} × ${fmt(m.axes_um[1], 1)} × ${fmt(m.axes_um[2], 1)}</td>
+          <td style="text-align:right">${fmt(m.vol_3d_mesh_med_um3)}</td>
+          <td style="text-align:right">${fmt(m.ratio_vol3d_to_rev, 2)}</td>
+          <td style="text-align:right">${fmt(m.sphericity_3d, 3)}</td>
+          <td style="text-align:right">${m.n_verified_grains}${isLowN(s) ? ' ⚠️' : ''}</td>
+          <td><a href="${m.obj_url}" download="${s.code}.obj" onclick="event.stopPropagation()">⬇</a></td></tr>`;
+      }).join('');
+      $('m3d-tbody').querySelectorAll('tr[data-code]').forEach(tr => tr.addEventListener('click', () => selectSpecies(spByCode[tr.dataset.code])));
+    }
+
+    function renderStatic() {
+      const t = T3[lang];
+      threeDBtn.textContent = t.tab;
+      $('m3d-kpi-strip').innerHTML = t.kpi.map(([l, v, s]) => `<div class="m3d-kpi-card"><div class="m3d-kpi-lbl">${l}</div><div class="m3d-kpi-val">${v}</div><div class="m3d-kpi-sub">${s}</div></div>`).join('');
+      const ex = s3d.excluded_species || [];
+      $('m3d-mentha-alert').style.display = ex.length ? '' : 'none';
+      $('m3d-mentha-alert').innerHTML = ex.map(e => `<span>${t.mentha(e)}</span>`).join('<br>');
+      ['m3d-view-tilt', 'm3d-view-polar', 'm3d-view-equat', 'm3d-btn-spin', 'm3d-btn-wire', 'm3d-btn-axes', 'm3d-btn-ghost'].forEach((id, i) => { $(id).textContent = t.views[i]; });
+      $('m3d-dl-zip').textContent = t.zip(recon.length);
+      if (s3d.mesh_zip_url) $('m3d-dl-zip').href = s3d.mesh_zip_url;
+      $('m3d-open-modal-btn').textContent = t.detail;
+      $('m3d-crops-lbl').textContent = t.cropsLbl;
+      $('m3d-vol-title').textContent = t.volTitle;
+      $('m3d-scatter-title').textContent = t.scatterTitle;
+      $('m3d-scatter-hint').textContent = t.scatterHint;
+      $('m3d-table-title').textContent = t.tableTitle;
+      $('m3d-search').placeholder = t.search;
+      $('m3d-opt-all').textContent = t.optAll;
+      ['m3d-opt-sph', 'm3d-opt-pro', 'm3d-opt-obl', 'm3d-opt-tri'].forEach((id, i) => { $(id).textContent = t.opts[i]; });
+      ['m3d-sort-name', 'm3d-sort-vdesc', 'm3d-sort-vasc', 'm3d-sort-rasc', 'm3d-sort-ca'].forEach((id, i) => { $(id).textContent = t.sorts[i]; });
+    }
+    function renderAll() { renderStatic(); renderSpeciesPanel(); renderScatter(); renderTable(); if (st.mesh) { st.msg = st.mesh.fromObj ? '' : T3[lang].noFetch; kick(); draw(); } }
+
+    $('m3d-search').addEventListener('input', renderTable);
+    $('m3d-filter-model').addEventListener('change', renderTable);
+    $('m3d-sort').addEventListener('change', renderTable);
+    $('m3d-open-modal-btn').addEventListener('click', () => openSpeciesModal(st.sp));
+    $('lang-cs-btn').addEventListener('click', renderAll);
+    $('lang-en-btn').addEventListener('click', renderAll);
+    threeDBtn.addEventListener('click', () => setActiveTab('3d'));
+
+    window.HAN3D = {
+      setVisible(v) { st.visible = v; if (v) { kick(); requestAnimationFrame(() => draw()); } },
+    };
+    renderAll();
+    selectSpecies(recon.find(s => s.code === 'Her_sph') || recon[0]);
+  })();
 
   applyLanguageUI();
 })();
